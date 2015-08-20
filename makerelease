@@ -35,7 +35,7 @@ echo ""
 
 echo "Finalise lib script..."
 sed -i /apptitle=/c\apptitle=\""Arch Linux Desktop Install (archdi) - Version: $version (GPLv3)"\" lib
-sed -i /baseurl=/c\baseurl=https://raw.githubusercontent.com/MatMoul/archdi/master lib
+sed -i /baseurl=/c\baseurl=https://raw.githubusercontent.com/MatMoul/archdi-pkg/master lib
 
 echo "Make last commit..."
 git commit -a -m "New Release : $version"
