@@ -82,6 +82,6 @@ echo "<?php" > $pubfile
 echo "header(\"Location: http://downloads.sourceforge.net/project/$prjname/release/pkg/$version/lib\");" >> $pubfile
 echo "exit;" >> $pubfile
 echo "?>" >> $pubfile
-scp -r $pubfile matmoul@web.sourceforge.net:/home/project-web/$prjname/htdocs/$prjname-lib/
+scp $pubfile matmoul@web.sourceforge.net:/home/project-web/$prjname/htdocs/$prjname-lib/index.php
 
 rm -R .build
