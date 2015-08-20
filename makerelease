@@ -76,12 +76,12 @@ sed -i "/baseurl=/c\baseurl=http://downloads.sourceforge.net/project/archdi/rele
 echo "Publish release..."
 scp -r $targetpath matmoul@web.sourceforge.net:/home/frs/project/$prjname/release/pkg/
 
-#echo "Update redirect page..."
-#pubfile=.build/index.php
-#echo "<?php" > $pubfile
-#echo "header(\"Location: http://downloads.sourceforge.net/project/$prjname/release/$version/$prjname\");" >> $pubfile
-#echo "exit;" >> $pubfile
-#echo "?>" >> $pubfile
-#scp -r $pubfile matmoul@web.sourceforge.net:/home/project-web/$prjname/htdocs/$prjname/
+echo "Update redirect page..."
+pubfile=.build/index.php
+echo "<?php" > $pubfile
+echo "header(\"Location: http://downloads.sourceforge.net/project/$prjname/release/pkg/$version/lib\");" >> $pubfile
+echo "exit;" >> $pubfile
+echo "?>" >> $pubfile
+scp -r $pubfile matmoul@web.sourceforge.net:/home/project-web/$prjname/htdocs/$prjname-lib/
 
 rm -R .build
