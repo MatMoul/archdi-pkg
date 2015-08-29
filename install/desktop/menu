@@ -38,7 +38,7 @@ case $sel in
   'Enlightenment') script install/desktop/enlightenment/packages;;
   'Mate') menu install/desktop/mate/menu;;
   'Cinnamon') script install/desktop/cinnamon/packages;;
-  'Openbox') script install/desktop/enlightenment/packages;;
+  'Openbox') script install/desktop/openbox/packages;;
 esac
 
 exit 0
