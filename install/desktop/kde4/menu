@@ -36,7 +36,7 @@ case $sel in
       instpkg "kde-applications" ""
     fi
   ;;
-  'KDE Apps') menu install/desktop/kde4/kdeapps;;
+  'KDE Apps') script install/desktop/kde4/kdeapps;;
   'KDE Complements') script install/desktop/kde4/complements;;
 esac
 
