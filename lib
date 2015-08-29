@@ -145,8 +145,8 @@ svcenable(){
   fi
   if (confirm "Start $displayname service at boot ?\n\nsystemctl enable $1") then
     systemctl enable $1
-  else
-    exit 1
+  #else
+  #  exit 1
   fi
 }
 
@@ -160,8 +160,8 @@ svcdisable(){
   fi
   if (confirm "Disable $displayname service at boot ?\n\nsystemctl disable $1") then
     systemctl disable $1
-  else
-    exit 1
+  #else
+  #  exit 1
   fi
 }
 
