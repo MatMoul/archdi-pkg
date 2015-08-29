@@ -5,7 +5,9 @@ options=()
 
 items=$(pacman -Ssq openbox)
 for item in $items; do
-  options+=("$item" "" on)
+  case $item in
+    "openbox-themes-only") options+=("$item" "" off);;
+    *) options+=("$item" "" on);;
 done
 
 sel=$(whiptail --backtitle "$apptitle" --title "Openbox Install :" --checklist "" --cancel-button "Back" 0 0 0 \
