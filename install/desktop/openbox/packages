@@ -3,7 +3,7 @@
 
 options=()
 
-items=$(pacman -Sqg openbox)
+items=$(pacman -Ssq openbox)
 for item in $items; do
   options+=("$item" "" on)
 done
