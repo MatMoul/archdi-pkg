@@ -22,7 +22,7 @@ case $sel in
   'Plasma Meta Full') instpkg "plasma-meta" "";;
   'Plasma Full') instpkg "plasma" "";;
   'KDE Plasma') script install/desktop/plasma5/kdeplasma;;
-  'KDE Apps') menu install/desktop/plasma5/kdeapps;;
+  'KDE Apps') script install/desktop/plasma5/kdeapps;;
   'Complements') script install/desktop/plasma5/complements;;
 esac
 
