@@ -3,7 +3,7 @@
 
 options=()
 #options+=("sddm-kcm" "" off)
-options+=("networkmanager" "" on)
+#options+=("networkmanager" "" on)
 options+=("partitionmanager" "" on)
 options+=("kmix" "" on)
 #plasma-nm
@@ -42,12 +42,6 @@ instpkg "$pkg" "$aurpkg"
 
 for itm in $sel; do
   case $itm in
-    '"networkmanager"')
-      systemctl disable dhcpcd
-      if (svcenable NetworkManager) then
-        svcdisable dhcpd
-      fi
-    ;;
     '"numlockx"')
       if ( confirm "Add numlockx on to /usr/share/config/kdm/Xsetup ?" ) then
         echo "numlockx on" >> /usr/share/config/kdm/Xsetup
