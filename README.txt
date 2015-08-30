@@ -1,16 +1,6 @@
-Download the script :
----------------------
-curl -L archdi.sourceforge.net/archdi > archdi
-or if sourceforge is down :
-curl -L matmoul.github.io/archdi > archdi
+# archdi-pkg
 
+This project is part of archdi.<br>
+look at archdi project to use it : https://github.com/MatMoul/archdi
 
-run the script :
-----------------
-sh archdi
-
-
-install and run the script :
-----------------------------
-sh archdi -i
-archdi
+If you want request a new features for archdi use issues (https://github.com/MatMoul/archdi-pkg/issues) on this project.

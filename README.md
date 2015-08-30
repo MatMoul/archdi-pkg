@@ -1,4 +1,6 @@
 # archdi-pkg
 
-this is part of archdi.<br>
-archdi project : https://github.com/MatMoul/archdi
+This project is part of archdi.<br>
+look at archdi project to use it : https://github.com/MatMoul/archdi
+
+If you want request a new features for archdi use issues (https://github.com/MatMoul/archdi-pkg/issues) on this project.
