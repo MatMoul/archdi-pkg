@@ -3,13 +3,12 @@
 
 options=()
 
-package=""
-items=$(pacman -Sqg $package)
+items=$(pacman -Sqg lxde)
 for item in $items; do
   options+=("$item" "" on)
 done
 
-sel=$(whiptail --backtitle "$apptitle" --title "$package Install :" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(whiptail --backtitle "$apptitle" --title "LXDE Install :" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 
@@ -25,7 +24,7 @@ instpkg "$pkg" "$aurpkg"
 
 for itm in $sel; do
   case $itm in
-    'lxdm') svcenable lxdm;;
+    '"lxdm"') svcenable lxdm;;
   esac
 done
 

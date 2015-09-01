@@ -30,12 +30,7 @@ case $sel in
   'Gnome') menu install/desktop/gnome/menu;;
   'Plasma5') menu install/desktop/plasma5/menu;;
   'Cinnamon') script install/desktop/cinnamon/packages;;
-  'LXDE')
-    require install/desktop/lxde/packages 755
-    sed -i "/^package=/c\package=\"lxde\"" install/desktop/lxde/packages
-    script install/desktop/lxde/packages
-    svcenable lxdm
-  ;;
+  'LXDE') script install/desktop/lxde/packages;;
   'LXQt') menu install/desktop/lxqt/menu;;
   'Mate') menu install/desktop/mate/menu;;
   'Enlightenment') script install/desktop/enlightenment/packages;;
