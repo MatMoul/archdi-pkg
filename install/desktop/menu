@@ -10,8 +10,8 @@ options+=("LXDE" "")
 options+=("Cinnamon" "")
 options+=("Mate" "")
 options+=("Enlightenment" "")
+options+=("LXQt" "")
 options+=("Openbox" "")
-options+=("LXQT" "")
 #options+=("GnuStep" "")
 #options+=("i3" "")
 
@@ -38,8 +38,8 @@ case $sel in
   'Enlightenment') script install/desktop/enlightenment/packages;;
   'Mate') menu install/desktop/mate/menu;;
   'Cinnamon') script install/desktop/cinnamon/packages;;
+  'LXQt') menu install/desktop/lxqt/menu;;
   'Openbox') script install/desktop/openbox/packages;;
-  'LXQT') script install/desktop/lxqt/packages;;
 esac
 
 exit 0
