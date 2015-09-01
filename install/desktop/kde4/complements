@@ -10,7 +10,6 @@ options+=("kdesu4" "" on)
 options+=("konsolepart4" "" on)
 options+=("dolphinpart4" "" on)
 options+=("gnome-keyring" "" on)
-options+=("smb4k" "" off)
 options+=("partitionmanager" "" on)
 options+=("archlinux-themes-kdm" "theme" on)
 options+=("breeze-kde4" "theme" on)
@@ -27,6 +26,7 @@ options+=("gtk3-dark-theme-patch" "/etc/skel/.config/gtk-3.0/settings.ini" off)
 #qtcurve-qt4
 #qtcurve-qt5
 #options+=("gtk-qt-engine" "(AUR)" off)
+options+=("smb4k" "" off)
 options+=("kdeconnect" "" off)
 options+=("sshfs" "(For kdeconnect)" off)
 
