@@ -59,6 +59,7 @@ checkarchlinuxfrrepo(){
   fi
 }
 
+clear
 case $sel in
   'Upgrade') pacman -Syu;;
   'Upgrade with yaourt') sudo -u aurbuilder yaourt -Syua;;
