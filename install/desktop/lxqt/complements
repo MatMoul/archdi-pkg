@@ -6,7 +6,6 @@ options+=("lximage-qt-git" "(AUR)" on)
 options+=("lximage-qt" "(AUR)" off)
 options+=("obconf-qt-git" "(AUR)" on)
 options+=("obconf-qt" "(AUR)" off)
-options+=("obconf" "" off)
 options+=("qterminal-git" "(AUR)" on)
 options+=("qterminal" "(AUR)" off)
 options+=("sddm" "display manager" on)
@@ -20,7 +19,7 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"sddm"' | '"obconf"') pkg="$pkg $(echo $itm | sed 's/"//g')";;
+    '"sddm"') pkg="$pkg $(echo $itm | sed 's/"//g')";;
     *) aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
   esac
 done
