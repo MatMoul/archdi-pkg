@@ -69,6 +69,7 @@ case $sel in
   'Edit mirrorlist') nano /etc/pacman.d/mirrorlist;;
   'Install yaourt')
     if(confirm "Yaourt allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yaourt ?") then
+      clear
       checkaurdependencies
       checkarchlinuxfrrepo
       pacman -S --needed yaourt
@@ -76,6 +77,7 @@ case $sel in
   ;;
   'Install packer')
     if(confirm "Packer allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall packer ?") then
+      clear
       checkaurdependencies
       checkarchlinuxfrrepo
       pacman -S --needed packer
