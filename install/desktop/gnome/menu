@@ -19,6 +19,7 @@ case $sel in
     require install/desktop/gnome/packages 755
     sed -i "/^package=/c\package=\"$sel\"" install/desktop/gnome/packages
     script install/desktop/gnome/packages
+    svcenable gdm
   ;;
   'gnome-extra')
     require install/desktop/gnome/packages 755
