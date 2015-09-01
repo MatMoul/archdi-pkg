@@ -2,8 +2,6 @@
 . ./lib
 
 options=()
-options+=("os-prober" "Detect OS for multi-boot (grub)" off)
-options+=("snapper" "snapshot manager (ext4, lvm, btrfs)" off)
 options+=("dosfstools" "FAT32 file support (Windows Drives)" on)
 options+=("ntfs-3g" "NTFS file support (Windows Drives)" on)
 options+=("btrfs-progs" "BTRFS file utils" on)
@@ -11,6 +9,8 @@ options+=("gptfdisk" "" on)
 options+=("autofs" "" on)
 options+=("fuse" "" on)
 options+=("fuseiso" "" on)
+options+=("snapper" "snapshot manager (ext4, lvm, btrfs)" off)
+options+=("os-prober" "Detect OS for multi-boot (grub)" off)
 options+=("samba" "" off)
 options+=("nfs-utils" "" off)
 options+=("open-iscsi" "" off)
