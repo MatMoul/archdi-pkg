@@ -63,6 +63,11 @@ for itm in $sel; do
         echo "numlockx on" >> /usr/share/config/kdm/Xsetup
       fi
     ;;
+    '"dolphinpart4"')
+      if( confirm "Patch doplhin.desktop with Exec=dolphin4 %u ?" ) then
+        sed -i "/Exec/c\Exec=dolphin4 %u" /usr/share/applications/org.kde.dolphin.desktop
+      fi
+    ;;
   esac
 done
 
