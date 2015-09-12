@@ -27,7 +27,7 @@ done
 instpkg "$pkg" "$aurpkg"
 
 case $sel in
-  "sddm-kcm")
+  '"sddm-kcm"')
     svcenable sddm
   ;;
 esac
