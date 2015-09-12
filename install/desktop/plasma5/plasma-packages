@@ -26,4 +26,11 @@ done
 
 instpkg "$pkg" "$aurpkg"
 
+case $sel in
+  "sddm-kcm")
+    svcenable sddm
+  ;;
+esac
+
+
 exit 0
