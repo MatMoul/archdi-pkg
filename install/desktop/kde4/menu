@@ -23,14 +23,14 @@ case $sel in
   'KDE Base')
     instpkg "kdebase-workspace" ""
     svcenable kdm
-    if ( confirm "Path kdeglobals ?" ) then
-      mkdir -p /etc/skel/.kde4/Autostart
-      kdeglobalsfile=/etc/skel/.kde4/Autostart/kdeglobals
-      echo "#!/bin/bash" > $kdeglobalsfile
-      echo "rm ~/.kde4/share/config/kdeglobals" > $kdeglobalsfile
-      echo "ln ~/.config/kdeglobals ~/.kde4/share/config/kdeglobals" > $kdeglobalsfile
-      chmod 755 $kdeglobalsfile
-    fi
+    #if ( confirm "Path kdeglobals ?" ) then
+    #  mkdir -p /etc/skel/.kde4/Autostart
+    #  kdeglobalsfile=/etc/skel/.kde4/Autostart/kdeglobals
+    #  echo "#!/bin/bash" > $kdeglobalsfile
+    #  echo "rm ~/.kde4/share/config/kdeglobals" > $kdeglobalsfile
+    #  echo "ln ~/.config/kdeglobals ~/.kde4/share/config/kdeglobals" > $kdeglobalsfile
+    #  chmod 755 $kdeglobalsfile
+    #fi
   ;;
   'KDE Localisations') script install/desktop/kde4/localisations;;
   'KDE Plasma') script install/desktop/kde4/kdeplasma;;
