@@ -5,12 +5,13 @@ options=()
 #options+=("sddm-kcm" "" off)
 #options+=("networkmanager" "" on)
 options+=("partitionmanager" "" on)
-options+=("kmix" "" on)
 #plasma-nm
 #muon (package manager)
 #options+=("kdesu" "" on)
 #options+=("kdesu4" "" on)
 options+=("gnome-keyring" "" on)
+options+=("gnome-breeze-git" "(AUR)" on)
+options+=("kmix" "(Old mixer)" off)
 #options+=("konsolepart4" "" on)
 #options+=("octopi" "(AUR)" on)
 #options+=("kde-gtk-config" "" on)
@@ -21,7 +22,7 @@ options+=("gnome-keyring" "" on)
 #options+=("archlinux-themes-kdm" "" on)
 #options+=("numlockx" "" on)
 #options+=("kdeconnect" "" off)
-#options+=("kdeconnect+sshfs" "" off)
+#options+=("sshfs" "(For kdeconnect)" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Plasma Complements :" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
@@ -32,22 +33,14 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"octopi"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
-    '"oxygen-gtk3-git"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    #'"octopi"' | \
+    #'"oxygen-gtk3-git"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    '"gnome-breeze-git"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
 
 instpkg "$pkg" "$aurpkg"
 
-for itm in $sel; do
-  case $itm in
-    '"numlockx"')
-      if ( confirm "Add numlockx on to /usr/share/config/kdm/Xsetup ?" ) then
-        echo "numlockx on" >> /usr/share/config/kdm/Xsetup
-      fi
-    ;;
-  esac
-done
 
 exit 0
