@@ -18,7 +18,7 @@ options+=("oxygen-gtk2" "theme gtk 2" on)
 options+=("oxygen-gtk3-git" "(AUR) theme gtk 3" off)
 options+=("qtcurve-kde4" "theme" off)
 options+=("gtk-kde4" "(AUR) gtk2 theme config" on)
-options+=("gtk3-dark-theme-patch" "/etc/skel/.config/gtk-3.0/settings.ini" off)
+#options+=("gtk3-dark-theme-patch" "/etc/skel/.config/gtk-3.0/settings.ini" off)
 #options+=("qtcurve-gtk2" "" off)
 #options+=("kde-gtk-config" "gtk theme config FOR PLASMA5" off)
 #qtcurve-kde4
