@@ -15,6 +15,7 @@ options+=("archlinux-themes-kdm" "theme" on)
 options+=("breeze-kde4" "theme" on)
 options+=("breeze" "theme" on)
 options+=("gtk-kde4" "(AUR) gtk2 theme config" on)
+options+=("gnome-breeze-git" "(AUR) gtk Breeze theme" on)
 options+=("oxygen-gtk2" "theme gtk 2" on)
 options+=("oxygen-gtk3-git" "(AUR) theme gtk 3" off)
 options+=("qtcurve-kde4" "theme" off)
@@ -39,8 +40,9 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"gtk-qt-engine"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
-    '"gtk-kde4"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    '"gtk-qt-engine"' | \
+    '"gtk-kde4"' | \
+    '"gnome-breeze-git"' | \
     '"oxygen-gtk3-git"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     '"gtk3-dark-theme-patch"') ;;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
