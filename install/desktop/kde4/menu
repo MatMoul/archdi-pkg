@@ -21,14 +21,14 @@ sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
   'KDE Base')
+    instpkg "kdebase-workspace" ""
+    svcenable kdm
     if ( confirm "Path kdeglobals ?\n\ntouch /etc/skel/.config/kdeglobals\nchmod 700 /etc/skel/.config/kdeglobals\nln /etc/skel/.config/kdeglobals /etk/skel/.kde4/share/config/kdeglobals" ) then
       touch /etc/skel/.config/kdeglobals
       chmod 700 /etc/skel/.config/kdeglobals
       ln /etc/skel/.config/kdeglobals /etk/skel/.kde4/share/config/kdeglobals
       echo "source /etc/profile" > /etc/skel/.bashrc
     fi
-    instpkg "kdebase-workspace" ""
-    svcenable kdm
   ;;
   'KDE Localisations') script install/desktop/kde4/localisations;;
   'KDE Plasma') script install/desktop/kde4/kdeplasma;;
