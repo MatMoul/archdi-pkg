@@ -11,7 +11,13 @@ options+=("partitionmanager" "" on)
 #options+=("kdesu4" "" on)
 options+=("gnome-keyring" "" on)
 options+=("gnome-breeze-git" "(AUR)" on)
-options+=("kmix" "(Old mixer)" off)
+options+=("sni-qt" "" on)
+options+=("lib32-sni-qt" "" off)
+options+=("libappindicator-gtk2" "(AUR)" on)
+options+=("lib32-libappindicator-gtk2" "(AUR)" off)
+options+=("libappindicator-gtk3" "(AUR)" on)
+options+=("lib32-libappindicator-gtk3" "(AUR)" off)
+options+=("kmix" "(Old KDE4 mixer)" off)
 #options+=("konsolepart4" "" on)
 #options+=("octopi" "(AUR)" on)
 #options+=("kde-gtk-config" "" on)
@@ -33,9 +39,11 @@ fi
 
 for itm in $sel; do
   case $itm in
-    #'"octopi"' | \
-    #'"oxygen-gtk3-git"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
-    '"gnome-breeze-git"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    '"gnome-breeze-git"' | \
+    '"libappindicator-gtk2"' | \
+    '"lib32-libappindicator-gtk2"' | \
+    '"libappindicator-gtk3"' | \
+    '"lib32-libappindicator-gtk3"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
