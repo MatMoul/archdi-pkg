@@ -19,7 +19,7 @@ fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
-  'Plasma Packages') menu install/desktop/plasma5/plasma-packages;;
+  'Plasma Packages') script install/desktop/plasma5/plasma-packages;;
   'Localisations') script install/desktop/plasma5/localisations;;
   'KDE Apps Meta Full')
     if ( confirm "This option install all KDE applications with meta packages.\n\nInstall KDE Meta Full (pacman -S kde-applications-meta) ?" ) then
