@@ -29,6 +29,7 @@ case $sel in
       echo "#!/bin/bash" > $kdeglobalsfile
       echo "rm ~/.kde4/share/config/kdeglobals" > $kdeglobalsfile
       echo "ln ~/.config/kdeglobals ~/.kde4/share/config/kdeglobals" > $kdeglobalsfile
+      chmod 755 $kdeglobalsfile
     fi
   ;;
   'KDE Localisations') script install/desktop/kde4/localisations;;
