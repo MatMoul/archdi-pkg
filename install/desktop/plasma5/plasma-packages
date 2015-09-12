@@ -26,11 +26,12 @@ done
 
 instpkg "$pkg" "$aurpkg"
 
-case $sel in
-  '"sddm-kcm"')
-    svcenable sddm
-  ;;
-esac
-
+for itm in $sel; do
+  case $itm in
+    '"sddm-kcm"')
+      svcenable sddm
+    ;;
+  esac
+done
 
 exit 0
