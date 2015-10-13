@@ -45,8 +45,8 @@ checkaurdependencies(){
     newpass=$(< /dev/urandom tr -dc "@#*%&_A-Z-a-z-0-9" | head -c16)
     useradd -r -N -M -d /home/.aurbuilder -s /usr/bin/nologin aurbuilder
     echo -e "$newpass\n$newpass\n"|passwd aurbuilder
-    echo "aurbuilder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-    echo "root ALL=(aurbuilder) NOPASSWD: ALL" >> /etc/sudoers
+    echo "aurbuilder ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/aurbuilder
+    echo "root ALL=(aurbuilder) NOPASSWD: ALL" >> /etc/sudoers.d/aurbuilder
     newpass=""
   fi
 }
