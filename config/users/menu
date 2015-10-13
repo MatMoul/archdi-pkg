@@ -31,6 +31,7 @@ case $sel in
 		    echo "Choose a password for $username :"
 		    echo ""
 		    passwd $username
+		    grpck
 		    pressanykey
 		  fi
 		;;
@@ -38,6 +39,7 @@ case $sel in
 		  username=$(whiptail --backtitle "$apptitle" --title "Delete User" --inputbox "Enter the user name to delete :" 0 0 3>&1 1>&2 2>&3)
 		  if [ "$?" = "0" ]; then
 		    userdel -r -f $username
+		    grpck
 		  fi
 		;;
 esac
