@@ -35,7 +35,9 @@ case $sel in
 		  sudoers=$(ls /etc/sudoers.d)
 		  sudoerlist=()
 		  for itm in $sudoers; do
-		    sudoerlist+=("$itm" "")
+        if [ ! "$itm" = "aurbuilder" ]; then
+          sudoerlist+=("$itm" "")
+        fi
 		  done
 		  sel=$(whiptail --backtitle "$apptitle" --title "Edit sudoer :" --menu "" --cancel-button "Cancel" 0 0 0 \
       "${sudoerlist[@]}" \
