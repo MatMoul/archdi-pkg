@@ -6,7 +6,9 @@ options+=("Bash" "")
 options+=("Firewall" "")
 options+=("Users" "")
 options+=("Sudoers" "")
-options+=("XOrg" "")
+if [ -f /usr/bin/Xorg ]; then
+  options+=("XOrg" "")
+fi
 options+=("Grub" "")
 
 defaultitem=""
