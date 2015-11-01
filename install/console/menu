@@ -4,6 +4,7 @@
 options=()
 options+=("bash-completion" "Best completion in bash" on)
 options+=("lsof" "ls open file" on)
+options+=("dmidecode" "Hardware infos" on)
 options+=("nmon" "System monitor" on)
 options+=("rsync" "Sync files" on)
 options+=("zip" "ZIP files" on)
