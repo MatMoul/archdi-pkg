@@ -1,0 +1,26 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("nano" "")
+options+=("vim" "")
+options+=("vi" "")
+options+=("edit" "")
+options+=("unset" "")
+
+editor=$(whiptail --backtitle "$apptitle" --title "Default global editor :" --menu "" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+
+if [ "$editor" = "unset" ]; then
+  rm /etc/profile.d/editor.sh
+else
+  echo "export EDITOR=$editor" > /etc/profile.d/editor.sh
+  chmod 755 /etc/profile.d/editor.sh
+fi
+
+exit 0
+
