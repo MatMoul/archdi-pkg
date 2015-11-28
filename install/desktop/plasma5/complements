@@ -2,7 +2,8 @@
 . ./lib
 
 options=()
-#options+=("sddm-kcm" "" off)
+options+=("sddm" "" on)
+#options+=("sddm-kcm" "" on)
 #options+=("networkmanager" "" on)
 options+=("breeze-kde4" "" on)
 options+=("partitionmanager" "" on)
@@ -53,5 +54,10 @@ done
 
 instpkg "$pkg" "$aurpkg"
 
+for itm in $sel; do
+  case $itm in
+    '"sddm"') svcenable sddm;;
+  esac
+done
 
 exit 0
