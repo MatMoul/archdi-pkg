@@ -4,6 +4,7 @@
 options=()
 #options+=("sddm-kcm" "" off)
 #options+=("networkmanager" "" on)
+options+=("breeze-kde4" "" on)
 options+=("partitionmanager" "" on)
 #plasma-nm
 #muon (package manager)
