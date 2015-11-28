@@ -17,6 +17,7 @@ options+=("libappindicator-gtk2" "(AUR)" on)
 options+=("lib32-libappindicator-gtk2" "(AUR)" off)
 options+=("libappindicator-gtk3" "(AUR)" on)
 options+=("lib32-libappindicator-gtk3" "(AUR)" off)
+options+=("xembed-sni-proxy-git" "(AUR)" on)
 options+=("kmix" "" on)
 #options+=("konsolepart4" "" on)
 #options+=("octopi" "(AUR)" on)
@@ -43,7 +44,8 @@ for itm in $sel; do
     '"libappindicator-gtk2"' | \
     '"lib32-libappindicator-gtk2"' | \
     '"libappindicator-gtk3"' | \
-    '"lib32-libappindicator-gtk3"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    '"lib32-libappindicator-gtk3"' | \
+    '"xembed-sni-proxy-git"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
