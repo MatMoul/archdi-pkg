@@ -2,15 +2,11 @@
 . ./lib
 
 options=()
-options+=("sddm" "" on)
-#options+=("sddm-kcm" "" on)
-#options+=("networkmanager" "" on)
-options+=("breeze-kde4" "" on)
+options+=("kmix" "" on)
 options+=("partitionmanager" "" on)
-#plasma-nm
-#muon (package manager)
 #options+=("kdesu" "" on)
 #options+=("kdesu4" "" on)
+options+=("breeze-kde4" "" on)
 options+=("gnome-keyring" "" on)
 options+=("gnome-breeze-git" "(AUR)" on)
 options+=("sni-qt" "" on)
@@ -20,16 +16,6 @@ options+=("lib32-libappindicator-gtk2" "(AUR)" off)
 options+=("libappindicator-gtk3" "(AUR)" on)
 options+=("lib32-libappindicator-gtk3" "(AUR)" off)
 options+=("xembed-sni-proxy-git" "(AUR)" on)
-options+=("kmix" "" on)
-#options+=("konsolepart4" "" on)
-#options+=("octopi" "(AUR)" on)
-#options+=("kde-gtk-config" "" on)
-#options+=("oxygen-gtk2" "" on)
-#options+=("oxygen-gtk3-git" "(AUR)" off)
-#options+=("breeze-kde4" "" on)
-#options+=("breeze" "" on)
-#options+=("archlinux-themes-kdm" "" on)
-#options+=("numlockx" "" on)
 #options+=("kdeconnect" "" off)
 #options+=("sshfs" "(For kdeconnect)" off)
 
@@ -53,11 +39,5 @@ for itm in $sel; do
 done
 
 instpkg "$pkg" "$aurpkg"
-
-for itm in $sel; do
-  case $itm in
-    '"sddm"') svcenable sddm;;
-  esac
-done
 
 exit 0
