@@ -2,8 +2,8 @@
 . ./lib
 
 options=()
-options+=("gimp" "" on)
-options+=("inkscape" "" on)
+options+=("gimp" "" off)
+options+=("inkscape" "" off)
 options+=("dia" "" off)
 options+=("calligra-krita" "" off)
 
