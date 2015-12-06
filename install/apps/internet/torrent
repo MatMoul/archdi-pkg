@@ -2,6 +2,9 @@
 . ./lib
 
 options=()
+options+=("deluge" "" off)
+options+=("qbittorrent" "" off)
+options+=("ktorrent" "" off)
 options+=("tixati" "(AUR)" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Torrent applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
