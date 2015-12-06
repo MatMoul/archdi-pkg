@@ -2,13 +2,16 @@
 . ./lib
 
 options=()
-options+=("chromium" "" on)
-options+=("chromium-pepper-flash" "(AUR)" on)
+options+=("chromium" "" off)
+options+=("chromium-pepper-flash" "(AUR) Remoennded" off)
 options+=("chromium-pepper-flash-standalone" "(AUR)" off)
-options+=("firefox" "" on)
+options+=("firefox" "" off)
 options+=("flashplugin" "" off)
-options+=("freshplayerplugin-git" "(AUR)" on)
+options+=("freshplayerplugin-git" "(AUR) Recommended" off)
 options+=("freshplayerplugin" "(AUR)" off)
+options+=("opera" "" off)
+options+=("midori" "" off)
+options+=("midori-gtk2" "" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Web Browser applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
