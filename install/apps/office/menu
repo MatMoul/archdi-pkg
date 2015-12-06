@@ -1,0 +1,23 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("Office Suites" "")
+options+=("Office Tools" "")
+
+
+defaultitem=""
+sel=$(whiptail --backtitle "$apptitle" --title "Office Apps :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
+
+case $sel in
+  "Office Suites") script install/apps/office/office;;
+  "Office Tools") script install/apps/office/office-tools;;
+esac
+
+exit 0
