@@ -2,6 +2,7 @@
 . ./lib
 
 options=()
+options+=("lightdm-gtk-greeter" "" on)
 options+=("gksu" "" on)
 options+=("gvfs" "" on)
 options+=("gvfs-afc" "" on)
@@ -22,5 +23,11 @@ for itm in $sel; do
 done
 
 instpkg "$pkg" "$aurpkg"
+
+for itm in $sel; do
+  case $itm in
+    "lightdm-gtk-greeter") svcenable lightdm;;
+  esac
+done
 
 exit 0
