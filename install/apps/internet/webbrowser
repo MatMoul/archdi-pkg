@@ -3,7 +3,7 @@
 
 options=()
 options+=("chromium" "" off)
-options+=("chromium-pepper-flash" "(AUR) Remoennded" off)
+options+=("chromium-pepper-flash" "(AUR) Recommended" off)
 options+=("chromium-pepper-flash-standalone" "(AUR)" off)
 options+=("firefox" "" off)
 options+=("flashplugin" "" off)

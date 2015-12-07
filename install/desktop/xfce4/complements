@@ -26,7 +26,7 @@ instpkg "$pkg" "$aurpkg"
 
 for itm in $sel; do
   case $itm in
-    "lightdm-gtk-greeter") svcenable lightdm;;
+    '"lightdm-gtk-greeter"') svcenable lightdm;;
   esac
 done
 
