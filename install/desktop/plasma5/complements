@@ -2,7 +2,6 @@
 . ./lib
 
 options=()
-options+=("sddm" "" on)
 options+=("kmix" "" on)
 options+=("partitionmanager" "" on)
 #options+=("kdesu" "" on)
@@ -38,11 +37,5 @@ for itm in $sel; do
 done
 
 instpkg "$pkg" "$aurpkg"
-
-for itm in $sel; do
-  case $itm in
-    "sddm") svcenable sddm;;
-  esac
-done
 
 exit 0
