@@ -2,16 +2,16 @@
 . ./lib
 
 options=()
-options+=("KDE4" "")
+options+=("Plasma5" "")
 options+=("XFCE4" "")
 options+=("Gnome" "")
-options+=("Plasma5" "")
 options+=("Cinnamon" "")
 options+=("LXDE" "")
 options+=("LXQt" "")
 options+=("Mate" "")
 options+=("Enlightenment" "")
 options+=("Openbox" "")
+options+=("KDE4" "(AUR)")
 #options+=("GnuStep" "")
 #options+=("i3" "")
 
