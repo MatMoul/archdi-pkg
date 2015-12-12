@@ -11,7 +11,7 @@ options+=("LXQt" "")
 options+=("Mate" "")
 options+=("Enlightenment" "")
 options+=("Openbox" "")
-options+=("KDE4" "(AUR)")
+options+=("KDE4" "(AUR) End of life")
 #options+=("GnuStep" "")
 #options+=("i3" "")
 
