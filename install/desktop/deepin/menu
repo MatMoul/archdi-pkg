@@ -19,7 +19,6 @@ case $sel in
     require install/desktop/deepin/packages 755
     sed -i "/^package=/c\package=\"$sel\"" install/desktop/deepin/packages
     script install/desktop/deepin/packages
-    svcenable gdm
   ;;
   'deepin-extra')
     require install/desktop/deepin/packages 755
