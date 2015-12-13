@@ -11,6 +11,7 @@ options+=("LXQt" "")
 options+=("Mate" "")
 options+=("Enlightenment" "")
 options+=("Openbox" "")
+options+=("Deepin" "")
 options+=("KDE4" "(AUR) End of life")
 #options+=("GnuStep" "")
 #options+=("i3" "")
@@ -35,6 +36,7 @@ case $sel in
   'Mate') menu install/desktop/mate/menu;;
   'Enlightenment') script install/desktop/enlightenment/packages;;
   'Openbox') script install/desktop/openbox/packages;;
+  'Deepin') menu install/desktop/deepin/menu;;
 esac
 
 exit 0
