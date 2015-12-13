@@ -4,7 +4,7 @@
 options=()
 options+=("KDE Base" "(AUR) kdebase-workspace")
 options+=("KDE Localisations" "kde-l10n-")
-options+=("KDE Plasma" "kdeplasma4-")
+#options+=("KDE Plasma" "kdeplasma4-")
 options+=("KDE Apps Meta Full" "kde-applications-meta")
 options+=("KDE Apps Full" "kde-applications")
 options+=("KDE Apps" "")

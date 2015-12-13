@@ -2,16 +2,14 @@
 . ./lib
 
 options=()
-options+=("kdebase-plasma" "" on)
-options+=("kdeplasma-applets-plasma-nm" "" on)
+#options+=("kdebase-plasma" "" on)
 options+=("numlockx" "(Numlock on for kdm)" on)
 options+=("kdesu" "" on)
-options+=("kdesu4" "" on)
+#options+=("kdesu4" "" on)
 options+=("konsolepart4" "" on)
 options+=("dolphinpart4" "" on)
 options+=("gnome-keyring" "" on)
 options+=("partitionmanager" "" on)
-options+=("archlinux-themes-kdm" "theme" on)
 options+=("breeze-kde4" "theme" on)
 options+=("breeze" "theme" on)
 options+=("gtk-kde4" "(AUR) gtk2 theme config" on)
@@ -19,17 +17,10 @@ options+=("gnome-breeze-git" "(AUR) gtk Breeze theme" on)
 options+=("oxygen-gtk2" "theme gtk 2" off)
 options+=("oxygen-gtk3-git" "(AUR) theme gtk 3" off)
 options+=("qtcurve-kde4" "theme" off)
-#options+=("gtk3-dark-theme-patch" "/etc/skel/.config/gtk-3.0/settings.ini" off)
-#options+=("qtcurve-gtk2" "" off)
-#options+=("kde-gtk-config" "gtk theme config FOR PLASMA5" off)
-#qtcurve-kde4
-#qtcurve-gtk2
-#qtcurve-qt4
-#qtcurve-qt5
-#options+=("gtk-qt-engine" "(AUR)" off)
-options+=("smb4k" "" off)
-options+=("kdeconnect" "" off)
-options+=("sshfs" "(For kdeconnect)" off)
+options+=("archlinux-themes-kdm" "theme" off)
+#options+=("smb4k" "" off)
+#options+=("kdeconnect" "" off)
+#options+=("sshfs" "(For kdeconnect)" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "KDE Complements :" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
