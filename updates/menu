@@ -21,6 +21,8 @@ options+=("" "")
 options+=("Edit pacman.conf" "")
 options+=("Edit mirrorlist" "")
 options+=("" "")
+options+=("Remove db.lck" "rm /var/lib/pacman/db.lck")
+options+=("" "")
 if [ "$aurhelper" = "1" ]; then
   if [ ! -f /usr/bin/yaourt ]; then
     options+=("Install yaourt" "")
@@ -75,6 +77,7 @@ case $sel in
   'Clean') pacman -Sc;;
   'Edit pacman.conf') nano /etc/pacman.conf;;
   'Edit mirrorlist') nano /etc/pacman.d/mirrorlist;;
+  'Remove db.lck') rm /var/lib/pacman/db.lck;;
   'Install yaourt')
     if(confirm "Yaourt allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yaourt ?") then
       clear
