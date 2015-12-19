@@ -23,10 +23,10 @@ options+=("Edit mirrorlist" "")
 options+=("" "")
 options+=("Remove db.lck" "rm /var/lib/pacman/db.lck")
 options+=("" "")
-if [ -f /usr/bin/downgrade ]; then
+if [ -! f /usr/bin/downgrade ]; then
   options+=("Install downgrade" "")
+  options+=("" "")
 fi
-options+=("" "")
 if [ "$aurhelper" = "1" ]; then
   if [ ! -f /usr/bin/yaourt ]; then
     options+=("Install yaourt" "")
