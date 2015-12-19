@@ -23,6 +23,10 @@ options+=("Edit mirrorlist" "")
 options+=("" "")
 options+=("Remove db.lck" "rm /var/lib/pacman/db.lck")
 options+=("" "")
+if [ -f /usr/bin/downgrade ]; then
+  options+=("Install downgrade" "")
+fi
+options+=("" "")
 if [ "$aurhelper" = "1" ]; then
   if [ ! -f /usr/bin/yaourt ]; then
     options+=("Install yaourt" "")
@@ -78,6 +82,10 @@ case $sel in
   'Edit pacman.conf') nano /etc/pacman.conf;;
   'Edit mirrorlist') nano /etc/pacman.d/mirrorlist;;
   'Remove db.lck') rm /var/lib/pacman/db.lck;;
+  'Install downgrade')
+    checkarchlinuxfrrepo
+    pacman -S --needed downgrade
+  ;;
   'Install yaourt')
     if(confirm "Yaourt allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yaourt ?") then
       clear
