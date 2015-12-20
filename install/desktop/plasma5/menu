@@ -35,7 +35,7 @@ case $sel in
   ;;
   'KDE Apps') script install/desktop/plasma5/kdeapps;;
   'KDE Apps Categories Meta') script install/desktop/plasma5/metapackages;;
-  'KDE Apps Categories') script install/desktop/plasma5/packagecategories;;
+  'KDE Apps Categories') menu install/desktop/plasma5/packagecategories;;
   'Complements') script install/desktop/plasma5/complements;;
 esac
 
