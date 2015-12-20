@@ -5,12 +5,12 @@ options=()
 options+=("oxygen-icons" "Default Icon Theme" on)
 options+=("connman" "Network Manager" on)
 options+=("lxqt-connman-applet-git" "(AUR) Applet for NM" on)
-options+=("lximage-qt-git" "(AUR)" on)
-options+=("lximage-qt" "(AUR)" off)
-options+=("obconf-qt-git" "(AUR)" on)
-options+=("obconf-qt" "(AUR)" off)
-options+=("qterminal-git" "(AUR)" on)
-options+=("qterminal" "(AUR)" off)
+options+=("lximage-qt" "(AUR)" on)
+options+=("lximage-qt-git" "(AUR)" off)
+options+=("obconf-qt" "(AUR)" on)
+options+=("obconf-qt-git" "(AUR)" off)
+options+=("qterminal" "(AUR)" on)
+options+=("qterminal-git" "(AUR)" off)
 options+=("sddm" "display manager" on)
 
 
@@ -23,8 +23,14 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"sddm"') pkg="$pkg $(echo $itm | sed 's/"//g')";;
-    *) aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    '"lxqt-connman-applet-git"' | \
+    '"lximage-qt-git"' | \
+    '"lximage-qt"' | \
+    '"obconf-qt-git"' | \
+    '"obconf-qt"' | \
+    '"qterminal-git"' | \
+    '"qterminal"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
 
