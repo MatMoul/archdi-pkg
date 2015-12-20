@@ -11,7 +11,7 @@ options+=("kdemultimedia" "")
 options+=("kdenetwork" "")
 options+=("kdesdk" "")
 options+=("kdepim" "")
-items=$(for i in $(pacman -Sqg kde-applications-meta); do echo ${i#kde-meta-};done)
+items=$(for i in $(pacman -Sqs kde-applications-meta); do echo ${i#kde-meta-};done)
 for item in $items; do
   case $item in
     "kdebase") ;;
