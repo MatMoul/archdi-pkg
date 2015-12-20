@@ -7,67 +7,43 @@ items=$(pacman -Sqg kde-applications)
 for item in $items; do
   case $item in
     "dolphin" | \
-    "kdepasswd" | \
-    "kdialog" | \
-    "kfind" | \
-    "workspace" | \
-    "ksystemlog" | \
-    "kuser" | \
-    "ark" | \
-    "kwalletmanager" | \
-    "kgamma" | \
-    "ksnapshot" | \
-    "okular" | \
-    "audiocd-kio" | \
-    "ffmpegthumbs" | \
-    "mplayerthumbs" | \
-    "filesharing" | \
-    "zeroconf-ioslave" | \
     "kate" | \
-    "thumbnailers" | \
-    "kdebase-dolphin" | \
     "kdebase-kdepasswd" | \
+    "kdepasswd" | \
     "kdebase-kdialog" | \
+    "kdialog" | \
     "kdebase-kfind" | \
-    "kdebase-workspace" | \
+    "kfind" | \
     "konsole" | \
     "kwrite" | \
     "kcron" | \
-    "kdeadmin-ksystemlog" | \
     "kdeadmin-kuser" | \
-    "kdeutils-ark" | \
-    "kdeutils-kwalletmanager" | \
+    "kuser" | \
+    "ksystemlog" | \
+    "ark" | \
     "kcalc" | \
     "kcharselect" | \
+    "kdeutils-kgpg" | \
+    "kgpg" | \
+    "kwalletmanager" | \
     "print-manager" | \
-    "kdegraphics-kgamma" | \
-    "kdegraphics-ksnapshot" | \
     "kdegraphics-okular" | \
+    "okular" | \
+    "kmix" | \
     "kdemultimedia-audiocd-kio" | \
-    "kdemultimedia-ffmpegthumbs" | \
+    "audiocd-kio" | \
+    "kdemultimedia-kmix" | \
+    "kmix" | \
     "kdemultimedia-mplayerthumbs" | \
+    "mplayerthumbs" | \
     "kdenetwork-filesharing" | \
+    "filesharing" | \
     "kdenetwork-zeroconf-ioslave" | \
-    "kate" | \
-    "kdesdk-thumbnailers" | \
-    "kdeartwork-"*) options+=("$item" "" on);;
-    "akregator" | \
-    "kaddressbook" | \
-    "kalarm" | \
-    "kleopatra" | \
-    "kmail" | \
-    "knotes" | \
-    "kontact" | \
-    "korganizer" | \
-    "kdepim-akregator" | \
-    "kdepim-kaddressbook" | \
-    "kdepim-kalarm" | \
-    "kdepim-kleopatra" | \
-    "kdepim-kmail" | \
-    "kdepim-knotes" | \
-    "kdepim-kontact" | \
-    "kdepim-korganizer" | \
-    "kdeartwork-"*) options+=("$item" "(recommended)" off);;
+    "zeroconf-ioslave" | \
+    "kio-extras" | \
+    "signon-kwallet-extension" | \
+    "thumbnailers" | \
+    "kdesdk-thumbnailers") options+=("$item" "" on);;
     *) options+=("$item" "" off);;
   esac
 done
