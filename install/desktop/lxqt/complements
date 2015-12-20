@@ -2,6 +2,9 @@
 . ./lib
 
 options=()
+options+=("oxygen-icons" "Default Icon Theme" on)
+options+=("connman" "Network Manager" on)
+options+=("lxqt-connman-applet-git" "(AUR) Applet for NM" on)
 options+=("lximage-qt-git" "(AUR)" on)
 options+=("lximage-qt" "(AUR)" off)
 options+=("obconf-qt-git" "(AUR)" on)
@@ -9,6 +12,7 @@ options+=("obconf-qt" "(AUR)" off)
 options+=("qterminal-git" "(AUR)" on)
 options+=("qterminal" "(AUR)" off)
 options+=("sddm" "display manager" on)
+
 
 sel=$(whiptail --backtitle "$apptitle" --title "LXQt Complements :" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
