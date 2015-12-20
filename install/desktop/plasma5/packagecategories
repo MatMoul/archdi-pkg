@@ -37,8 +37,8 @@ if [ ! "$?" = "0" ]; then
 fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
-require install/desktop/kde4/packages 755
-sed -i "/^package=/c\package=\"$sel\"" install/desktop/kde4/packages
-script install/desktop/kde4/packages
+require install/desktop/plasma5/packages 755
+sed -i "/^package=/c\package=\"$sel\"" install/desktop/plasma5/packages
+script install/desktop/plasma5/packages
 
 exit 0
