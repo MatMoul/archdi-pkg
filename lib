@@ -94,6 +94,39 @@ choosepkg(){
 }
 
 
+# $1: string
+# $2: [title]
+chooseaurpkg(){
+  if [ "$2" = "" ]; then
+    title=$1
+  else
+    title=$2
+  fi
+  options=()
+  if [ -f /usr/bin/yaourt ]; then
+    items=$(yaourt -Ssq $1)
+  else
+    if [ -f /usr/bin/packer ]; then
+      items=$(packer -Ssq $1)
+    fi
+  fi
+  for item in $items; do
+    options+=("$item" "" off)
+  done
+  sel=$(whiptail --backtitle "$apptitle" --title "$title" --checklist "" --cancel-button "Back" 0 0 0 \
+    "${options[@]}" \
+    3>&1 1>&2 2>&3)
+  if [ ! "$?" = "0" ]; then
+    exit 1
+  fi
+  for itm in $sel; do
+    aurpkg="$aurpkg $(echo $itm | sed 's/"//g')"
+  done
+  instpkg "$pkg" "$aurpkg"
+  exit 0
+}
+
+
 # $1: path
 # $2: chmod
 require(){

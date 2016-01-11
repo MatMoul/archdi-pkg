@@ -10,6 +10,7 @@ options+=("flashplugin" "" off)
 options+=("freshplayerplugin-git" "(AUR) Recommended" off)
 options+=("freshplayerplugin" "(AUR)" off)
 options+=("opera" "" off)
+options+=("seamonkey" "" off)
 options+=("midori" "" off)
 options+=("midori-gtk2" "" off)
 options+=("qupzilla" "" off)
@@ -37,6 +38,7 @@ instpkg "$pkg" "$aurpkg"
 for itm in $sel; do
   case $itm in
     '"firefox"') choosepkg "firefox-i18n-";;
+    '"seamonkey"') chooseaurpkg "seamonkey-i18n-";;
   esac
 done
 
