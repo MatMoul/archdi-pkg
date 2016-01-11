@@ -16,7 +16,7 @@ if [ ! "$aurhelper" = "1" ]; then
   options+=("" "")
 fi
 options+=("Upgrade" "pacman -Syu")
-options+=("Clean orphan" "pacman -Rns $(pacman -Qqtd)")
+options+=("Clean orphan" "pacman -Rns \$(pacman -Qqtd)")
 options+=("Clean cache" "pacman -Sc")
 options+=("" "")
 options+=("Edit pacman.conf" "")
