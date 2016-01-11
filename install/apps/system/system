@@ -1,9 +1,6 @@
 #!/bin/bash
 . ./lib
 options=()
-#options+=("octopi" "(AUR) qt pacman gui" off)
-#options+=("appset-qt" "(AUR) qt pacman gui" off)
-#options+=("pamac-aur" "(AUR) gtk pacman gui" off)
 options+=("gparted" "Partitions manager" off)
 options+=("bleachbit" "profile cleaner" off)
 options+=("keepass" "Password Manager" off)
