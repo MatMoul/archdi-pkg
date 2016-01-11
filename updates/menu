@@ -16,8 +16,8 @@ if [ ! "$aurhelper" = "1" ]; then
   options+=("" "")
 fi
 options+=("Upgrade" "pacman -Syu")
-options+=("Clean" "pacman -Sc")
 options+=("Clean orphan" "pacman -Rns $(pacman -Qqtd)")
+options+=("Clean cache" "pacman -Sc")
 options+=("" "")
 options+=("Edit pacman.conf" "")
 options+=("Edit mirrorlist" "")
@@ -81,10 +81,8 @@ case $sel in
     checkaurdependencies
     sudo -u aurbuilder packer -Syu
   ;;
-  'Clean') pacman -Sc;;
-  'Clean orphan')
-    pacman -Rns $(pacman -Qqtd)
-  ;;
+  'Clean orphan') pacman -Rns $(pacman -Qqtd);;
+  'Clean cache') pacman -Sc;;
   'Edit pacman.conf') nano /etc/pacman.conf;;
   'Edit mirrorlist') nano /etc/pacman.d/mirrorlist;;
   'Remove db.lck') rm /var/lib/pacman/db.lck;;
