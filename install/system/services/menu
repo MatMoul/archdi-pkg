@@ -7,6 +7,11 @@ options+=("openssh" "Server SSH" on)
 options+=("cronie" "Cron tasks server" on)
 options+=("ntp" "Client NTP for clock sync" on)
 options+=("numlockon" "numlock on on tty" on)
+if (lscpu | grep Intel) then
+  options+=("intel-ucode" "Intel microcode" on)
+else
+  options+=("intel-ucode" "Intel microcode" off)
+fi
 options+=("net-snmp" "SNMP Server" off)
 options+=("syslog-ng" "" off)
 options+=("pkgstats" "" off)
