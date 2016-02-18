@@ -22,6 +22,9 @@ options+=("powertop" "power mon and management" off)
 options+=("wavemon" "WIFI monitor" off)
 options+=("net-tools" "(deprecated) old ifconfig" off)
 options+=("dialog" "Dialog boxes for script" off)
+options+=("ddrescue" "HD recovery tool" off)
+options+=("dd_rescue" "HD recovery tool" off)
+options+=("partclone" "Copy used block on partition" off)
 
 
 sel=$(whiptail --backtitle "$apptitle" --title "Console applications :" --checklist "" --cancel-button "Back" 0 0 0 \
