@@ -12,7 +12,7 @@ options+=("Mate" "")
 options+=("Enlightenment" "")
 options+=("Openbox" "")
 options+=("Deepin" "")
-options+=("KDE4" "(AUR) End of life")
+#options+=("KDE4" "(AUR) End of life")
 #options+=("GnuStep" "")
 #options+=("i3" "")
 
