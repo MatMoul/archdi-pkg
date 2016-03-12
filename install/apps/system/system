@@ -7,8 +7,6 @@ options+=("keepass" "Password Manager" off)
 options+=("keepassx" "Password Manager" off)
 options+=("keepassx-git" "(AUR) Password Manager" off)
 options+=("virtualbox" "" off)
-options+=("virtualbox-host-dkms" "recommended for virtualbox" off)
-#options+=("virtualbox-host-modules" "" on)
 options+=("wine" "MS Windows App Support" off)
 options+=("wine_gecko" "MS Windows App Support" off)
 options+=("wine-mono" "MS Windows App Support" off)
@@ -28,9 +26,6 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"octopi"' | \
-    '"appset-qt"' | \
-    '"pamac-aur"' | \
     '"keepassx-git"' | \
     '"k4dirstat"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     '"wine"' | \
@@ -38,10 +33,7 @@ for itm in $sel; do
       multilib="true"
       pkg="$pkg $(echo $itm | sed 's/"//g')"
     ;;
-    '"virtualbox-host-modules"')
-      pkg="$pkg virtualbox-host-dkms"
-      pkg="$pkg virtualbox-host-modules"
-    ;;
+    '"virtualbox"' ) pkg="$pkg $(echo $itm | sed 's/"//g') qt4 linux-headers";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
@@ -60,16 +52,13 @@ instpkg "$pkg" "$aurpkg"
 
 for itm in $sel; do
   case $itm in
-    '"virtualbox-host-dkms"')
-      if ( confirm "virtualbox-host-dkms require to rebuild initcpio.\n\nRun mkinitcpio -o linux ?" ) then
-        mkinitcpio -p linux
+    '"virtualbox"')
+      if ( confirm "Create /etc/modules-load.d/virtualbox.conf ?" ) then
+        echo vboxdrv > /etc/modules-load.d/virtualbox.conf
+        echo vboxnetadp >> /etc/modules-load.d/virtualbox.conf
+        echo vboxnetflt >> /etc/modules-load.d/virtualbox.conf
+        echo vboxpci >> /etc/modules-load.d/virtualbox.conf
       fi
-      svcenable dkms
-      svcstart dkms
-      dkms autoinstall
-    ;;
-    '"virtualbox-host-modules"')
-      dkms autoinstall
     ;;
   esac
 done
