@@ -33,7 +33,15 @@ for itm in $sel; do
       multilib="true"
       pkg="$pkg $(echo $itm | sed 's/"//g')"
     ;;
-    '"virtualbox"' ) pkg="$pkg $(echo $itm | sed 's/"//g') qt4 linux-headers";;
+    '"virtualbox"' )
+      pkg="$pkg $(echo $itm | sed 's/"//g')"
+      pacman -Q qt4 > /dev/null
+      if [ ! "$?" = "0" ]; then
+        if ( confirm "Virtualbox require qt4 for GUI.\nInstall qt4 ?" ) then
+          pkg="$pkg qt4"
+        fi
+      fi
+    ;;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
@@ -49,18 +57,5 @@ if [ "$multilib" = "true" ]; then
 fi
 
 instpkg "$pkg" "$aurpkg"
-
-for itm in $sel; do
-  case $itm in
-    '"virtualbox"')
-      if ( confirm "Create /etc/modules-load.d/virtualbox.conf ?" ) then
-        echo vboxdrv > /etc/modules-load.d/virtualbox.conf
-        echo vboxnetadp >> /etc/modules-load.d/virtualbox.conf
-        echo vboxnetflt >> /etc/modules-load.d/virtualbox.conf
-        echo vboxpci >> /etc/modules-load.d/virtualbox.conf
-      fi
-    ;;
-  esac
-done
 
 exit 0
