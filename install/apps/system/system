@@ -38,7 +38,7 @@ for itm in $sel; do
       pacman -Q linux-headers > /dev/null
       if [ ! "$?" = "0" ]; then
         if ( confirm "Virtualbox require linux-headers for DKMS.\nInstall linux-headers ?" ) then
-          pkg="$pkg qt4"
+          pkg="$pkg linux-headers"
         fi
       fi
       pacman -Q qt4 > /dev/null
