@@ -35,6 +35,12 @@ for itm in $sel; do
     ;;
     '"virtualbox"' )
       pkg="$pkg $(echo $itm | sed 's/"//g')"
+      pacman -Q linux-headers > /dev/null
+      if [ ! "$?" = "0" ]; then
+        if ( confirm "Virtualbox require linux-headers for DKMS.\nInstall linux-headers ?" ) then
+          pkg="$pkg qt4"
+        fi
+      fi
       pacman -Q qt4 > /dev/null
       if [ ! "$?" = "0" ]; then
         if ( confirm "Virtualbox require qt4 for GUI.\nInstall qt4 ?" ) then
