@@ -34,7 +34,6 @@ for itm in $sel; do
       pkg="$pkg $(echo $itm | sed 's/"//g')"
     ;;
     '"virtualbox"' )
-      pkg="$pkg $(echo $itm | sed 's/"//g')"
       pacman -Q linux-headers > /dev/null
       if [ ! "$?" = "0" ]; then
         if ( confirm "Virtualbox require linux-headers for DKMS.\nInstall linux-headers ?" ) then
@@ -47,6 +46,7 @@ for itm in $sel; do
           pkg="$pkg qt4"
         fi
       fi
+      pkg="$pkg $(echo $itm | sed 's/"//g')"
     ;;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
