@@ -6,7 +6,8 @@ options+=("bleachbit" "profile cleaner" off)
 options+=("keepass" "Password Manager" off)
 options+=("keepassx" "Password Manager" off)
 options+=("keepassx-git" "(AUR) Password Manager" off)
-options+=("virtualbox" "" off)
+options+=("virtualbox" "Virtualization software" off)
+options+=("virtualbox-ext-oracle" "(AUR) Ext Pack" off)
 options+=("wine" "MS Windows App Support" off)
 options+=("wine_gecko" "MS Windows App Support" off)
 options+=("wine-mono" "MS Windows App Support" off)
@@ -27,6 +28,7 @@ fi
 for itm in $sel; do
   case $itm in
     '"keepassx-git"' | \
+    '"virtualbox-ext-oracle"' | \
     '"k4dirstat"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     '"wine"' | \
     '"wine_gecko"')
