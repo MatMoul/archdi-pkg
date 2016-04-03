@@ -26,7 +26,7 @@ case $sel in
   'Install') script install/xorg/install;;
   'Fonts') menu install/xorg/fonts/menu;;
   'Input Drivers') script install/xorg/input-drivers/input-drivers;;
-  'Video Drivers') script install/xorg/video-drivers/video-drivers;;
+  'Video Drivers') menu install/xorg/video-drivers/menu;;
   'Complements') script install/xorg/complements/complements;;
 esac
 

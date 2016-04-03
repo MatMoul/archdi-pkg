@@ -1,0 +1,22 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("Open Source" "")
+options+=("Proprietary" "")
+
+defaultitem=""
+sel=$(whiptail --backtitle "$apptitle" --title "XOrg Install Menu" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
+
+case $sel in
+  'Open Source') script install/xorg/video-drivers/open-source;;
+  'Proprietary') script install/xorg/video-drivers/proprietary;;
+esac
+
+exit 0
