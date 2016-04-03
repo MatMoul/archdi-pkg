@@ -1,9 +1,6 @@
 #!/bin/bash
 . ./lib
 
-gpus=$(lspci | grep -e VGA -e 3D)
-whiptail --backtitle "$apptitle" --title "Detected video card" --msgbox "$gpus" 0 0
-
 options=()
 options+=("virtualbox-guest-utils" "" off)
 options+=("nvidia" "" off)

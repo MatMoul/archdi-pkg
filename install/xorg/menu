@@ -2,6 +2,7 @@
 . ./lib
 
 options=()
+options+=("GPU Infos" "")
 options+=("Install" "")
 options+=("Fonts" "")
 options+=("Input Drivers" "")
@@ -18,6 +19,10 @@ fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
+  'GPU Infos')
+    gpus=$(lspci | grep -e VGA -e 3D)
+    whiptail --backtitle "$apptitle" --title "Detected video card" --msgbox "$gpus" 0 0
+  ;;
   'Install') script install/xorg/install;;
   'Fonts') menu install/xorg/fonts/menu;;
   'Input Drivers') script install/xorg/input-drivers/input-drivers;;
