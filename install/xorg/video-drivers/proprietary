@@ -2,7 +2,7 @@
 . ./lib
 
 options=()
-options+=("virtualbox-guest-utils" "" off)
+options+=("virtualbox-guest-utils" "(For Virtualbox)" off)
 options+=("nvidia" "" off)
 options+=("nvidia-340xx" "" off)
 options+=("nvidia-304xx" "" off)
