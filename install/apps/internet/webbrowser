@@ -6,11 +6,13 @@ options+=("chromium" "" off)
 options+=("chromium-pepper-flash" "(AUR) Recommended" off)
 options+=("chromium-pepper-flash-standalone" "(AUR)" off)
 options+=("firefox" "" off)
+options+=("firefox-i18n" "" off)
 options+=("flashplugin" "" off)
 options+=("freshplayerplugin-git" "(AUR) Recommended" off)
 options+=("freshplayerplugin" "(AUR)" off)
 options+=("opera" "" off)
 options+=("seamonkey" "" off)
+options+=("seamonkey-i18n" "(AUR)" off)
 options+=("midori" "" off)
 options+=("midori-gtk2" "" off)
 options+=("qupzilla" "" off)
@@ -29,6 +31,8 @@ for itm in $sel; do
     '"chromium-pepper-flash-standalone"' | \
     '"freshplayerplugin-git"' | \
     '"freshplayerplugin"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    '"firefox-i18n"' | \
+    '"seamonkey-i18n"';;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
@@ -37,8 +41,8 @@ instpkg "$pkg" "$aurpkg"
 
 for itm in $sel; do
   case $itm in
-    '"firefox"') choosepkg "firefox-i18n-";;
-    '"seamonkey"') chooseaurpkg "seamonkey-i18n-";;
+    '"firefox-i18n"') choosepkg "firefox-i18n-";;
+    '"seamonkey-i18n"') chooseaurpkg "seamonkey-i18n-";;
   esac
 done
 
