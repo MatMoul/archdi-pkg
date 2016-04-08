@@ -6,7 +6,7 @@ options+=("Full Meta" "kde-applications-meta")
 options+=("Full" "kde-applications")
 options+=("Selective" "kde-applications")
 options+=("Categories Meta" "kde-meta-")
-options+=("Categories" "")
+options+=("Categories" "My favorite")
 
 defaultitem=""
 sel=$(whiptail --backtitle "$apptitle" --title "KDE Apps Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
