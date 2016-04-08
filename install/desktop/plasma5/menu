@@ -4,11 +4,7 @@
 options=()
 options+=("Plasma Packages" "")
 options+=("Localisations" "kde-l10n-")
-options+=("KDE Apps Full Meta" "kde-applications-meta")
-options+=("KDE Apps Full" "kde-applications")
-options+=("KDE Apps" "kde-applications")
-options+=("KDE Apps Categories Meta" "kde-meta-")
-options+=("KDE Apps Categories" "")
+options+=("KDE Applications" "")
 options+=("Complements" "")
 
 defaultitem=""
@@ -23,19 +19,7 @@ sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 case $sel in
   'Plasma Packages') script install/desktop/plasma5/plasma-packages;;
   'Localisations') script install/desktop/plasma5/localisations;;
-  'KDE Apps Full Meta')
-    if ( confirm "This option install all KDE applications with meta packages.\n\nInstall KDE Meta Full (pacman -S kde-applications-meta) ?" ) then
-      instpkg "kde-applications-meta" ""
-    fi
-  ;;
-  'KDE Apps Full')
-    if ( confirm "This option install all KDE applications.\n\nInstall KDE Full (pacman -S kde-applications) ?" ) then
-      instpkg "kde-applications" ""
-    fi
-  ;;
-  'KDE Apps') script install/desktop/plasma5/kdeapps;;
-  'KDE Apps Categories Meta') script install/desktop/plasma5/metapackages;;
-  'KDE Apps Categories') menu install/desktop/plasma5/packagecategories;;
+  'KDE Applications') menu install/desktop/plasma5/kdeapps/menu;;
   'Complements') script install/desktop/plasma5/complements;;
 esac
 
