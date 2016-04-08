@@ -1,0 +1,43 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("hunspell" "Spell checking" off)
+options+=("hyphen" "Hyphenation rules" off)
+options+=("libmythes" "Required for mythes" off)
+options+=("mythes" "Thesaurus" off)
+options+=("languagetool" "Grammar checking" off)
+options+=("libreoffice-extension-languagetool" "(AUR)" off)
+options+=("libreoffice-extension-grammalecte-fr" "(AUR)" off)
+
+
+sel=$(whiptail --backtitle "$apptitle" --title "Office Language aids :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+
+for itm in $sel; do
+  case $itm in
+    '"hunspell"' | \
+    '"hyphen"' | \
+    '"hunspell"' | \
+    '"mythes"') ;;
+    '"libreoffice-extension-languagetool"' | \
+    '"libreoffice-extension-grammalecte-fr"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
+  esac
+done
+
+instpkg "$pkg" "$aurpkg"
+
+for itm in $sel; do
+  case $itm in
+    '"hunspell"') choosepkg "hunspell-";;
+    '"hyphen"') choosepkg "hyphen-";;
+    '"mythes"') choosepkg "mythes-";;
+  esac
+done
+
+exit 0

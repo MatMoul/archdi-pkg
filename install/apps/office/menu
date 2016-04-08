@@ -3,7 +3,7 @@
 
 options=()
 options+=("Office Suites" "")
-options+=("Office Spell Check and Thesaurus" "")
+options+=("Office Language Aids" "")
 options+=("Office Tools" "")
 
 
@@ -18,7 +18,7 @@ sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
   "Office Suites") script install/apps/office/office;;
-  "Office Spell Check and Thesaurus") script install/apps/office/office-spell-thesaurus;;
+  "Office Language Aids") script install/apps/office/office-language-aids;;
   "Office Tools") script install/apps/office/office-tools;;
 esac
 
