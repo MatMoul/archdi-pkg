@@ -1,0 +1,36 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("Full Meta" "kde-applications-meta")
+options+=("Full" "kde-applications")
+options+=("Selective" "kde-applications")
+options+=("Categories Meta" "kde-meta-")
+options+=("Categories" "")
+
+defaultitem=""
+sel=$(whiptail --backtitle "$apptitle" --title "KDE Apps Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
+
+case $sel in
+  'Full Meta')
+    if ( confirm "This option install all KDE applications with meta packages.\n\nInstall KDE Meta Full (pacman -S kde-applications-meta) ?" ) then
+      instpkg "kde-applications-meta" ""
+    fi
+  ;;
+  'Full')
+    if ( confirm "This option install all KDE applications.\n\nInstall KDE Full (pacman -S kde-applications) ?" ) then
+      instpkg "kde-applications" ""
+    fi
+  ;;
+  'Selective') script install/desktop/plasma5/kdeapps/kdeapps;;
+  'Categories Meta') script install/desktop/plasma5/kdeapps/metapackages;;
+  'Categories') menu install/desktop/plasma5/kdeapps/packagecategories;;
+esac
+
+exit 0

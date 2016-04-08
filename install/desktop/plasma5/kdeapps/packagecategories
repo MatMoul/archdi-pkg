@@ -1,0 +1,44 @@
+#!/bin/bash
+. ./lib
+
+options=()
+
+options+=("kdebase" "")
+options+=("kdeadmin" "")
+options+=("kdeutils" "")
+options+=("kdegraphics" "")
+options+=("kdemultimedia" "")
+options+=("kdenetwork" "")
+options+=("kdesdk" "")
+options+=("kdepim" "")
+items=$(for i in $(pacman -Sqs kde-meta); do echo ${i#kde-meta-};done)
+for item in $items; do
+  case $item in
+    "kdebase") ;;
+    "kdeadmin") ;;
+    "kdeutils") ;;
+    "kdegraphics") ;;
+    "kdemultimedia") ;;
+    "kdenetwork") ;;
+    "kdesdk") ;;
+    "kdepim") ;;
+    "kde-wallpapers") ;;
+    "telepathy-kde-meta") ;;
+    *) options+=("$item" "");;
+  esac
+done
+
+defaultitem=""
+sel=$(whiptail --backtitle "$apptitle" --title "KDE Apps Categories :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
+
+require install/desktop/plasma5/kdeapps/packages 755
+sed -i "/^package=/c\package=\"$sel\"" install/desktop/plasma5/kdeapps/packages
+script install/desktop/plasma5/kdeapps/packages
+
+exit 0
