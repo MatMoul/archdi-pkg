@@ -32,7 +32,7 @@ for itm in $sel; do
     '"freshplayerplugin-git"' | \
     '"freshplayerplugin"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     '"firefox-i18n"' | \
-    '"seamonkey-i18n"' pkg=$pkg;;
+    '"seamonkey-i18n"') ;;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
