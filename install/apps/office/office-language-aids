@@ -4,7 +4,6 @@
 options=()
 options+=("hunspell" "Spell checking" off)
 options+=("hyphen" "Hyphenation rules" off)
-options+=("libmythes" "Required for mythes" off)
 options+=("mythes" "Thesaurus" off)
 options+=("languagetool" "Grammar checking" off)
 options+=("libreoffice-extension-languagetool" "(AUR)" off)
