@@ -25,18 +25,50 @@ if [ ! "$?" = "0" ]; then
 fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
+helpwanted(){
+  msg="As you can imagine, it is difficult to manage desktop setup that I not use every day.\n\nIf you are motivated and trained, join me on https://github.com/MatMoul/archdi-pkg to support this desktop enivironnement."
+  whiptail --backtitle "$apptitle" --title "Help Wanted" --msgbox "$msg" 0 0
+}
+
 case $sel in
-  'KDE4') menu install/desktop/kde4/menu;;
-  'XFCE4') menu install/desktop/xfce4/menu;;
-  'Gnome') menu install/desktop/gnome/menu;;
   'Plasma5') menu install/desktop/plasma5/menu;;
-  'Cinnamon') script install/desktop/cinnamon/packages;;
-  'LXDE') script install/desktop/lxde/packages;;
-  'LXQt') menu install/desktop/lxqt/menu;;
-  'Mate') menu install/desktop/mate/menu;;
-  'Enlightenment') script install/desktop/enlightenment/packages;;
-  'Openbox') script install/desktop/openbox/packages;;
-  'Deepin') menu install/desktop/deepin/menu;;
+  'XFCE4')
+    helpwanted
+    menu install/desktop/xfce4/menu
+  ;;
+  'Gnome')
+    helpwanted
+    menu install/desktop/gnome/menu
+  ;;
+  'Cinnamon')
+    helpwanted
+    script install/desktop/cinnamon/packages
+  ;;
+  'LXDE')
+    helpwanted
+    script install/desktop/lxde/packages
+  ;;
+  'LXQt')
+    helpwanted
+    menu install/desktop/lxqt/menu
+  ;;
+  'Mate')
+    helpwanted
+    menu install/desktop/mate/menu
+  ;;
+  'Enlightenment')
+    helpwanted
+    script install/desktop/enlightenment/packages
+  ;;
+  'Openbox')
+    helpwanted
+    script install/desktop/openbox/packages
+  ;;
+  'Deepin')
+    helpwanted
+    menu install/desktop/deepin/menu
+  ;;
+  #'KDE4') menu install/desktop/kde4/menu;;
 esac
 
 exit 0
