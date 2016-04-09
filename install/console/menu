@@ -2,54 +2,27 @@
 . ./lib
 
 options=()
-options+=("bash-completion" "Best completion in bash" on)
-options+=("lsof" "ls open file" on)
-options+=("dmidecode" "Hardware infos" on)
-options+=("nmon" "System monitor" on)
-options+=("rsync" "Sync files" on)
-options+=("zip" "ZIP files" on)
-options+=("unzip" "ZIP files" on)
-options+=("unrar" "RAR files" on)
-options+=("p7zip" "File Archiver" on)
-options+=("traceroute" "Trace network route" on)
-options+=("bind-tools" "DNS tools (nslookup)" on)
-options+=("dnsutils" "DNS tools (nslookup)" off)
-options+=("nmap" "Network scanner" off)
-options+=("mc" "Dual pane file explorer" off)
-options+=("links" "Web browser" off)
-options+=("powertop" "power mon and management" off)
-#options+=("gpm" "Console mouse support" off)
-options+=("wavemon" "WIFI monitor" off)
-options+=("speedtest-cli" "SpeedTest" off)
-options+=("net-tools" "(deprecated) old ifconfig" off)
-options+=("dialog" "Dialog boxes for script" off)
-options+=("ddrescue" "HD recovery tool" off)
-options+=("dd_rescue" "HD recovery tool" off)
-options+=("partclone" "Copy used block on partition" off)
+options+=("Basic" "")
+options+=("Compression Tools" "")
+options+=("Network Tools" "")
+options+=("Webbrowser" "")
+options+=("Recovery Tools" "")
 
-
-sel=$(whiptail --backtitle "$apptitle" --title "Console applications :" --checklist "" --cancel-button "Back" 0 0 0 \
+defaultitem=""
+sel=$(whiptail --backtitle "$apptitle" --title "Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
   exit 1
 fi
+sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
-for itm in $sel; do
-  case $itm in
-    *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
-  esac
-done
-
-instpkg "$pkg" "$aurpkg"
-
-for itm in $sel; do
-  case $itm in
-    '"gpm"')
-      svcstart gpm
-      svcenable gpm
-    ;;
-  esac
-done
+case $sel in
+  "Basic") script install/console/basic;;
+  "Compression Tools") script install/console/compression-tools;;
+  "Network Tools") script install/console/network-tools;;
+  "Webbrowser") script install/console/webbrowser;;
+  "Recovery Tools") script install/console/recovery-tools;;
+esac
 
 exit 0

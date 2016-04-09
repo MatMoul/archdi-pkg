@@ -1,0 +1,32 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("rsync" "Sync files" on)
+options+=("traceroute" "Trace network route" on)
+options+=("bind-tools" "DNS tools (nslookup)" on)
+options+=("dnsutils" "DNS tools (nslookup)" off)
+options+=("nmap" "Network scanner" off)
+options+=("speedtest-cli" "SpeedTest" off)
+options+=("wavemon" "WIFI monitor" off)
+options+=("net-tools" "(deprecated) old ifconfig" off)
+options+=("dsniff" "tools for network auditing and penetration" off)
+options+=("mitmproxy" "SSL-capable MITM HTTP proxy" off)
+options+=("sslstrip" "tool to hijack HTTPS in MITM attack" off)
+
+sel=$(whiptail --backtitle "$apptitle" --title "Console Network Tools :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+
+for itm in $sel; do
+  case $itm in
+    *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
+  esac
+done
+
+instpkg "$pkg" "$aurpkg"
+
+exit 0
