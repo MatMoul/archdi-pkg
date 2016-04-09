@@ -11,7 +11,7 @@ options+=("powertop" "power mon and management" off)
 options+=("dialog" "Dialog boxes for script" off)
 options+=("gpm" "Console mouse support" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "Console Basic packages :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
+sel=$(whiptail --backtitle "$apptitle" --title "Console Basic packages :" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

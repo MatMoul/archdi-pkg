@@ -6,7 +6,7 @@ options+=("elinks" "" off)
 options+=("links" "" off)
 options+=("lynx" "" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "Console Web Browser :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
+sel=$(whiptail --backtitle "$apptitle" --title "Console Web Browser :" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

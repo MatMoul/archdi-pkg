@@ -14,7 +14,7 @@ options+=("dsniff" "tools for network auditing and penetration" off)
 options+=("mitmproxy" "SSL-capable MITM HTTP proxy" off)
 options+=("sslstrip" "tool to hijack HTTPS in MITM attack" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "Console Network Tools :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
+sel=$(whiptail --backtitle "$apptitle" --title "Console Network Tools :" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
