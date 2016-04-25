@@ -1,0 +1,26 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("linux" "Default")
+options+=("linux-lts" "Long Time Support")
+options+=("linux-zen" "")
+options+=("linux-grsec" "")
+
+defaultitem=""
+sel=$(whiptail --backtitle "$apptitle" --title "Kernel Install :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
+
+case $sel in
+  'linux') script install/system/kernel/linux;;
+  'linux-lts') script install/system/kernel/linux-lts;;
+  'linux-zen') script install/system/kernel/linux-zen;;
+  'linux-grsec') script install/system/kernel/linux-grsec;;
+esac
+
+exit 0

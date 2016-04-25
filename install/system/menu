@@ -2,6 +2,7 @@
 . ./lib
 
 options=()
+options+=("Kernel" "")
 options+=("Services" "")
 options+=("File System" "")
 options+=("Sound" "")
@@ -17,6 +18,7 @@ fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
+  'Kernel') menu install/system/kernel/menu;;
   'Services') script install/system/services/menu;;
   'File System') script install/system/filesystem;;
   'Sound') script install/system/sound/sound;;
