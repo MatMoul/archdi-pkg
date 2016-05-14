@@ -22,6 +22,8 @@ options+=("" "")
 options+=("Edit pacman.conf" "")
 options+=("Edit mirrorlist" "")
 options+=("" "")
+options+=("Refresh pacman keys" "pacman-key --refresh-keys")
+options+=("" "")
 if [ -f /var/lib/pacman/db.lck ]; then
   options+=("Remove db.lck" "rm /var/lib/pacman/db.lck")
   options+=("" "")
@@ -85,6 +87,7 @@ case $sel in
   'Clean cache') pacman -Sc;;
   'Edit pacman.conf') nano /etc/pacman.conf;;
   'Edit mirrorlist') nano /etc/pacman.d/mirrorlist;;
+  'Refresh pacman keys') pacman-key --refresh-keys;;
   'Remove db.lck') rm /var/lib/pacman/db.lck;;
   'Install downgrade')
     checkarchlinuxfrrepo
