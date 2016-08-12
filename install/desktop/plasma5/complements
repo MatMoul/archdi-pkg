@@ -6,8 +6,8 @@ options+=("partitionmanager" "" on)
 options+=("gnome-keyring" "" on)
 options+=("breeze-kde4" "" on)
 options+=("gnome-breeze-git" "(AUR)" off)
-#options+=("kdeconnect" "" off)
-#options+=("sshfs" "(For kdeconnect)" off)
+options+=("kdeconnect" "" off)
+options+=("sshfs" "(For kdeconnect)" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Plasma Complements :" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
