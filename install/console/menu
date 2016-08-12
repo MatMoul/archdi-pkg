@@ -2,7 +2,7 @@
 . ./lib
 
 options=()
-options+=("Basic" "")
+options+=("Generic" "")
 options+=("Compression Tools" "")
 options+=("Network Tools" "")
 options+=("Webbrowser" "")
@@ -18,7 +18,7 @@ fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
-  "Basic") script install/console/basic;;
+  "Generic") script install/console/generic;;
   "Compression Tools") script install/console/compression-tools;;
   "Network Tools") script install/console/network-tools;;
   "Webbrowser") script install/console/webbrowser;;
