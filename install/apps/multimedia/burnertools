@@ -1,0 +1,26 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("k3b" "" off)
+options+=("xfburn" "" off)
+options+=("libisoburn" "(xorriso-tcltk)" off)
+options+=("gnomebaker" "(AUR)" off)
+
+sel=$(whiptail --backtitle "$apptitle" --title "Burner applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+
+for itm in $sel; do
+  case $itm in
+    '"gnomebaker"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
+  esac
+done
+
+instpkg "$pkg" "$aurpkg"
+
+exit 0

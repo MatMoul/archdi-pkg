@@ -6,6 +6,7 @@ options+=("GStreamer" "")
 options+=("Audio Player" "")
 options+=("Video Player" "")
 options+=("Video Tools" "")
+options+=("Burner Tools" "")
 
 
 defaultitem=""
@@ -22,6 +23,7 @@ case $sel in
   "Audio Player") script install/apps/multimedia/audioplayer;;
   "Video Player") script install/apps/multimedia/videoplayer;;
   "Video Tools") script install/apps/multimedia/videotools;;
+  "Burner Tools") script install/apps/multimedia/burnertools;;
 esac
 
 exit 0
