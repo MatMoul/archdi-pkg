@@ -6,6 +6,7 @@ options+=("thunderbird" "" off)
 options+=("evolution" "" off)
 options+=("evolution-bogofilter" "" off)
 options+=("evolution-spamassassin" "" off)
+options+=("evolution-ews" "" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "E-Mails applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
