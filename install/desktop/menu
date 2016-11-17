@@ -12,7 +12,6 @@ options+=("Mate" "(Help Wanted)")
 options+=("Enlightenment" "(Help Wanted)")
 options+=("Openbox" "(Help Wanted)")
 options+=("Deepin" "(Help Wanted)")
-#options+=("KDE4" "(AUR) End of life")
 #options+=("GnuStep" "")
 #options+=("i3" "")
 
@@ -36,7 +35,6 @@ case $sel in
   'Enlightenment') script install/desktop/enlightenment/packages;;
   'Openbox') script install/desktop/openbox/packages;;
   'Deepin') menu install/desktop/deepin/menu;;
-  #'KDE4') menu install/desktop/kde4/menu;;
 esac
 
 exit 0
