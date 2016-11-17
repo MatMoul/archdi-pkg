@@ -1,0 +1,31 @@
+#!/bin/bash
+. ./lib
+
+options=()
+
+items=$(pacman -Sqg lxde-gtk3)
+for item in $items; do
+  options+=("$item" "" on)
+done
+
+sel=$(whiptail --backtitle "$apptitle" --title "LXDE-GTK3 Install :" --checklist "" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+
+for itm in $sel; do
+  pkg="$pkg $(echo $itm | sed 's/"//g')"
+done
+
+instpkg "$pkg" "$aurpkg"
+
+for itm in $sel; do
+  case $itm in
+    '"lxdm-gtk3"') svcenable lxdm;;
+  esac
+done
+
+exit 0
