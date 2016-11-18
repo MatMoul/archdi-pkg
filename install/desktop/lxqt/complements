@@ -22,11 +22,7 @@ for itm in $sel; do
   case $itm in
     '"lxqt-connman-applet-git"' | \
     '"lximage-qt-git"' | \
-    '"lximage-qt"' | \
-    '"obconf-qt-git"' | \
-    '"obconf-qt"' | \
-    '"qterminal-git"' | \
-    '"qterminal"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    '"lximage-qt"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
