@@ -3,13 +3,12 @@
 
 options=()
 options+=("chromium" "" off)
-options+=("chromium-pepper-flash" "(AUR) Recommended" off)
-options+=("chromium-pepper-flash-standalone" "(AUR)" off)
+options+=("pepper-flash" "(AUR) Recommended" off)
 options+=("firefox" "" off)
 options+=("firefox-i18n" "" off)
 options+=("flashplugin" "" off)
-options+=("freshplayerplugin-git" "(AUR) Recommended" off)
-options+=("freshplayerplugin" "(AUR)" off)
+options+=("freshplayerplugin" "(AUR) Recommended" off)
+options+=("freshplayerplugin-git" "(AUR)" off)
 options+=("opera" "" off)
 options+=("seamonkey" "" off)
 options+=("seamonkey-i18n" "(AUR)" off)
@@ -27,8 +26,7 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"chromium-pepper-flash"' | \
-    '"chromium-pepper-flash-standalone"' | \
+    '"pepper-flash"' | \
     '"freshplayerplugin-git"' | \
     '"freshplayerplugin"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     '"firefox-i18n"' | \
