@@ -35,11 +35,12 @@ fi
 if [ "$aurhelper" = "1" ]; then
   if [ ! -f /usr/bin/pkgstats ]; then
     options+=("Install pkgstats" "")
+		options+=("" "")
   fi
   if [ ! -f /usr/bin/aurvote ]; then
     options+=("Install aurvote" "")
+    options+=("" "")
   fi
-  options+=("" "")
   if [ ! -f /usr/bin/yaourt ]; then
     options+=("Install yaourt" "")
   fi
