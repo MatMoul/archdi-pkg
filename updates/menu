@@ -39,6 +39,12 @@ if [ "$aurhelper" = "1" ]; then
   if [ ! -f /usr/bin/packer ]; then
     options+=("Install packer" "")
   fi
+  if [ ! -f /usr/bin/pkgstats ]; then
+    options+=("Install pkgstats" "")
+  fi
+  if [ ! -f /usr/bin/aurvote ]; then
+    options+=("Install aurvote" "")
+  fi
 fi
 
 sel=$(whiptail --backtitle "$apptitle" --title "Updates Menu :" --menu "" --cancel-button "Back" 0 0 0 \
@@ -108,6 +114,12 @@ case $sel in
       checkarchlinuxfrrepo
       pacman -S --needed packer
     fi
+  ;;
+  'Install pkgstats')
+		pacman -S --needed pkgstats
+  ;;
+  'Install aurvote')
+		pacman -S --needed aurvote
   ;;
 esac
 
