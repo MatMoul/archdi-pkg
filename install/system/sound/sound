@@ -8,6 +8,7 @@ options+=("alsa-plugins" "Extra alsa plugins" on)
 options+=("pulseaudio" "Sound server" on)
 options+=("pulseaudio-alsa" "ALSA Configuration for PulseAudio" on)
 options+=("pulseaudio-bluetooth" "A2DP support for PulseAudio" off)
+options+=("pulseaudio-equalizer" "Equalizer for PulseAudio" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "System Sound Install" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
