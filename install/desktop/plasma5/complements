@@ -2,6 +2,7 @@
 . ./lib
 
 options=()
+options+=("kwallet-pam" "" on)
 options+=("partitionmanager" "" on)
 options+=("gnome-keyring" "" on)
 options+=("breeze-kde4" "" on)
@@ -24,5 +25,14 @@ for itm in $sel; do
 done
 
 instpkg "$pkg" "$aurpkg"
+
+for itm in $sel; do
+  case $itm in
+    '"kwallet-pam"')
+      sed -i '/auth/a auth  optional  pam_kwallet5.so' /etc/pam.d/sddm
+      sed -i '/session/a session  optional  pam_kwallet5.so' /etc/pam.d/sddm
+    ;;
+  esac
+done
 
 exit 0
