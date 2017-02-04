@@ -77,7 +77,7 @@ echo "Finalise lib script..."
 sed -i "/baseurl=/c\baseurl=http://downloads.sourceforge.net/project/archdi/release/pkg/$version" $targetpath/lib
 
 rm $targetpath/pkg.tar
-tar -cf $targetpath/pkg.tar
+tar -cf $targetpath/pkg.tar $targetpath/*
 
 echo "Publish release..."
 scp -r $targetpath matmoul@web.sourceforge.net:/home/frs/project/$prjname/release/pkg/
