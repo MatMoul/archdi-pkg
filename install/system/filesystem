@@ -25,7 +25,6 @@ options+=("nilfs-utils" "" off)
 options+=("gnome-vfs" "" off)
 options+=("s3fs-fuse" "" off)
 #options+=("fuse-exfat" "" off) # Normally installed by dependencies
-#options+=("exfat-utils" "" off) # Normally installed by dependencies
 #options+=("f2fs-tools" "" off) # Normally installed by dependencies
 #options+=("favfs2" "" off) # Normally installed by dependencies
 
