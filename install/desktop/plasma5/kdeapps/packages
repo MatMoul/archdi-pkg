@@ -30,6 +30,7 @@ for item in $items; do
     "print-manager" | \
     "kdegraphics-okular" | \
     "okular" | \
+    "gwenview" | \
     "spectacle" | \
     "kmix" | \
     "kdemultimedia-audiocd-kio" | \
