@@ -37,6 +37,9 @@ echo "Finalise lib script..."
 sed -i /apptitle=/c\apptitle=\""Arch Linux Desktop Install (archdi) - Version: $version (GPLv3)"\" lib
 sed -i /baseurl=/c\baseurl=https://raw.githubusercontent.com/MatMoul/archdi-pkg/master lib
 
+rm pkg.tar
+tar -cf pkg.tar *
+
 echo "Make last commit..."
 git commit -a -m "New Release : $version"
 
@@ -73,16 +76,27 @@ cp -R * $targetpath
 echo "Finalise lib script..."
 sed -i "/baseurl=/c\baseurl=http://downloads.sourceforge.net/project/archdi/release/pkg/$version" $targetpath/lib
 
+rm $targetpath/pkg.tar
+tar -cf $targetpath/pkg.tar
+
 echo "Publish release..."
 scp -r $targetpath matmoul@web.sourceforge.net:/home/frs/project/$prjname/release/pkg/
 
-echo "Update redirect page..."
+echo "Update lib redirect page..."
 pubfile=.build/index.php
 echo "<?php" > $pubfile
 echo "header(\"Location: http://downloads.sourceforge.net/project/$prjname/release/pkg/$version/lib\");" >> $pubfile
 echo "exit;" >> $pubfile
 echo "?>" >> $pubfile
 scp $pubfile matmoul@web.sourceforge.net:/home/project-web/$prjname/htdocs/$prjname-lib/index.php
+
+echo "Update pkg redirect page..."
+pubfile=.build/index.php
+echo "<?php" > $pubfile
+echo "header(\"Location: http://downloads.sourceforge.net/project/$prjname/release/pkg/$version/pkg.tar\");" >> $pubfile
+echo "exit;" >> $pubfile
+echo "?>" >> $pubfile
+scp $pubfile matmoul@web.sourceforge.net:/home/project-web/$prjname/htdocs/$prjname-pkg/index.php
 
 rm -R .build
 
