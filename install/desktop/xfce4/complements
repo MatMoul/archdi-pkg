@@ -6,7 +6,7 @@ options+=("lightdm-gtk-greeter" "" on)
 options+=("gksu" "" on)
 options+=("gvfs" "" on)
 options+=("gvfs-afc" "" on)
-options+=("udisks" "" on)
+options+=("udisks2" "" on)
 options+=("network-manager-applet" "" on)
 
 sel=$(whiptail --backtitle "$apptitle" --title "XFCE4 Complements :" --checklist "" --cancel-button "Back" 0 0 0 \
