@@ -79,7 +79,7 @@ sed -i "/baseurl=/c\baseurl=http://downloads.sourceforge.net/project/archdi/rele
 cd $targetpath
 rm pkg.tar
 tar -cf pkg.tar *
-find . -type f ! -name 'pkg.tar' -delete
+find . ! -name 'pkg.tar' -exec rm -rf "$1" {} \; 2&>/dev/null
 cd ../..
 
 echo "Publish release..."
