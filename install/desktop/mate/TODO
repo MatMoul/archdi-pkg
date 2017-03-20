@@ -1,4 +1,1 @@
-Add Complements
-- No terminal
-
-lightdm-gtk2-greeter as optional dependencie
+lightdm-gtk-greeter as optional dependencie

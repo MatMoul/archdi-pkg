@@ -10,7 +10,6 @@ options+=("LXDE" "(Help Wanted)")
 options+=("LXDE-GTK3" "(Help Wanted)")
 options+=("LXQt" "(Help Wanted)")
 options+=("Mate" "(Help Wanted)")
-options+=("Mate-GTK3" "(Help Wanted)")
 options+=("Enlightenment" "(Help Wanted)")
 options+=("Openbox" "(Help Wanted)")
 options+=("Deepin" "(Help Wanted)")
@@ -35,7 +34,6 @@ case $sel in
   'LXDE-GTK3') script install/desktop/lxde-gtk3/packages;;
   'LXQt') menu install/desktop/lxqt/menu;;
   'Mate') menu install/desktop/mate/menu;;
-  'Mate-GTK3') menu install/desktop/mate-gtk3/menu;;
   'Enlightenment') script install/desktop/enlightenment/packages;;
   'Openbox') script install/desktop/openbox/packages;;
   'Deepin') menu install/desktop/deepin/menu;;
