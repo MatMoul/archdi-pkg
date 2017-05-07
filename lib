@@ -53,15 +53,16 @@ instpkg(){
       sudo -u aurbuilder yaourt -S --needed $2
       pressanykey
     else
-      if [ -f /usr/bin/packer ]; then
-        clear
-        echo "# sudo -u aurbuilder packer -S $2"
-        sudo -u aurbuilder packer -S $2
-        pressanykey
-      else
-        clear
-        echo "To install AUR packages, you need to install yaourt or packer in updates menu !"
-      fi
+			echo "To install AUR packages, you need to install yaourt or packer in updates menu !"
+      #if [ -f /usr/bin/packer ]; then
+      #  clear
+      #  echo "# sudo -u aurbuilder packer -S $2"
+      #  sudo -u aurbuilder packer -S $2
+      #  pressanykey
+      #else
+      #  clear
+      #  echo "To install AUR packages, you need to install yaourt or packer in updates menu !"
+      #fi
     fi
   fi
 }

@@ -6,8 +6,7 @@ options=()
 items=$(pacman -Ssq xf86-input)
 for item in $items; do
   case $item in
-    "xf86-input-keyboard") options+=("$item" "" on);;
-    "xf86-input-mouse") options+=("$item" "" on);;
+    "xf86-input-libinput") options+=("$item" "" on);;
     "xf86-input-synaptics") options+=("$item" "(For Most TrackPad)" off);;
     "xf86-input-vmmouse") options+=("$item" "(VMWare)" off);;
     *) options+=("$item" "" off);;

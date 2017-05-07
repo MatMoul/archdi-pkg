@@ -5,7 +5,7 @@ options=()
 options+=("gimp" "" off)
 options+=("inkscape" "" off)
 options+=("dia" "" off)
-options+=("calligra-krita" "" off)
+options+=("krita" "" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Graphic applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \

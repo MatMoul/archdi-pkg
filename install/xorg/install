@@ -4,14 +4,12 @@
 options=()
 options+=("xorg-server" "" on)
 options+=("xorg-xinit" "" on)
-options+=("xorg-utils" "" on)
 
 items=$(pacman -Ssq xorg-)
 for item in $items; do
   case $item in
     "xorg-server") ;;
     "xorg-xinit") ;;
-    "xorg-utils") ;;
     *)
       if [ ! "$(echo $item | cut -d '-' -f 1)" = "xf86" ]; then
         options+=("$item" "" off)

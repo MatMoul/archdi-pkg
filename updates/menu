@@ -6,13 +6,13 @@ if [ -f /usr/bin/yaourt ]; then
   options+=("Upgrade with yaourt" "yaourt -Syua")
   aurhelper=1
 fi
-if [ -f /usr/bin/packer ]; then
-  options+=("Upgrade with packer" "packer -Syu")
-  aurhelper=1
-fi
+#if [ -f /usr/bin/packer ]; then
+#  options+=("Upgrade with packer" "packer -Syu")
+#  aurhelper=1
+#fi
 if [ ! "$aurhelper" = "1" ]; then
   options+=("Install yaourt" "")
-  options+=("Install packer" "")
+#  options+=("Install packer" "")
   options+=("" "")
 fi
 options+=("Upgrade" "pacman -Syu")
@@ -30,23 +30,20 @@ if [ -f /var/lib/pacman/db.lck ]; then
 fi
 if [ ! -f /usr/bin/downgrade ]; then
   options+=("Install downgrade" "")
-  options+=("" "")
 fi
 if [ "$aurhelper" = "1" ]; then
   if [ ! -f /usr/bin/pkgstats ]; then
     options+=("Install pkgstats" "")
-		options+=("" "")
   fi
   if [ ! -f /usr/bin/aurvote ]; then
     options+=("Install aurvote" "")
-    options+=("" "")
   fi
   if [ ! -f /usr/bin/yaourt ]; then
     options+=("Install yaourt" "")
   fi
-  if [ ! -f /usr/bin/packer ]; then
-    options+=("Install packer" "")
-  fi
+  #if [ ! -f /usr/bin/packer ]; then
+  #  options+=("Install packer" "")
+  #fi
 fi
 
 sel=$(whiptail --backtitle "$apptitle" --title "Updates Menu :" --menu "" --cancel-button "Back" 0 0 0 \
