@@ -67,17 +67,17 @@ for itm in $sel; do
 		'"vdir"') echo "alias vdir='vdir --color=auto'" >> /etc/profile.d/alias.sh;;
 		'"watch"') echo "alias watch='watch --color'" >> /etc/profile.d/alias.sh;;
 		'"man"')
-			echo "man() {" >> /etc/profile.d/alias.sh
-			echo "	env \\" >> /etc/profile.d/alias.sh
-			echo "		LESS_TERMCAP_mb=$(printf \"\\e[1;31m\") \\" >> /etc/profile.d/alias.sh
-			echo "		LESS_TERMCAP_md=$(printf \"\\e[1;31m\") \\" >> /etc/profile.d/alias.sh
-			echo "		LESS_TERMCAP_me=$(printf \"\\e[0m\") \\" >> /etc/profile.d/alias.sh
-			echo "		LESS_TERMCAP_se=$(printf \"\\e[0m\") \\" >> /etc/profile.d/alias.sh
-			echo "		LESS_TERMCAP_so=$(printf \"\\e[1;44;33m\") \\" >> /etc/profile.d/alias.sh
-			echo "		LESS_TERMCAP_ue=$(printf \"\\e[0m\") \\" >> /etc/profile.d/alias.sh
-			echo "		LESS_TERMCAP_us=$(printf \"\\e[1;32m\") \\" >> /etc/profile.d/alias.sh
-			echo "			man \"$@\"" >> /etc/profile.d/alias.sh
-			echo "}" >> /etc/profile.d/alias.sh
+			echo 'man() {' >> /etc/profile.d/alias.sh
+			echo '	env \' >> /etc/profile.d/alias.sh
+			echo '		LESS_TERMCAP_mb=$(printf "\e[1;31m") \' >> /etc/profile.d/alias.sh
+			echo '		LESS_TERMCAP_md=$(printf "\e[1;31m") \' >> /etc/profile.d/alias.sh
+			echo '		LESS_TERMCAP_me=$(printf "\e[0m") \' >> /etc/profile.d/alias.sh
+			echo '		LESS_TERMCAP_se=$(printf "\e[0m") \' >> /etc/profile.d/alias.sh
+			echo '		LESS_TERMCAP_so=$(printf "\e[1;44;33m") \' >> /etc/profile.d/alias.sh
+			echo '		LESS_TERMCAP_ue=$(printf "\e[0m") \' >> /etc/profile.d/alias.sh
+			echo '		LESS_TERMCAP_us=$(printf "\e[1;32m") \' >> /etc/profile.d/alias.sh
+			echo '			man "$@"' >> /etc/profile.d/alias.sh
+			echo '}' >> /etc/profile.d/alias.sh
 		;;
 		'"mkdir"') echo "alias mkdir='mkdir -pv'" >> /etc/profile.d/alias.sh;;
 		'"yaourt"') echo "alias yaourt='sudo -u aurbuilder yaourt --color'" >> /etc/profile.d/alias.sh;;
