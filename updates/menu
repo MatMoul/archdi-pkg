@@ -22,6 +22,7 @@ options+=("" "")
 options+=("Edit pacman.conf" "")
 options+=("Edit mirrorlist" "")
 options+=("" "")
+options+=("Update keyring" "pacman -S archlinux-keyring")
 options+=("Refresh pacman keys" "pacman-key --refresh-keys")
 options+=("" "")
 if [ -f /var/lib/pacman/db.lck ]; then
@@ -92,6 +93,7 @@ case $sel in
   'Clean cache') pacman -Sc;;
   'Edit pacman.conf') nano /etc/pacman.conf;;
   'Edit mirrorlist') nano /etc/pacman.d/mirrorlist;;
+  'Update keyring') pacman -S archlinux-keyring;;
   'Refresh pacman keys') pacman-key --refresh-keys;;
   'Remove db.lck') rm /var/lib/pacman/db.lck;;
   'Install downgrade')
