@@ -6,6 +6,7 @@ options+=("networkmanager" "Network Management" on)
 options+=("openssh" "Server SSH" on)
 options+=("cronie" "Cron tasks server" on)
 options+=("ntp" "Client NTP for clock sync" on)
+options+=("xdg-user-dirs" "Create user directories" on)
 options+=("numlockon" "numlock on on tty" on)
 if (lscpu | grep Intel) then
   options+=("intel-ucode" "Intel microcode" on)
