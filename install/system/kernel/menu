@@ -5,7 +5,7 @@ options=()
 options+=("linux" "Default")
 options+=("linux-lts" "Long Time Support")
 options+=("linux-zen" "")
-options+=("linux-grsec" "")
+options+=("linux-hardened" "")
 
 defaultitem=""
 sel=$(whiptail --backtitle "$apptitle" --title "Kernel Install :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
@@ -20,7 +20,7 @@ case $sel in
   'linux') script install/system/kernel/linux;;
   'linux-lts') script install/system/kernel/linux-lts;;
   'linux-zen') script install/system/kernel/linux-zen;;
-  'linux-grsec') script install/system/kernel/linux-grsec;;
+  'linux-hardened') script install/system/kernel/linux-hardened;;
 esac
 
 exit 0
