@@ -97,4 +97,5 @@ rm -R .build
 
 if [ ! "$branch" = "master" ]; then
   git checkout $branch
+  git push
 fi
