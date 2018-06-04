@@ -2,10 +2,8 @@
 . ./lib
 
 options=()
-options+=("avidemux-gtk" "Video Editor" off)
 options+=("avidemux-qt" "Video Editor" off)
 options+=("simplescreenrecorder" "Screen Recorder" off)
-#options+=("lib32-simplescreenrecorder" "For simplescreenrecorder" off) #Need multilib
 
 sel=$(whiptail --backtitle "$apptitle" --title "Videos Tools applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
@@ -16,7 +14,6 @@ fi
 
 for itm in $sel; do
   case $itm in
-    #'"gmusicbrowser"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
