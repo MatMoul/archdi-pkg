@@ -6,8 +6,8 @@ options+=("hunspell" "Spell checking" off)
 options+=("hyphen" "Hyphenation rules" off)
 options+=("mythes" "Thesaurus" off)
 options+=("languagetool" "Grammar checking" off)
-#options+=("libreoffice-extension-languagetool" "(AUR)" off)
-#options+=("libreoffice-extension-grammalecte-fr" "(AUR)" off)
+options+=("libreoffice-extension-languagetool" "(AUR)" off)
+options+=("libreoffice-extension-grammalecte-fr" "(AUR)" off)
 
 
 sel=$(whiptail --backtitle "$apptitle" --title "Office Language aids :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
