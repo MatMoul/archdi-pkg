@@ -56,6 +56,9 @@ for itm in $sel; do
       svcenable ntpd "NTP Server"
     ;;
     '"numlockon"') script install/system/services/numlockon;;
+    '"haveged"')
+      systemctl enable haveged
+    ;;
     '"syslog-ng"')
       #echo "ForwardToSyslog=yes" >> /etc/systemd/journald.conf
       systemctl enable syslog-ng
