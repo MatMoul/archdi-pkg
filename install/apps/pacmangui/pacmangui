@@ -31,7 +31,7 @@ for itm in $sel; do
 done
 
 if [ "$multilib" = "true" ]; then
-  if ( confirm "To install wine or wine_gecko, multilib repo is requires.\nFor this, the script edit the [mulilib] part in /etc/pacman.conf and run pacman -Syu\n\nEnable multilib repo ?" ) then
+  if ( confirm "To install this or these packages, multilib repo is requires.\nFor this, the script edit the [mulilib] part in /etc/pacman.conf and run pacman -Syu\n\nEnable multilib repo ?" ) then
     sed -i '/\[multilib\]/s/^#//g' /etc/pacman.conf
     sed -i '/\[multilib\]/{n;s/^#//g}' /etc/pacman.conf
     pacman -Syu
