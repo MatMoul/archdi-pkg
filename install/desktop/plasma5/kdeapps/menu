@@ -2,7 +2,7 @@
 . ./lib
 
 options=()
-#options+=("Full Meta" "kde-applications-meta")
+options+=("Full Meta" "kde-applications-meta")
 options+=("Full" "kde-applications")
 options+=("Selective" "kde-applications")
 options+=("Categories Meta" "kde-meta-")
