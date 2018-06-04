@@ -3,7 +3,6 @@
 
 options=()
 options+=("lightdm-gtk-greeter" "" on)
-options+=("gksu" "" on)
 options+=("gvfs" "" on)
 options+=("gvfs-afc" "" on)
 options+=("udisks2" "" on)
