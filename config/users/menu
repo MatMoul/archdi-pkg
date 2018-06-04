@@ -18,7 +18,7 @@ sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 case $sel in
 		'List Users')
 		  clear
-		  awk -F: '{if ($3 >= 1000) { print $1 } }' /etc/passwd
+		  awk -F: '{if ($3 >= 1000 && $3 <= 5000) { print $1 } }' /etc/passwd
 		  read -n1 -p "press a key to continue"
 		;;
 		'Add User')

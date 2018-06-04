@@ -19,7 +19,7 @@ sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
 		'Add sudoer')
-		  users=$(awk -F: '{if ($3 >= 1000) { print $1 } }' /etc/passwd)
+		  users=$(awk -F: '{if ($3 >= 1000 && $3 <= 5000) { print $1 } }' /etc/passwd)
 		  userlist=()
 		  for itm in $users; do
 		    userlist+=("$itm" "")
