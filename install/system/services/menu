@@ -57,7 +57,7 @@ for itm in $sel; do
     ;;
     '"numlockon"') script install/system/services/numlockon;;
     '"haveged"')
-      systemctl enable haveged
+			svcenable haveged "Haveged"
     ;;
     '"syslog-ng"')
       #echo "ForwardToSyslog=yes" >> /etc/systemd/journald.conf
