@@ -23,6 +23,7 @@ for item in $items; do
     "kdesdk") ;;
     "kdepim") ;;
     "kde-applications");;
+    "kde-development-environment");;
     *) options+=("$item" "");;
   esac
 done
