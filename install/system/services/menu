@@ -8,6 +8,7 @@ options+=("cronie" "Cron tasks server" on)
 options+=("ntp" "Client NTP for clock sync" on)
 options+=("xdg-user-dirs" "Create user directories" on)
 options+=("numlockon" "numlock on on tty" on)
+options+=("haveged" "Antropy generator" off)
 if (lscpu | grep Intel) then
   options+=("intel-ucode" "Intel microcode" on)
 else
