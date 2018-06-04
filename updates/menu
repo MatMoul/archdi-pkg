@@ -58,6 +58,9 @@ checkaurdependencies(){
   if [ ! -f /usr/bin/automake ]; then
     pacman -S --needed base-devel
   fi
+  if [ ! -f /usr/bin/git ]; then
+    pacman -S --needed git
+  fi
   if [ ! $(id -u "aurbuilder") ]; then
     newpass=$(< /dev/urandom tr -dc "@#*%&_A-Z-a-z-0-9" | head -c16)
     useradd -r -N -M -d /home/.aurbuilder -s /usr/bin/nologin aurbuilder
