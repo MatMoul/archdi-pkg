@@ -3,7 +3,7 @@
 
 options=()
 
-items=$(for i in $(pacman -Sqs kde-meta); do echo ${i#kde-meta-};done)
+items=$(for i in $(pacman -Sqs meta | grep kde); do echo ${i#-meta};done)
 for item in $items; do
   case $item in
     "kdebase") options+=("$item" "" on);;
@@ -13,7 +13,6 @@ for item in $items; do
     "kdeutils") options+=("$item" "" on);;
     "kdepim") options+=("$item" "" on);;
     "kdeartwork") options+=("$item" "" on);;
-    "kde-wallpapers") ;;
     *) options+=("$item" "" off);;
   esac
 done

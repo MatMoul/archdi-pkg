@@ -11,7 +11,7 @@ options+=("kdemultimedia" "")
 options+=("kdenetwork" "")
 options+=("kdesdk" "")
 options+=("kdepim" "")
-items=$(for i in $(pacman -Sqs kde-meta); do echo ${i#kde-meta-};done)
+items=$(for i in $(pacman -Sqs meta | grep kde); do echo ${i#-meta};done)
 for item in $items; do
   case $item in
     "kdebase") ;;
@@ -22,8 +22,6 @@ for item in $items; do
     "kdenetwork") ;;
     "kdesdk") ;;
     "kdepim") ;;
-    "kde-wallpapers") ;;
-    "telepathy-kde-meta") ;;
     *) options+=("$item" "");;
   esac
 done
