@@ -71,12 +71,14 @@ checkaurdependencies(){
     echo "aurbuilder ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/aurbuilder
     echo "root ALL=(aurbuilder) NOPASSWD: ALL" >> /etc/sudoers.d/aurbuilder
   fi
-  mkdir /tmp/aurbuilder
-  chmod	777 /tmp/aurbuilder
-  cd /tmp/aurbuilder
-  sudo -u aurbuilder git clone https://aur.archlinux.org/package-query.git
-  cd package-query
-  sudo -u aurbuilder makepkg -si
+  if [ ! -f /usr/bin/package-query ]; then
+		mkdir /tmp/aurbuilder
+		chmod	777 /tmp/aurbuilder
+		cd /tmp/aurbuilder
+		sudo -u aurbuilder git clone https://aur.archlinux.org/package-query.git
+		cd package-query
+		sudo -u aurbuilder makepkg -si
+  fi
 }
 checkarchlinuxfrrepo(){
   if [ ! $(cat /etc/pacman.conf | grep "archlinuxfr") ]; then
