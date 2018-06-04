@@ -13,7 +13,7 @@ options+=("opera" "" off)
 options+=("seamonkey" "" off)
 options+=("seamonkey-i18n" "(AUR)" off)
 options+=("midori" "" off)
-options+=("qupzilla" "" off)
+options+=("falkon" "" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Web Browser applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
