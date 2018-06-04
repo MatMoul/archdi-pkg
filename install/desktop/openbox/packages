@@ -6,7 +6,7 @@ options=()
 items=$(pacman -Ssq openbox)
 for item in $items; do
   case $item in
-    "openbox-themes-only") options+=("$item" "" off);;
+    "lxappearance-obconf") options+=("$item" "" off);;
     *) options+=("$item" "" on);;
   esac
 done
