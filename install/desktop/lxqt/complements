@@ -6,8 +6,6 @@ options+=("sddm" "Display manager" on)
 options+=("oxygen-icons" "Default Icon Theme" on)
 options+=("connman" "Network Manager" on)
 options+=("obconf" "" on)
-options+=("lximage-qt" "(AUR)" off)
-options+=("lximage-qt-git" "(AUR)" off)
 options+=("lxqt-connman-applet-git" "(AUR) Applet for NM" off)
 
 
@@ -20,9 +18,7 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"lxqt-connman-applet-git"' | \
-    '"lximage-qt-git"' | \
-    '"lximage-qt"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    '"lxqt-connman-applet-git"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
