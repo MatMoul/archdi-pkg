@@ -68,6 +68,12 @@ checkaurdependencies(){
     echo "aurbuilder ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/aurbuilder
     echo "root ALL=(aurbuilder) NOPASSWD: ALL" >> /etc/sudoers.d/aurbuilder
   fi
+  mkdir /tmp/aurbuilder
+  chmod	777 /tmp/aurbuilder
+  cd /tmp/aurbuilder
+  sudo -u aurbuilder git clone https://aur.archlinux.org/package-query.git
+  cd package-query
+  sudo -u aurbuilder makepkg -si
 }
 checkarchlinuxfrrepo(){
   if [ ! $(cat /etc/pacman.conf | grep "archlinuxfr") ]; then
@@ -104,8 +110,14 @@ case $sel in
     if(confirm "Yaourt allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yaourt ?") then
       clear
       checkaurdependencies
-      checkarchlinuxfrrepo
-      pacman -S --needed yaourt
+      #checkarchlinuxfrrepo
+      #pacman -S --needed yaourt
+			mkdir /tmp/aurbuilder
+			chmod	777 /tmp/aurbuilder
+			cd /tmp/aurbuilder
+			sudo -u aurbuilder git clone https://aur.archlinux.org/yaourt.git
+			cd yaourt
+			sudo -u aurbuilder makepkg -si
     fi
   ;;
   'Install packer')
