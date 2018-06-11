@@ -2,9 +2,6 @@
 . ./lib
 options=()
 options+=("octopi" "(AUR) (QT)" off)
-options+=("octopi-notifier" "(AUR) (QT)" off)
-options+=("octopi-cachecleaner" "(AUR) (QT)" off)
-options+=("octopi-repoeditor" "(AUR) (QT)" off)
 options+=("appset-qt" "(AUR) (QT)" off)
 options+=("pamac-aur" "(AUR) (GTK)" off)
 
@@ -18,9 +15,6 @@ fi
 for itm in $sel; do
   case $itm in
     '"octopi"' | \
-    '"octopi-notifier"' | \
-    '"octopi-cachecleaner"' | \
-    '"octopi-repoeditor"' | \
     '"appset-qt"' | \
     '"pamac-aur"')
       multilib="true"
