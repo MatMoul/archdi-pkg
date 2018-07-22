@@ -2,17 +2,17 @@
 . ./lib
 
 options=()
+if [ -f /usr/bin/trizen ]; then
+  options+=("Upgrade with trizen" "trizen -Syu")
+  aurhelper=1
+fi
 if [ -f /usr/bin/yaourt ]; then
   options+=("Upgrade with yaourt" "yaourt -Syua")
   aurhelper=1
 fi
-#if [ -f /usr/bin/packer ]; then
-#  options+=("Upgrade with packer" "packer -Syu")
-#  aurhelper=1
-#fi
 if [ ! "$aurhelper" = "1" ]; then
+  options+=("Install trizen" "")
   options+=("Install yaourt" "")
-#  options+=("Install packer" "")
   options+=("" "")
 fi
 options+=("Upgrade" "pacman -Syu")
@@ -29,22 +29,22 @@ if [ -f /var/lib/pacman/db.lck ]; then
   options+=("Remove db.lck" "rm /var/lib/pacman/db.lck")
   options+=("" "")
 fi
-if [ ! -f /usr/bin/downgrade ]; then
-  options+=("Install downgrade" "")
-fi
 if [ "$aurhelper" = "1" ]; then
+  if [ ! -f /usr/bin/downgrade ]; then
+    options+=("Install downgrade" "")
+  fi
   if [ ! -f /usr/bin/pkgstats ]; then
     options+=("Install pkgstats" "")
   fi
   if [ ! -f /usr/bin/aurvote ]; then
     options+=("Install aurvote" "")
   fi
+  if [ ! -f /usr/bin/trizen ]; then
+    options+=("Install trizen" "")
+  fi
   if [ ! -f /usr/bin/yaourt ]; then
     options+=("Install yaourt" "")
   fi
-  #if [ ! -f /usr/bin/packer ]; then
-  #  options+=("Install packer" "")
-  #fi
 fi
 
 sel=$(whiptail --backtitle "$apptitle" --title "Updates Menu :" --menu "" --cancel-button "Back" 0 0 0 \
@@ -63,21 +63,25 @@ checkaurdependencies(){
   fi
   if [ ! $(id -u "aurbuilder") ]; then
     newpass=$(< /dev/urandom tr -dc "@#*%&_A-Z-a-z-0-9" | head -c16)
-    useradd -r -N -M -d /home/.aurbuilder -s /usr/bin/nologin aurbuilder
+    useradd -r -N -M -d /tmp/aurbuilder -s /usr/bin/nologin aurbuilder
     echo -e "$newpass\n$newpass\n"|passwd aurbuilder
     newpass=""
+  else
+    usermod -m -d /tmp/aurbuilder aurbuilder
   fi
   if [ ! -f /etc/sudoers.d/aurbuilder ]; then
     echo "aurbuilder ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/aurbuilder
     echo "root ALL=(aurbuilder) NOPASSWD: ALL" >> /etc/sudoers.d/aurbuilder
   fi
+}
+checkpackagequerydependencies(){
   if [ ! -f /usr/bin/package-query ]; then
-		mkdir /tmp/aurbuilder
-		chmod	777 /tmp/aurbuilder
-		cd /tmp/aurbuilder
-		sudo -u aurbuilder git clone https://aur.archlinux.org/package-query.git
-		cd package-query
-		sudo -u aurbuilder makepkg -si
+    mkdir /tmp/aurbuilder
+    chmod	777 /tmp/aurbuilder
+    cd /tmp/aurbuilder
+    sudo -u aurbuilder git clone https://aur.archlinux.org/package-query.git
+    cd package-query
+    sudo -u aurbuilder makepkg -si
   fi
 }
 checkarchlinuxfrrepo(){
@@ -92,13 +96,13 @@ checkarchlinuxfrrepo(){
 clear
 case $sel in
   'Upgrade') pacman -Syu;;
+  'Upgrade with trizen')
+    checkaurdependencies
+    sudo -u aurbuilder trizen -Syu
+  ;;
   'Upgrade with yaourt')
     checkaurdependencies
     sudo -u aurbuilder yaourt -Syua
-  ;;
-  'Upgrade with packer')
-    checkaurdependencies
-    sudo -u aurbuilder packer -Syu
   ;;
   'Clean orphan') pacman -Rns $(pacman -Qqtd);;
   'Clean cache') pacman -Sc;;
@@ -108,36 +112,38 @@ case $sel in
   'Refresh pacman keys') pacman-key --refresh-keys;;
   'Remove db.lck') rm /var/lib/pacman/db.lck;;
   'Install downgrade')
-    checkarchlinuxfrrepo
-    pacman -S --needed downgrade
+    instpkg "" "downgrade"
+  ;;
+  'Install trizen')
+    if(confirm "Yaourt allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall trizen ?") then
+      clear
+      checkaurdependencies
+      mkdir /tmp/aurbuilder
+      chmod	777 /tmp/aurbuilder
+      cd /tmp/aurbuilder
+      sudo -u aurbuilder git clone https://aur.archlinux.org/trizen.git
+      cd trizen
+      sudo -u aurbuilder makepkg -si
+    fi
   ;;
   'Install yaourt')
     if(confirm "Yaourt allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yaourt ?") then
       clear
       checkaurdependencies
-      #checkarchlinuxfrrepo
-      #pacman -S --needed yaourt
-			mkdir /tmp/aurbuilder
-			chmod	777 /tmp/aurbuilder
-			cd /tmp/aurbuilder
-			sudo -u aurbuilder git clone https://aur.archlinux.org/yaourt.git
-			cd yaourt
-			sudo -u aurbuilder makepkg -si
-    fi
-  ;;
-  'Install packer')
-    if(confirm "Packer allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall packer ?") then
-      clear
-      checkaurdependencies
-      checkarchlinuxfrrepo
-      pacman -S --needed packer
+      checkpackagequerydependencies
+      mkdir /tmp/aurbuilder
+      chmod	777 /tmp/aurbuilder
+      cd /tmp/aurbuilder
+      sudo -u aurbuilder git clone https://aur.archlinux.org/yaourt.git
+      cd yaourt
+      sudo -u aurbuilder makepkg -si
     fi
   ;;
   'Install pkgstats')
-		pacman -S --needed pkgstats
+    pacman -S --needed pkgstats
   ;;
   'Install aurvote')
-		pacman -S --needed aurvote
+    pacman -S --needed aurvote
   ;;
 esac
 

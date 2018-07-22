@@ -26,6 +26,9 @@ options+=("vdir" "vdir --color=auto" on)
 options+=("watch" "watch --color" on)
 options+=("man" "color function" on)
 options+=("mkdir" "mkdir -pv" off)
+if [ -f /usr/bin/trizen ]; then
+	options+=("trizen" "sudo -u aurbuilder trizen" on)
+fi
 if [ -f /usr/bin/yaourt ]; then
 	options+=("yaourt" "sudo -u aurbuilder yaourt --color" on)
 	options+=("yaourt(2)" "sudo -u aurbuilder yaourt" off)
@@ -80,6 +83,7 @@ for itm in $sel; do
 			echo '}' >> /etc/profile.d/alias.sh
 		;;
 		'"mkdir"') echo "alias mkdir='mkdir -pv'" >> /etc/profile.d/alias.sh;;
+		'"trizen"') echo "alias trizen='sudo -u aurbuilder trizen'" >> /etc/profile.d/alias.sh;;
 		'"yaourt"') echo "alias yaourt='sudo -u aurbuilder yaourt --color'" >> /etc/profile.d/alias.sh;;
 		'"yaourt(2)"') echo "alias yaourt='sudo -u aurbuilder yaourt'" >> /etc/profile.d/alias.sh;;
 		'"yaourt(3)"') echo "alias yaourt='yaourt --color'" >> /etc/profile.d/alias.sh;;
