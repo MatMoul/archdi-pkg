@@ -85,7 +85,7 @@ checkaurdependencies(){
   else
     mkdir /tmp/aurbuilder 1&>/dev/null
     chmod 777 /tmp/aurbuilder
-    usermod -d /tmp/aurbuilder aurbuilder 1&>/dev/null
+    usermod -d /tmp/aurbuilder aurbuilder
   fi
   if [ ! -f /etc/sudoers.d/aurbuilder ]; then
     echo "aurbuilder ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/aurbuilder
