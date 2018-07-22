@@ -20,8 +20,8 @@ if [ -f /usr/bin/yaourt ]; then
 fi
 if [ ! "$aurhelper" = "1" ]; then
   options+=("Install trizen" "")
-  options+=("Install aurman" "")
   options+=("Install yay" "")
+  options+=("Install aurman" "")
   options+=("Install yaourt" "(End of life)")
   options+=("" "")
 fi
