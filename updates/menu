@@ -83,7 +83,9 @@ checkaurdependencies(){
     echo -e "$newpass\n$newpass\n"|passwd aurbuilder
     newpass=""
   else
-    usermod -m -d /tmp/aurbuilder aurbuilder 1&>/dev/null
+    mkdir /tmp/aurbuilder 1&>/dev/null
+    chmod	777 /tmp/aurbuilder
+    usermod -d /tmp/aurbuilder aurbuilder 1&>/dev/null
   fi
   if [ ! -f /etc/sudoers.d/aurbuilder ]; then
     echo "aurbuilder ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/aurbuilder
@@ -92,8 +94,6 @@ checkaurdependencies(){
 }
 checkpackagequerydependencies(){
   if [ ! -f /usr/bin/package-query ]; then
-    mkdir /tmp/aurbuilder 1&>/dev/null
-    chmod	777 /tmp/aurbuilder
     cd /tmp/aurbuilder
     sudo -u aurbuilder git clone https://aur.archlinux.org/package-query.git
     cd package-query
@@ -142,8 +142,6 @@ case $sel in
     if(confirm "Trizen allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall trizen ?") then
       clear
       checkaurdependencies
-      mkdir /tmp/aurbuilder 1&>/dev/null
-      chmod	777 /tmp/aurbuilder
       cd /tmp/aurbuilder
       sudo -u aurbuilder git clone https://aur.archlinux.org/trizen.git
       cd trizen
@@ -154,8 +152,6 @@ case $sel in
     if(confirm "Aurman allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall aurman ?") then
       clear
       checkaurdependencies
-      mkdir /tmp/aurbuilder 1&>/dev/null
-      chmod	777 /tmp/aurbuilder
       cd /tmp/aurbuilder
       sudo -u aurbuilder git clone https://aur.archlinux.org/aurman.git
       cd aurman
@@ -168,8 +164,6 @@ case $sel in
     if(confirm "Yay allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yay ?") then
       clear
       checkaurdependencies
-      mkdir /tmp/aurbuilder 1&>/dev/null
-      chmod	777 /tmp/aurbuilder
       cd /tmp/aurbuilder
       sudo -u aurbuilder git clone https://aur.archlinux.org/yay.git
       cd yay
@@ -181,8 +175,6 @@ case $sel in
       clear
       checkaurdependencies
       checkpackagequerydependencies
-      mkdir /tmp/aurbuilder 1&>/dev/null
-      chmod	777 /tmp/aurbuilder
       cd /tmp/aurbuilder
       sudo -u aurbuilder git clone https://aur.archlinux.org/yaourt.git
       cd yaourt
