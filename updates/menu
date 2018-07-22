@@ -84,7 +84,7 @@ checkaurdependencies(){
     newpass=""
   else
     mkdir /tmp/aurbuilder 1&>/dev/null
-    chmod	777 /tmp/aurbuilder
+    chmod 777 /tmp/aurbuilder
     usermod -d /tmp/aurbuilder aurbuilder 1&>/dev/null
   fi
   if [ ! -f /etc/sudoers.d/aurbuilder ]; then
