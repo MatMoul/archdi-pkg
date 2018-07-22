@@ -67,7 +67,7 @@ checkaurdependencies(){
     echo -e "$newpass\n$newpass\n"|passwd aurbuilder
     newpass=""
   else
-    usermod -m -d /tmp/aurbuilder aurbuilder
+    usermod -m -d /tmp/aurbuilder aurbuilder >/dev/null
   fi
   if [ ! -f /etc/sudoers.d/aurbuilder ]; then
     echo "aurbuilder ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/aurbuilder
