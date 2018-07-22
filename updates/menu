@@ -6,12 +6,22 @@ if [ -f /usr/bin/trizen ]; then
   options+=("Upgrade with trizen" "trizen -Syu")
   aurhelper=1
 fi
+if [ -f /usr/bin/yay ]; then
+  options+=("Upgrade with yay" "yay -Syu")
+  aurhelper=1
+fi
+if [ -f /usr/bin/aurman ]; then
+  options+=("Upgrade with aurman" "aurman -Syu")
+  aurhelper=1
+fi
 if [ -f /usr/bin/yaourt ]; then
   options+=("Upgrade with yaourt" "yaourt -Syua")
   aurhelper=1
 fi
 if [ ! "$aurhelper" = "1" ]; then
   options+=("Install trizen" "")
+  options+=("Install aurman" "")
+  options+=("Install yay" "")
   options+=("Install yaourt" "(End of life)")
   options+=("" "")
 fi
@@ -42,6 +52,12 @@ if [ "$aurhelper" = "1" ]; then
   if [ ! -f /usr/bin/trizen ]; then
     options+=("Install trizen" "")
   fi
+  if [ ! -f /usr/bin/yay ]; then
+    options+=("Install yay" "")
+  fi
+  if [ ! -f /usr/bin/aurman ]; then
+    options+=("Install aurman" "")
+  fi
   if [ ! -f /usr/bin/yaourt ]; then
     options+=("Install yaourt" "(End of life)")
   fi
@@ -67,7 +83,7 @@ checkaurdependencies(){
     echo -e "$newpass\n$newpass\n"|passwd aurbuilder
     newpass=""
   else
-    usermod -m -d /tmp/aurbuilder aurbuilder >/dev/null
+    usermod -m -d /tmp/aurbuilder aurbuilder 1&>/dev/null
   fi
   if [ ! -f /etc/sudoers.d/aurbuilder ]; then
     echo "aurbuilder ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/aurbuilder
@@ -76,7 +92,7 @@ checkaurdependencies(){
 }
 checkpackagequerydependencies(){
   if [ ! -f /usr/bin/package-query ]; then
-    mkdir /tmp/aurbuilder
+    mkdir /tmp/aurbuilder 1&>/dev/null
     chmod	777 /tmp/aurbuilder
     cd /tmp/aurbuilder
     sudo -u aurbuilder git clone https://aur.archlinux.org/package-query.git
@@ -100,6 +116,14 @@ case $sel in
     checkaurdependencies
     sudo -u aurbuilder trizen -Syu
   ;;
+  'Upgrade with aurman')
+    checkaurdependencies
+    sudo -u aurbuilder aurman -Syu
+  ;;
+  'Upgrade with yay')
+    checkaurdependencies
+    sudo -u aurbuilder yay -Syu
+  ;;
   'Upgrade with yaourt')
     checkaurdependencies
     sudo -u aurbuilder yaourt -Syua
@@ -115,14 +139,40 @@ case $sel in
     instpkg "" "downgrade"
   ;;
   'Install trizen')
-    if(confirm "Yaourt allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall trizen ?") then
+    if(confirm "Trizen allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall trizen ?") then
       clear
       checkaurdependencies
-      mkdir /tmp/aurbuilder
+      mkdir /tmp/aurbuilder 1&>/dev/null
       chmod	777 /tmp/aurbuilder
       cd /tmp/aurbuilder
       sudo -u aurbuilder git clone https://aur.archlinux.org/trizen.git
       cd trizen
+      sudo -u aurbuilder makepkg -si
+    fi
+  ;;
+  'Install aurman')
+    if(confirm "Aurman allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall aurman ?") then
+      clear
+      checkaurdependencies
+      mkdir /tmp/aurbuilder 1&>/dev/null
+      chmod	777 /tmp/aurbuilder
+      cd /tmp/aurbuilder
+      sudo -u aurbuilder git clone https://aur.archlinux.org/aurman.git
+      cd aurman
+      sudo -u aurbuilder gpg --recv-key 465022E743D71E39
+      sudo -u aurbuilder makepkg -si
+      #sudo -u aurbuilder makepkg -si --skippgpcheck
+    fi
+  ;;
+  'Install yay')
+    if(confirm "Yay allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yay ?") then
+      clear
+      checkaurdependencies
+      mkdir /tmp/aurbuilder 1&>/dev/null
+      chmod	777 /tmp/aurbuilder
+      cd /tmp/aurbuilder
+      sudo -u aurbuilder git clone https://aur.archlinux.org/yay.git
+      cd yay
       sudo -u aurbuilder makepkg -si
     fi
   ;;
@@ -131,7 +181,7 @@ case $sel in
       clear
       checkaurdependencies
       checkpackagequerydependencies
-      mkdir /tmp/aurbuilder
+      mkdir /tmp/aurbuilder 1&>/dev/null
       chmod	777 /tmp/aurbuilder
       cd /tmp/aurbuilder
       sudo -u aurbuilder git clone https://aur.archlinux.org/yaourt.git
