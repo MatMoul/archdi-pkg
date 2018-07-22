@@ -15,22 +15,11 @@ for itm in $sel; do
   case $itm in
     '"octopi"' | \
     '"pamac-aur"')
-      multilib="true"
       aurpkg="$aurpkg $(echo $itm | sed 's/"//g')"
     ;;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
-
-if [ "$multilib" = "true" ]; then
-  if ( confirm "To install this or these packages, multilib repo is requires.\nFor this, the script edit the [mulilib] part in /etc/pacman.conf and run pacman -Syu\n\nEnable multilib repo ?" ) then
-    sed -i '/\[multilib\]/s/^#//g' /etc/pacman.conf
-    sed -i '/\[multilib\]/{n;s/^#//g}' /etc/pacman.conf
-    pacman -Syu
-  else
-    exit 1
-  fi
-fi
 
 instpkg "$pkg" "$aurpkg"
 
