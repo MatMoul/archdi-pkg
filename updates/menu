@@ -82,6 +82,8 @@ checkaurdependencies(){
     useradd -r -N -M -d /tmp/aurbuilder -s /usr/bin/nologin aurbuilder
     echo -e "$newpass\n$newpass\n"|passwd aurbuilder
     newpass=""
+    mkdir /tmp/aurbuilder 1&>/dev/null
+    chmod 777 /tmp/aurbuilder
   else
     mkdir /tmp/aurbuilder 1&>/dev/null
     chmod 777 /tmp/aurbuilder
