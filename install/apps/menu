@@ -7,9 +7,9 @@ options+=("Internet" "")
 options+=("Multimedia" "")
 options+=("Graphic" "")
 #options+=("Network" "")
+options+=("Dev" "")
 options+=("System" "")
 options+=("PacMan GUI" "")
-#options+=("Dev" "")
 #options+=("Games" "")
 
 
@@ -28,9 +28,9 @@ case $sel in
   "Multimedia") menu install/apps/multimedia/menu;;
   "Graphic") script install/apps/graphic/graphic;;
   "Network") script install/apps/network;;
+  "Dev") script install/apps/dev/dev;;
   "System") script install/apps/system/system;;
   "PacMan GUI") script install/apps/pacmangui/pacmangui;;
-  "Dev") script install/apps/dev;;
   "Games") script install/apps/games;;
 esac
 
