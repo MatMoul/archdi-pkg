@@ -5,7 +5,6 @@ options=()
 options+=("Plasma Packages" "")
 options+=("KDE Applications" "")
 options+=("Complements" "")
-#options+=("Localisations" "(AUR) kde-l10n-")
 
 defaultitem=""
 sel=$(whiptail --backtitle "$apptitle" --title "Plasma5 Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
@@ -18,7 +17,6 @@ sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
   'Plasma Packages') script install/desktop/plasma5/plasma-packages;;
-  'Localisations') script install/desktop/plasma5/localisations;;
   'KDE Applications') menu install/desktop/plasma5/kdeapps/menu;;
   'Complements') script install/desktop/plasma5/complements;;
 esac
