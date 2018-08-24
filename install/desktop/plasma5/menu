@@ -3,9 +3,9 @@
 
 options=()
 options+=("Plasma Packages" "")
-options+=("Localisations" "kde-l10n-")
 options+=("KDE Applications" "")
 options+=("Complements" "")
+#options+=("Localisations" "(AUR) kde-l10n-")
 
 defaultitem=""
 sel=$(whiptail --backtitle "$apptitle" --title "Plasma5 Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \

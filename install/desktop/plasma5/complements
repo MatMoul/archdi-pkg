@@ -5,11 +5,11 @@ options=()
 options+=("kwallet-pam" "" on)
 options+=("partitionmanager" "" on)
 options+=("gnome-keyring" "" on)
-options+=("breeze-kde4" "" on)
 options+=("qt5-multimedia" "" on)
-options+=("gnome-breeze-git" "(AUR)" off)
 options+=("kdeconnect" "" off)
 options+=("sshfs" "(For kdeconnect)" off)
+options+=("breeze-kde4" "(AUR)" off)
+options+=("gnome-breeze-git" "(AUR)" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Plasma Complements :" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
@@ -20,6 +20,7 @@ fi
 
 for itm in $sel; do
   case $itm in
+    '"breeze-kde4"' | \
     '"gnome-breeze-git"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
