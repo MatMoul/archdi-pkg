@@ -35,7 +35,6 @@ case $sel in
   'Edit')
     clear
     editfile /etc/systemd/timesyncd.conf
-    pressanykey
 esac
 
 exit 0
