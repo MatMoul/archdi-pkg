@@ -174,6 +174,17 @@ pressanykey(){
 }
 
 
+# $1 : filename
+editfile(){
+  editor=$EDITOR
+  if [ "$editor" == "" ]; then
+    editor="nano"
+  fi
+  echo "$editor $1"
+  $editor "$1"
+}
+
+
 # $1 : servicename
 # $2 : [displayname]
 svcstart(){

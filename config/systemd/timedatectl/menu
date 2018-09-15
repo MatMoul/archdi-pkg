@@ -1,0 +1,41 @@
+#!/bin/bash
+. ./lib
+
+options=()
+timedatectl status | grep inactive> /dev/null
+if [ "$?" = "0" ]; then
+  options+=("Enable" "timedatectl set-ntp true")
+else
+  options+=("Disable" "timedatectl set-ntp false")
+fi
+options+=("Edit" "/etc/systemd/timesyncd.conf")
+
+defaultitem="timedatectl"
+sel=$(whiptail --backtitle "$apptitle" --title "Systemd timedatectl Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
+
+case $sel in
+  'Enable')
+    clear
+    echo "timedatectl set-ntp true"
+    timedatectl set-ntp true
+    pressanykey
+  ;;
+  'Disable')
+    clear
+    echo "timedatectl set-ntp false"
+    timedatectl set-ntp false
+    pressanykey
+  ;;
+  'Edit')
+    clear
+    editfile /etc/systemd/timesyncd.conf
+    pressanykey
+esac
+
+exit 0
