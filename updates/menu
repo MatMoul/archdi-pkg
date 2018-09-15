@@ -34,6 +34,7 @@ options+=("Edit mirrorlist" "")
 options+=("" "")
 options+=("Update keyring" "pacman -S archlinux-keyring")
 options+=("Refresh pacman keys" "pacman-key --refresh-keys")
+options+=("Add GPG key" "gpg --recv-keys")
 options+=("" "")
 if [ -f /var/lib/pacman/db.lck ]; then
   options+=("Remove db.lck" "rm /var/lib/pacman/db.lck")
@@ -136,6 +137,36 @@ case $sel in
   'Edit mirrorlist') nano /etc/pacman.d/mirrorlist;;
   'Update keyring') pacman -S archlinux-keyring;;
   'Refresh pacman keys') pacman-key --refresh-keys;;
+  'Add GPG key')
+    gpgservers=()
+    gpgservers+=("pool.sks-keyservers.net" "")
+    gpgservers+=("Other" "")
+    sel=$(whiptail --backtitle "$apptitle" --title "Add GPG key" --menu "GPG key server" 0 0 0 "${gpgservers[@]}" 3>&1 1>&2 2>&3)
+    if [ "$?" = "0" ]; then
+      case $sel in
+        "Other")
+          gpgserver=$(whiptail --backtitle "$apptitle" --title "Add GPG key" --inputbox "Enter the GPG key server :" 0 0 "" 3>&1 1>&2 2>&3)
+          if [ "$?" = "0" ]; then
+            gpgkey=$(whiptail --backtitle "$apptitle" --title "Add GPG key" --inputbox "Enter the GPG key :" 0 0 3>&1 1>&2 2>&3)
+            if [ "$?" = "0" ]; then
+              echo "sudo -u aurbuilder gpg --keyserver "$gpgserver" --recv-keys "$gpgkey
+              sudo -u aurbuilder gpg --keyserver $gpgserver --recv-keys $gpgkey
+              pressanykey
+            fi
+          fi
+        ;;
+        *)
+          gpgserver=$sel
+          gpgkey=$(whiptail --backtitle "$apptitle" --title "Add GPG key" --inputbox "Enter the GPG key :" 0 0 3>&1 1>&2 2>&3)
+          if [ "$?" = "0" ]; then
+            echo "sudo -u aurbuilder gpg --keyserver "$gpgserver" --recv-keys "$gpgkey
+            sudo -u aurbuilder gpg --keyserver $gpgserver --recv-keys $gpgkey
+            pressanykey
+          fi
+        ;;
+      esac
+    fi
+  ;;
   'Remove db.lck') rm /var/lib/pacman/db.lck;;
   'Install downgrade')
     instpkg "" "downgrade"
