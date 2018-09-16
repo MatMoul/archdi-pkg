@@ -2,12 +2,12 @@
 . ./lib
 
 options=()
-options+=("Enable" "")
-options+=("Disable" "")
-options+=("" "")
-options+=("Restart" "(Experimental)")
-options+=("Start" "(Experimental)")
-options+=("Stop" "(Experimental)")
+options+=("Enable" "systemctl enable")
+options+=("Disable" "systemctl disable")
+#options+=("" "")
+#options+=("Restart" "(Experimental)")
+#options+=("Start" "(Experimental)")
+#options+=("Stop" "(Experimental)")
 
 defaultitem="Enable"
 sel=$(whiptail --backtitle "$apptitle" --title "Systemd services Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
