@@ -5,9 +5,9 @@ options=()
 options+=("Enable" "")
 options+=("Disable" "")
 options+=("" "")
-options+=("Restart" "")
-options+=("Start" "")
-options+=("Stop" "")
+options+=("Restart" "(Experimental)")
+options+=("Start" "(Experimental)")
+options+=("Stop" "(Experimental)")
 
 defaultitem="Enable"
 sel=$(whiptail --backtitle "$apptitle" --title "Systemd services Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
@@ -57,10 +57,9 @@ case $sel in
     services=$(systemctl | grep running)
     svclist=()
     for itm in $services; do
-      for lbl in $itm; do
+      if [[ $itm = *"."* ]]; then
         svclist+=("$itm" "" off)
-        break
-      done
+      fi
     done
     sel=$(whiptail --backtitle "$apptitle" --title "Restart services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
       "${svclist[@]}" \
@@ -75,10 +74,9 @@ case $sel in
     services=$(systemctl | grep exited)
     svclist=()
     for itm in $services; do
-      for lbl in $itm; do
+      if [[ $itm = *"."* ]]; then
         svclist+=("$itm" "" off)
-        break
-      done
+      fi
     done
     sel=$(whiptail --backtitle "$apptitle" --title "Start services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
       "${svclist[@]}" \
@@ -93,10 +91,9 @@ case $sel in
     services=$(systemctl | grep running)
     svclist=()
     for itm in $services; do
-      for lbl in $itm; do
+      if [[ $itm = *"."* ]]; then
         svclist+=("$itm" "" off)
-        break
-      done
+      fi
     done
     sel=$(whiptail --backtitle "$apptitle" --title "Stop services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
       "${svclist[@]}" \
