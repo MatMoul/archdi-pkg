@@ -1,0 +1,112 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("Enable" "")
+options+=("Disable" "")
+options+=("" "")
+options+=("Restart" "")
+options+=("Start" "")
+options+=("Stop" "")
+
+defaultitem="Enable"
+sel=$(whiptail --backtitle "$apptitle" --title "Systemd services Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
+
+case $sel in
+  'Enable')
+    services=$(systemctl list-unit-files | grep disabled)
+    svclist=()
+    for itm in $services; do
+      if [ ! "$itm" == "disabled" ]; then
+        svclist+=("$itm" "" off)
+      fi
+    done
+    sel=$(whiptail --backtitle "$apptitle" --title "Enable services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
+      "${svclist[@]}" \
+      3>&1 1>&2 2>&3)
+    if [ "$?" = "0" ]; then
+      for itm in $sel; do
+        svcenable ${itm//'"'/''}
+      done
+    fi
+  ;;
+  'Disable')
+    services=$(systemctl list-unit-files | grep enabled)
+    svclist=()
+    for itm in $services; do
+      if [ ! "$itm" == "enabled" ]; then
+        svclist+=("$itm" "" off)
+      fi
+    done
+    sel=$(whiptail --backtitle "$apptitle" --title "Disable services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
+      "${svclist[@]}" \
+      3>&1 1>&2 2>&3)
+    if [ "$?" = "0" ]; then
+      for itm in $sel; do
+        svcdisable ${itm//'"'/''}
+      done
+    fi
+  ;;
+  'Restart')
+    services=$(systemctl | grep running)
+    svclist=()
+    for itm in $services; do
+      for lbl in $itm; do
+        svclist+=("$itm" "" off)
+        break
+      done
+    done
+    sel=$(whiptail --backtitle "$apptitle" --title "Restart services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
+      "${svclist[@]}" \
+      3>&1 1>&2 2>&3)
+    if [ "$?" = "0" ]; then
+      for itm in $sel; do
+        svcrestart ${itm//'"'/''}
+      done
+    fi
+  ;;
+  'Start')
+    services=$(systemctl | grep exited)
+    svclist=()
+    for itm in $services; do
+      for lbl in $itm; do
+        svclist+=("$itm" "" off)
+        break
+      done
+    done
+    sel=$(whiptail --backtitle "$apptitle" --title "Start services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
+      "${svclist[@]}" \
+      3>&1 1>&2 2>&3)
+    if [ "$?" = "0" ]; then
+      for itm in $sel; do
+        svcstart ${itm//'"'/''}
+      done
+    fi
+  ;;
+  'Stop')
+    services=$(systemctl | grep running)
+    svclist=()
+    for itm in $services; do
+      for lbl in $itm; do
+        svclist+=("$itm" "" off)
+        break
+      done
+    done
+    sel=$(whiptail --backtitle "$apptitle" --title "Stop services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
+      "${svclist[@]}" \
+      3>&1 1>&2 2>&3)
+    if [ "$?" = "0" ]; then
+      for itm in $sel; do
+        svcstop ${itm//'"'/''}
+      done
+    fi
+  ;;
+esac
+
+exit 0

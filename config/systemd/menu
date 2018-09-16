@@ -2,9 +2,11 @@
 . ./lib
 
 options=()
+options+=("Services" "")
+options+=("" "")
 options+=("timedatectl" "")
 
-defaultitem="timedatectl"
+defaultitem="Services"
 sel=$(whiptail --backtitle "$apptitle" --title "Systemd Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
@@ -14,6 +16,7 @@ fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
+  'Services') menu config/systemd/services/menu;;
   'timedatectl') menu config/systemd/timedatectl/menu;;
 esac
 
