@@ -28,7 +28,7 @@ case $sel in
   'Sudoers') menu config/sudoers/menu;;
   'Systemd') menu config/systemd/menu;;
   'XOrg') menu config/xorg/menu;;
-  'Grub') nano /etc/default/grub
+  'Grub') editfile /etc/default/grub
           if(confirm "Run grub-mkconfig -o /boot/grub/grub.cfg ?") then
             grub-mkconfig -o /boot/grub/grub.cfg
           fi;;

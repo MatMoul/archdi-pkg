@@ -78,14 +78,14 @@ for itm in $sel; do
         echo "" >> /etc/snmp/snmpd.conf
         echo "# SNMP 3" >> /etc/snmp/snmpd.conf
         echo "#rouser read_only_user" >> /etc/snmp/snmpd.conf
-        nano /etc/snmp/snmpd.conf
+        editfile /etc/snmp/snmpd.conf
       fi
       if (confirm "Create and edit /var/net-snmp/snmpd.conf (for SNMPv3) ?") then
         mkdir -p /var/net-snmp/ > /dev/null
         echo "# Note : Clear text password will be encrypted when you restart snmpd." > /var/net-snmp/snmpd.conf
         echo "" >> /var/net-snmp/snmpd.conf
         echo "#createUser read_only_user SHA password1 AES password2" >> /var/net-snmp/snmpd.conf
-        nano /var/net-snmp/snmpd.conf
+        editfile /var/net-snmp/snmpd.conf
       fi
       svcenable snmpd "SNMP Server"
     ;;

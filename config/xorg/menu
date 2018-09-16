@@ -29,10 +29,10 @@ case $sel in
       echo '  Option "XkbVariant" ""' >> /etc/X11/xorg.conf.d/00-keyboard.conf
       echo '  Option "XkbOptions" ""' >> /etc/X11/xorg.conf.d/00-keyboard.conf
       echo 'EndSection' >> /etc/X11/xorg.conf.d/00-keyboard.conf
-      nano /etc/X11/xorg.conf.d/00-keyboard.conf
+      editfile /etc/X11/xorg.conf.d/00-keyboard.conf
     fi
   ;;
-  "Edit /etc/X11/xorg.conf.d/00-keyboard.conf") nano /etc/X11/xorg.conf.d/00-keyboard.conf;;
+  "Edit /etc/X11/xorg.conf.d/00-keyboard.conf") editfile /etc/X11/xorg.conf.d/00-keyboard.conf;;
 esac
 
 exit 0

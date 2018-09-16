@@ -2,10 +2,18 @@
 . ./lib
 
 options=()
-options+=("nano" "")
-options+=("vim" "")
-options+=("vi" "")
-options+=("edit" "")
+if [ -f /usr/bin/nano ]; then
+  options+=("nano" "")
+fi
+if [ -f /usr/bin/vim ]; then
+  options+=("vim" "")
+fi
+if [ -f /usr/bin/vi ]; then
+  options+=("vi" "")
+fi
+if [ -f /usr/bin/edit ]; then
+  options+=("edit" "")
+fi
 options+=("unset" "")
 
 editor=$(whiptail --backtitle "$apptitle" --title "Default global editor :" --menu "" --cancel-button "Back" 0 0 0 \

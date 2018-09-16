@@ -133,8 +133,8 @@ case $sel in
   ;;
   'Clean orphan') pacman -Rns $(pacman -Qqtd);;
   'Clean cache') pacman -Sc;;
-  'Edit pacman.conf') nano /etc/pacman.conf;;
-  'Edit mirrorlist') nano /etc/pacman.d/mirrorlist;;
+  'Edit pacman.conf') editfile /etc/pacman.conf;;
+  'Edit mirrorlist') editfile /etc/pacman.d/mirrorlist;;
   'Update keyring') pacman -S archlinux-keyring;;
   'Refresh pacman keys') pacman-key --refresh-keys;;
   'Add GPG key')

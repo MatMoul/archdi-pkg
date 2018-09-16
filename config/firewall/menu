@@ -2,8 +2,8 @@
 . ./lib
 
 options=()
-options+=("Edit IPv4" "nano /etc/iptables/iptables.rules")
-options+=("Edit IPv6" "nano /etc/iptables/ip6tables.rules")
+options+=("Edit IPv4" "/etc/iptables/iptables.rules")
+options+=("Edit IPv6" "/etc/iptables/ip6tables.rules")
 options+=("" "")
 options+=("Load Rules" "iptables-restore & ip6tables-restore")
 options+=("" "")
@@ -20,8 +20,8 @@ fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
-		'Edit IPv4') nano /etc/iptables/iptables.rules;;
-		'Edit IPv6') nano /etc/iptables/ip6tables.rules;;
+		'Edit IPv4') editfile /etc/iptables/iptables.rules;;
+		'Edit IPv6') editfile /etc/iptables/ip6tables.rules;;
 		'Load Rules') iptables-restore < /etc/iptables/iptables.rules
 		              ip6tables-restore < /etc/iptables/ip6tables.rules;;
 		'Start At Boot') systemctl enable iptables
