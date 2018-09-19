@@ -5,7 +5,7 @@ options=()
 options+=("notepadqq" "(QT)" off)
 options+=("geany" "(GTK)" off)
 options+=("geany-plugins" "(GTK)" off)
-options+=("visual-studio-code-bin" "(AUR)" off)
+options+=("code" "(VS Code)" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Dev applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
@@ -16,7 +16,6 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"visual-studio-code-bin"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
