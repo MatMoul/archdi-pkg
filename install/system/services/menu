@@ -13,6 +13,11 @@ if (lscpu | grep Intel) then
 else
   options+=("intel-ucode" "Intel microcode" off)
 fi
+if (lscpu | grep AMD) then
+  options+=("amd-ucode" "AMD microcode" on)
+else
+  options+=("amd-ucode" "AMD microcode" off)
+fi
 options+=("net-snmp" "SNMP Server" off)
 options+=("syslog-ng" "" off)
 options+=("pkgstats" "" off)
