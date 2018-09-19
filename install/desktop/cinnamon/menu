@@ -2,11 +2,11 @@
 . ./lib
 
 options=()
-options+=("mate" "")
-options+=("mate-extra" "")
+options+=("cinnamon-translations" "")
+options+=("gnome-terminal" "")
 
 defaultitem=""
-sel=$(whiptail --backtitle "$apptitle" --title "Mate Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+sel=$(whiptail --backtitle "$apptitle" --title "Cinnamon Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -15,15 +15,15 @@ fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
-  'mate')
-    require install/desktop/mate/packages 755
-    sed -i "/^package=/c\package=\"$sel\"" install/desktop/mate/packages
-    script install/desktop/mate/packages
+  'cinnamon-translations')
+    require install/desktop/cinnamon/packages 755
+    sed -i "/^package=/c\package=\"$sel\"" install/desktop/cinnamon/packages
+    script install/desktop/cinnamon/packages
   ;;
-  'mate-extra')
-    require install/desktop/mate/packages 755
-    sed -i "/^package=/c\package=\"$sel\"" install/desktop/mate/packages
-    script install/desktop/mate/packages
+  'gnome-terminal')
+    require install/desktop/cinnamon/packages 755
+    sed -i "/^package=/c\package=\"$sel\"" install/desktop/cinnamon/packages
+    script install/desktop/cinnamon/packages
   ;;
 esac
 
