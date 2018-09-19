@@ -3,7 +3,7 @@
 
 options=()
 
-package="cinnamon"
+package="cinnamon cinnamon-translations gnome-terminal"
 items=$(pacman -Ssq $package)
 for item in $items; do
   options+=("$item" "" on)
