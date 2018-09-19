@@ -3,7 +3,6 @@
 
 options=()
 options+=("cinnamon" "")
-options+=("cinnamon-translations" "")
 options+=("gnome-terminal" "")
 
 defaultitem=""
@@ -17,11 +16,6 @@ sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
   'cinnamon')
-    require install/desktop/cinnamon/packages 755
-    sed -i "/^package=/c\package=\"$sel\"" install/desktop/cinnamon/packages
-    script install/desktop/cinnamon/packages
-  ;;
-  'cinnamon-translations')
     require install/desktop/cinnamon/packages 755
     sed -i "/^package=/c\package=\"$sel\"" install/desktop/cinnamon/packages
     script install/desktop/cinnamon/packages
