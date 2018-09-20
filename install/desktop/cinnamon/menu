@@ -3,7 +3,6 @@
 
 options=()
 options+=("cinnamon" "")
-options+=("cinnamon-translations" "")
 options+=("gnome-terminal" "")
 
 defaultitem=""
