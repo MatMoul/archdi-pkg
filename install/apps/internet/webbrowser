@@ -14,6 +14,8 @@ options+=("seamonkey" "" off)
 options+=("seamonkey-i18n" "(AUR)" off)
 options+=("midori" "" off)
 options+=("falkon" "" off)
+options+=("vivaldi" "(AUR)" off)
+options+=("vivaldi-ffmpeg-codecs" "(AUR)" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Web Browser applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
@@ -26,7 +28,9 @@ for itm in $sel; do
   case $itm in
     '"pepper-flash"' | \
     '"freshplayerplugin-git"' | \
-    '"freshplayerplugin"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    '"freshplayerplugin"' | \
+    '"vivaldi"' | \
+    '"vivaldi-ffmpeg-codecs"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     '"firefox-i18n"' | \
     '"seamonkey-i18n"') pkg="$pkg";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
