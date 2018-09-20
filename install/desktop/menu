@@ -5,11 +5,11 @@ options=()
 options+=("Plasma5" "By MatMoul")
 options+=("XFCE4" "(Help Wanted)")
 options+=("Gnome" "(Help Wanted)")
-options+=("Cinnamon" "(Help Wanted)")
+options+=("Cinnamon" "By FredBezies")
 options+=("LXDE" "(Help Wanted)")
 options+=("LXDE-GTK3" "(Help Wanted)")
 options+=("LXQt" "(Help Wanted)")
-options+=("Mate" "(Help Wanted)")
+options+=("Mate" "(By FredBezies)")
 options+=("Enlightenment" "(Help Wanted)")
 options+=("Openbox" "(Help Wanted)")
 options+=("Deepin" "(Help Wanted)")
@@ -29,7 +29,7 @@ case $sel in
   'Plasma5') menu install/desktop/plasma5/menu;;
   'XFCE4') menu install/desktop/xfce4/menu;;
   'Gnome') menu install/desktop/gnome/menu;;
-  'Cinnamon') script install/desktop/cinnamon/menu;;
+  'Cinnamon') menu install/desktop/cinnamon/menu;;
   'LXDE') script install/desktop/lxde/packages;;
   'LXDE-GTK3') script install/desktop/lxde-gtk3/packages;;
   'LXQt') menu install/desktop/lxqt/menu;;
