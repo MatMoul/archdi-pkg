@@ -2,9 +2,9 @@
 . ./lib
 
 options=()
-options+=("amarok" "Audio Player" off)
 options+=("clementine" "Audio Player" off)
 options+=("mixxx" "Audio Player" off)
+options+=("quodlibet" "Audio Player" off)
 options+=("guayadeque" "(AUR) Audio Player" off)
 options+=("gmusicbrowser" "(AUR) Audio Player" off)
 
