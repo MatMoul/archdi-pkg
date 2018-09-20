@@ -29,7 +29,7 @@ for itm in $sel; do
     '"pepper-flash"' | \
     '"freshplayerplugin-git"' | \
     '"freshplayerplugin"' | \
-    '"vivaldi" | \
+    '"vivaldi"' | \
     '"vivaldi-ffmpeg-codecs"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     '"firefox-i18n"' | \
     '"seamonkey-i18n"') pkg="$pkg";;
