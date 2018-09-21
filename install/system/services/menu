@@ -66,7 +66,7 @@ for itm in $sel; do
     ;;
     '"syslog-ng"')
       #echo "ForwardToSyslog=yes" >> /etc/systemd/journald.conf
-      systemctl enable syslog-ng
+      systemctl enable syslog-ng@default
     ;;
     '"rsyslog"')
       systemctl enable rsyslog
