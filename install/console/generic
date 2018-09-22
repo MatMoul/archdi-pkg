@@ -10,6 +10,7 @@ options+=("dialog" "Dialog boxes for script" on)
 options+=("nmon" "System monitor" off)
 options+=("mc" "Dual pane file explorer" off)
 options+=("vim" "Vi Improved" off)
+options+=("neofetch" "system information tool" off)
 options+=("powertop" "power mon and management" off)
 options+=("gpm" "Console mouse support" off)
 
