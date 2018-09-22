@@ -103,14 +103,6 @@ checkpackagequerydependencies(){
     sudo -u aurbuilder makepkg -si
   fi
 }
-checkarchlinuxfrrepo(){
-  if [ ! $(cat /etc/pacman.conf | grep "archlinuxfr") ]; then
-    echo "[archlinuxfr]" >> /etc/pacman.conf
-    echo "SigLevel = Never" >> /etc/pacman.conf
-    echo 'Server = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
-    pacman -Syy
-  fi
-}
 
 clear
 case $sel in
