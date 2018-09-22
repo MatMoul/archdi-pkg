@@ -6,6 +6,7 @@ options+=("notepadqq" "(QT)" off)
 options+=("geany" "(GTK)" off)
 options+=("geany-plugins" "(GTK)" off)
 options+=("code" "(VS Code)" off)
+options+=("gource" "Git code animation" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Dev applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
