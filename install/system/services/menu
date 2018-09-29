@@ -19,6 +19,7 @@ else
   options+=("amd-ucode" "AMD microcode" off)
 fi
 options+=("net-snmp" "SNMP Server" off)
+options+=("samba" "Server SMB" off)
 options+=("syslog-ng" "" off)
 options+=("pkgstats" "" off)
 options+=("ntp" "" off)
