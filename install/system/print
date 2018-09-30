@@ -10,6 +10,9 @@ options+=("gutenprint" "" off)
 options+=("foomatic-db" "" off)
 options+=("foomatic-db-engine" "" off)
 options+=("foomatic-db-nonfree" "" off)
+options+=("foomatic-db-ppds" "" off)
+options+=("foomatic-db-gutenprint-ppds" "" off)
+options+=("foomatic-db-nonfree-ppds" "" off)
 #options+=("system-config-printer" "" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "System Print Install" --checklist "" --cancel-button "Back" 0 0 0 \
