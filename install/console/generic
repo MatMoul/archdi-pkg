@@ -2,6 +2,7 @@
 . ./lib
 
 options=()
+options+=("pacman-contrib" "Pacman contrib tools" on)
 options+=("base-devel" "Build tools" on)
 options+=("bash-completion" "Best completion in bash" on)
 options+=("lsof" "ls open file" on)

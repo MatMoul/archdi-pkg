@@ -2,6 +2,11 @@
 . ./lib
 
 options=()
+if [ ! -f /usr/bin/pacdiff ]; then
+  options+=("Install pacman-contrib" "")
+  options+=("" "")
+fi
+
 if [ -f /usr/bin/trizen ]; then
   options+=("Upgrade with trizen" "trizen -Syu")
   aurhelper=1
@@ -18,6 +23,7 @@ if [ -f /usr/bin/yaourt ]; then
   options+=("Upgrade with yaourt" "yaourt -Syua")
   aurhelper=1
 fi
+
 if [ ! "$aurhelper" = "1" ]; then
   options+=("Install trizen" "")
   options+=("Install yay" "")
@@ -160,6 +166,9 @@ case $sel in
     fi
   ;;
   'Remove db.lck') rm /var/lib/pacman/db.lck;;
+  'Install pacman-contrib')
+    instpkg "pacman-contrib" ""
+  ;;
   'Install downgrade')
     instpkg "" "downgrade"
   ;;
