@@ -76,6 +76,7 @@ fi
 
 if ( confirm "Run localectl set-x11-keymap $layout $model $variant $option ?") then
   clear
+  echo "localectl set-x11-keymap $layout $model $variant $option"
   localectl set-x11-keymap $layout $model $variant $option
   pressanykey
 fi
