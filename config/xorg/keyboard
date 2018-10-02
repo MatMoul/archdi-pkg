@@ -3,7 +3,7 @@
 
 pacman -Q libxkbcommon 2> /dev/null
 if [ "$?" = "1" ]; then
-  if(confirm "libxkbcommon is required to use localectl.\nInstall libxkbcommon ?") then
+  if(confirm "libxkbcommon is required to use localectl.\n\nInstall libxkbcommon?") then
     instpkg "libxkbcommon" ""
   else
     exit 1
@@ -75,7 +75,9 @@ fi
 
 
 if ( confirm "Run localectl set-x11-keymap $layout $model $variant $option ?") then
+  clear
   localectl set-x11-keymap $layout $model $variant $option
+  pressanykey
 fi
 
 exit 0

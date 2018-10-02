@@ -6,7 +6,7 @@ options+=("Generate /etc/X11/xorg.conf.d/00-keyboard.conf" "")
 options+=("Edit /etc/X11/xorg.conf.d/00-keyboard.conf" "")
 
 defaultitem=""
-sel=$(whiptail --backtitle "$apptitle" --title "Bash Configuration :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+sel=$(whiptail --backtitle "$apptitle" --title "XOrg Configuration :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
