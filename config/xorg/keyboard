@@ -1,6 +1,16 @@
 #!/bin/bash
 . ./lib
 
+pacman -Q libxkbcommon 2> /dev/null
+if [ "$?" = "1" ]; then
+  if(confirm "libxkbcommon is required to use localectl.\nInstall libxkbcommon ?") then
+    instpkg "libxkbcommon" ""
+  else
+    exit 1
+  fi
+fi
+
+
 options=()
 items=$(localectl list-x11-keymap-layouts)
 for item in $items; do
