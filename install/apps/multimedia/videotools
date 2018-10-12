@@ -2,8 +2,8 @@
 . ./lib
 
 options=()
-options+=("avidemux-qt" "Video Editor" off)
-options+=("simplescreenrecorder" "Screen Recorder" off)
+options+=("avidemux-qt" "(QT) Video Editor" off)
+options+=("simplescreenrecorder" "(QT) Screen Recorder" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Videos Tools applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
