@@ -2,20 +2,20 @@
 . ./lib
 
 options=()
-options+=("chromium" "" off)
+options+=("chromium" "(GTK" off)
 options+=("pepper-flash" "(AUR) Recommended" off)
-options+=("firefox" "" off)
+options+=("firefox" "(GTK)" off)
 options+=("firefox-i18n" "" off)
 options+=("flashplugin" "" off)
 options+=("freshplayerplugin" "(AUR) Recommended" off)
 options+=("freshplayerplugin-git" "(AUR)" off)
-options+=("opera" "" off)
+options+=("opera" "(GTK)" off)
 options+=("opera-ffmpeg-codecs" "Non-free codecs" off)
-options+=("seamonkey" "" off)
+options+=("seamonkey" "(GTK)" off)
 options+=("seamonkey-i18n" "(AUR)" off)
-options+=("midori" "" off)
-options+=("falkon" "" off)
-options+=("vivaldi" "(AUR)" off)
+options+=("midori" "(GTK)" off)
+options+=("falkon" "(QT)" off)
+options+=("vivaldi" "(AUR) (GTK)" off)
 options+=("vivaldi-ffmpeg-codecs" "(AUR) Non-free codecs" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Web Browser applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
