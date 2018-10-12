@@ -2,12 +2,13 @@
 . ./lib
 
 options=()
-options+=("clementine" "Audio Player" off)
-options+=("mixxx" "Audio Player" off)
-options+=("quodlibet" "Audio Player" off)
-options+=("amarok" "(AUR) Audio Player" off)
-options+=("guayadeque" "(AUR) Audio Player" off)
-options+=("gmusicbrowser" "(AUR) Audio Player" off)
+options+=("clementine" "(QT) Audio Player" off)
+options+=("mixxx" "(QT) Audio Player" off)
+options+=("quodlibet" "(GTK) Audio Player" off)
+options+=("elisa" "(QT) Audio Player" off)
+options+=("amarok" "(AUR) (QT) Audio Player" off)
+options+=("guayadeque" "(AUR) (GTK) Audio Player" off)
+options+=("gmusicbrowser" "(AUR) (GTK) Audio Player" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Audio Player applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
