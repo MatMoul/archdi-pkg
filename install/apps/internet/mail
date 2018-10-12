@@ -2,8 +2,8 @@
 . ./lib
 
 options=()
-options+=("thunderbird" "" off)
-options+=("evolution" "" off)
+options+=("thunderbird" "(GTK)" off)
+options+=("evolution" "(GTK)" off)
 options+=("evolution-bogofilter" "" off)
 options+=("evolution-spamassassin" "" off)
 options+=("evolution-ews" "" off)
