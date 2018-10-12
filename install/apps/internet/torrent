@@ -5,7 +5,7 @@ options=()
 options+=("transmission-gtk" "(GTK)" off)
 options+=("transmission-qt" "(QT)" off)
 options+=("ktorrent" "(QT)" off)
-options+=("qbittorrent" "(QT" off)
+options+=("qbittorrent" "(QT)" off)
 options+=("deluge" "(PYTHON)" off)
 options+=("tixati" "(AUR) (GTK)" off)
 

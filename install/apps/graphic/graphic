@@ -4,7 +4,7 @@
 options=()
 options+=("gimp" "(GTK)" off)
 options+=("inkscape" "(GTK)" off)
-options+=("dia" "(GTK" off)
+options+=("dia" "(GTK)" off)
 options+=("krita" "(QT)" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Graphic applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
