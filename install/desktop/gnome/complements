@@ -1,0 +1,81 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("baobab" "" on)
+options+=("cheese" "" on)
+options+=("eog" "" on)
+options+=("epiphany" "" on)
+options+=("evince" "" on)
+options+=("file-roller" "" on)
+options+=("gedit" "" on)
+options+=("gnome-backgrounds" "" on)
+options+=("gnome-clocks" "" on)
+options+=("gnome-color-manager" "" on)
+options+=("gnome-contacts" "" off)
+options+=("gnome-control-center" "" on)
+options+=("gnome-dictionary" "" off)
+options+=("gnome-disk-utility" "" on)
+options+=("gnome-documents" "" off)
+options+=("gnome-font-viewer" "" on)
+options+=("gnome-getting-started-docs" "" on)
+options+=("gnome-keyring" "" on)
+options+=("gnome-logs" "" on)
+options+=("gnome-maps" "" off)
+options+=("gnome-menus" "" on)
+options+=("gnome-music" "" on)
+options+=("gnome-photos" "" off)
+options+=("gnome-remote-desktop" "" off)
+options+=("gnome-screenshot" "" on)
+options+=("gnome-session" "" on)
+options+=("gnome-settings-daemon" "" on)
+options+=("gnome-shell" "" on)
+options+=("gnome-shell-extensions" "" on)
+options+=("gnome-system-monitor" "" on)
+options+=("gnome-terminal" "" on)
+options+=("gnome-themes-extra" "" on)
+options+=("gnome-todo" "" on)
+options+=("gnome-user-docs" "" on)
+options+=("gnome-user-share" "" on)
+options+=("gnome-video-effects" "" on)
+options+=("grilo-plugins" "" on)
+options+=("gvfs" "" on)
+options+=("gvfs-afc" "" on)
+options+=("gvfs-goa" "" on)
+options+=("gvfs-google" "" on)
+options+=("gvfs-gphoto2" "" on)
+options+=("gvfs-mtp" "" on)
+options+=("gvfs-nfs" "" on)
+options+=("gvfs-smb" "" off)
+options+=("mousetweaks" "" on)
+options+=("mutter" "" on)
+options+=("nautilus" "" on)
+options+=("networkmanager" "" on)
+options+=("network-manager-applet" "" on)
+options+=("orca" "" on)
+options+=("rygel" "" on)
+options+=("sushi" "" on)
+options+=("totem" "" on)
+options+=("tracker" "" on)
+options+=("tracker-miners" "" on)
+options+=("vino" "" on)
+options+=("xdg-user-dirs-gtk" "" on)
+options+=("yelp" "" on)
+options+=("gnome-boxes" "" off)
+options+=("gnome-software" "" off)
+options+=("simple-scan" "" off)
+
+sel=$(whiptail --backtitle "$apptitle" --title "Gnome Complements :" --checklist "" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+  fi
+
+for itm in $sel; do
+  case $itm in
+    *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
+  esac
+done
+
+exit 0
