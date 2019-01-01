@@ -20,6 +20,13 @@ else
 fi
 options+=("net-snmp" "SNMP Server" off)
 options+=("samba" "Server SMB" off)
+if (dmesg |grep Bluetooth) then
+  options+=("bluez" "" on)
+  options+=("bluez-libs" "" on)
+else
+  options+=("bluez" "" off)
+  options+=("bluez-libs" "" off)
+fi
 options+=("syslog-ng" "" off)
 options+=("pkgstats" "" off)
 options+=("ntp" "" off)
@@ -57,6 +64,9 @@ for itm in $sel; do
     ;;
     '"cronie"')
       svcenable cronie
+    ;;
+    '"bluez"')
+      svcenable bluetooth "Bluetooth Service"
     ;;
     '"ntp"')
       svcenable ntpd "NTP Server"
