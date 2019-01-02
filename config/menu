@@ -10,7 +10,7 @@ options+=("Systemd" "")
 if [ -f /usr/bin/Xorg ]; then
   options+=("XOrg" "")
 fi
-options+=("Grub" "")
+options+=("Boot" "")
 
 defaultitem=""
 sel=$(whiptail --backtitle "$apptitle" --title "Config Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
@@ -28,10 +28,7 @@ case $sel in
   'Sudoers') menu config/sudoers/menu;;
   'Systemd') menu config/systemd/menu;;
   'XOrg') menu config/xorg/menu;;
-  'Grub') editfile /etc/default/grub
-          if(confirm "Run grub-mkconfig -o /boot/grub/grub.cfg ?") then
-            grub-mkconfig -o /boot/grub/grub.cfg
-          fi;;
+  'Boot') menu config/boot/menu;;
 esac
 
 exit 0
