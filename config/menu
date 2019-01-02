@@ -4,8 +4,7 @@
 options=()
 options+=("Bash" "")
 options+=("Firewall" "")
-options+=("Users" "")
-options+=("Sudoers" "")
+options+=("Accounts" "")
 options+=("Systemd" "")
 if [ -f /usr/bin/Xorg ]; then
   options+=("XOrg" "")
@@ -24,8 +23,7 @@ sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 case $sel in
   'Bash') menu config/bash/menu;;
   'Firewall') menu config/firewall/menu;;
-  'Users') menu config/users/menu;;
-  'Sudoers') menu config/sudoers/menu;;
+  'Accounts') menu config/accounts/menu;;
   'Systemd') menu config/systemd/menu;;
   'XOrg') menu config/xorg/menu;;
   'Boot') menu config/boot/menu;;
