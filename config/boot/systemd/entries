@@ -65,32 +65,38 @@ case $sel in
       "${entrylist[@]}" \
       3>&1 1>&2 2>&3)
       if [ "$?" = "0" ]; then
+        endmsg="Nothing to do !"
         clear
         for itm in $sel; do
           itm=${itm//\"/}
           if [ -f /boot/amd-ucode.img ]; then
             if [ ! "$(cat /boot/loader/entries/$itm.conf | grep amd-ucode.img)" ]; then
+              endmsg=""
               echo "Add amd-ucode to $itm"
               sed -i "/vmlinuz/a initrd  /amd-ucode.img" /boot/loader/entries/$itm.conf
             fi
           else
             if [ "$(cat /boot/loader/entries/$itm.conf | grep amd-ucode.img)" ]; then
+              endmsg=""
               echo "Remove amd-ucode from $itm"
               sed -i "/amd-ucode.img/d" /boot/loader/entries/$itm.conf
             fi
           fi
           if [ -f /boot/intel-ucode.img ]; then
             if [ ! "$(cat /boot/loader/entries/$itm.conf | grep intel-ucode.img)" ]; then
+              endmsg=""
               echo "Add intel-ucode to $itm"
               sed -i "/vmlinuz/a initrd  /intel-ucode.img" /boot/loader/entries/$itm.conf
             fi
           else
             if [ "$(cat /boot/loader/entries/$itm.conf | grep intel-ucode.img)" ]; then
+              endmsg=""
               echo "Remove intel-ucode from $itm"
               sed -i "/intel-ucode.img/d" /boot/loader/entries/$itm.conf
             fi
           fi
         done
+        echo "$endmsg"
         pressanykey
       fi
     ;;

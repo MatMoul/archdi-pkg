@@ -2,10 +2,10 @@
 . ./lib
 
 options=()
-options+=("config" "/etc/mkinitcpio.conf")
+options+=("Config" "/etc/mkinitcpio.conf")
 options+=("mkinicpio" "")
 
-defaultitem=""
+defaultitem="Config"
 sel=$(whiptail --backtitle "$apptitle" --title "Initcpio Config Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
@@ -15,7 +15,7 @@ fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
-  'config') editfile /etc/mkinitcpio.conf;;
+  'Config') editfile /etc/mkinitcpio.conf;;
   'mkinicpio')
     options=()
     configs=$(ls /etc/mkinitcpio.d)
