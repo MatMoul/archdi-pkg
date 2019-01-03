@@ -180,6 +180,9 @@ editfile(){
   if [ "$editor" == "" ]; then
     editor="nano"
   fi
+  if [ ! -f "/usr/bin/$editor" ]; then
+    editor="nano"
+  fi
   echo "$editor $1"
   $editor "$1"
 }

@@ -1,0 +1,21 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("config" "/boot/loader/loader.conf")
+#/boot/loader/entries/*
+
+defaultitem=""
+sel=$(whiptail --backtitle "$apptitle" --title "Systemd Config Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
+
+case $sel in
+  'config') editfile /boot/loader/loader.conf;;
+esac
+
+exit 0

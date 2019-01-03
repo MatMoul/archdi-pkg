@@ -28,6 +28,7 @@ if [ "$editor" = "unset" ]; then
 else
   echo "export EDITOR=$editor" > /etc/profile.d/editor.sh
   chmod 755 /etc/profile.d/editor.sh
+  export EDITOR=$editor
 fi
 
 exit 0

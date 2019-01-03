@@ -6,6 +6,15 @@ options+=("initcpio" "")
 if [ -f /boot/grub/grub.cfg ]; then
   options+=("grub" "")
 fi
+if [ -f /boot/loader/loader.conf ]; then
+  options+=("systemd-boot" "")
+fi
+if [ -f /boot/refind_linux.conf ]; then
+  options+=("refind" "")
+fi
+if [ -f /boot/syslinux/syslinux.cfg ]; then
+  options+=("syslinux" "")
+fi
 
 defaultitem=""
 sel=$(whiptail --backtitle "$apptitle" --title "Boot Configuration :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
@@ -19,6 +28,9 @@ sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 case $sel in
   'initcpio') menu config/boot/initcpio/menu;;
   'grub') menu config/boot/grub/menu;;
+  'systemd-boot') menu config/boot/systemd/menu;;
+  'refind') menu config/boot/refind/menu;;
+  'syslinux') menu config/boot/syslinux/menu;;
 esac
 
 exit 0
