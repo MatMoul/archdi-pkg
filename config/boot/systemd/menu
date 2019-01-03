@@ -2,10 +2,18 @@
 . ./lib
 
 options=()
-options+=("config" "/boot/loader/loader.conf")
-#/boot/loader/entries/*
+options+=("Config" "/boot/loader/loader.conf")
+options+=("Entries" "/boot/loader/entries")
+options+=("" "")
+options+=("Update" "bootctl update")
+options+=("" "")
+if [ ! -f /etc/pacman.d/hooks/systemd-boot.hook ];  then
+  options+=("Create pacman hook" "/etc/pacman.d/hooks/systemd-boot.hook")
+else
+  options+=("Delete pacman hook" "/etc/pacman.d/hooks/systemd-boot.hook")
+fi
 
-defaultitem=""
+defaultitem="Config"
 sel=$(whiptail --backtitle "$apptitle" --title "Systemd Config Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
@@ -15,7 +23,39 @@ fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
-  'config') editfile /boot/loader/loader.conf;;
+  'Config')
+    defaultitem="Config"
+    editfile /boot/loader/loader.conf
+  ;;
+  'Entries')
+    defaultitem="Entries"
+    menu config/boot/systemd/entries
+  ;;
+  'Update')
+    defaultitem="Update"
+    clear
+    bootctl update
+    pressanykey
+  ;;
+  'Create pacman hook')
+    defaultitem="Update"
+    mkdir -p /etc/pacman.d/hooks
+    cat <<EOF > /etc/pacman.d/hooks/systemd-boot.hook
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = systemd
+
+[Action]
+Description = Updating systemd-boot
+When = PostTransaction
+Exec = /usr/bin/bootctl update    
+EOF
+  ;;
+  'Delete pacman hook')
+    defaultitem="Update"
+    rm /etc/pacman.d/hooks/systemd-boot.hook
+  ;;
 esac
 
 exit 0

@@ -1,0 +1,99 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("Edit entry" "")
+options+=("" "")
+options+=("Update ucode" "")
+options+=("" "")
+options+=("Create entry" "")
+options+=("Delete entry" "")
+
+defaultitem="Edit entry"
+sel=$(whiptail --backtitle "$apptitle" --title "Systemd Entries Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
+
+case $sel in
+    'Edit entry')
+      entries=$(ls /boot/loader/entries)
+      entrylist=()
+      for itm in $entries; do
+        entrylist+=("${itm::-5}" "")
+      done
+      sel=$(whiptail --backtitle "$apptitle" --title "Edit entry :" --menu "" --cancel-button "Cancel" 0 0 0 \
+      "${entrylist[@]}" \
+      3>&1 1>&2 2>&3)
+      if [ "$?" = "0" ]; then
+        editfile /boot/loader/entries/$sel.conf
+      fi
+    ;;
+    'Create entry')
+      entry=$(whiptail --backtitle "$apptitle" --title "Create entry" --inputbox "Enter the new entry name :" 0 0 3>&1 1>&2 2>&3)
+      if [ "$?" = "0" ]; then
+        cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/$entry.conf
+        sed -i "s/Arch Linux/$entry/" /boot/loader/entries/$entry.conf
+        editfile /boot/loader/entries/$entry.conf
+      fi
+    ;;
+    'Delete entry')
+      entries=$(ls /boot/loader/entries)
+      entrylist=()
+      for itm in $entries; do
+        entrylist+=("${itm::-5}" "")
+      done
+      sel=$(whiptail --backtitle "$apptitle" --title "Delete entry :" --menu "" --cancel-button "Cancel" 0 0 0 \
+      "${entrylist[@]}" \
+      3>&1 1>&2 2>&3)
+      if [ "$?" = "0" ]; then
+        if (confirm "Delete $sel entry ?") then
+          rm /boot/loader/entries/$sel.conf
+        fi
+      fi
+    ;;
+    'Update ucode')
+      entries=$(ls /boot/loader/entries)
+      entrylist=()
+      for itm in $entries; do
+        entrylist+=("${itm::-5}" "" on)
+      done
+      sel=$(whiptail --backtitle "$apptitle" --title "Update ucode of :" --checklist "" --cancel-button "Cancel" 0 0 0 \
+      "${entrylist[@]}" \
+      3>&1 1>&2 2>&3)
+      if [ "$?" = "0" ]; then
+        clear
+        for itm in $sel; do
+          itm=${itm//\"/}
+          if [ -f /boot/amd-ucode.img ]; then
+            if [ ! "$(cat /boot/loader/entries/$itm.conf | grep amd-ucode.img)" ]; then
+              echo "Add amd-ucode to $itm"
+              sed -i "/vmlinuz/a initrd  /amd-ucode.img" /boot/loader/entries/$itm.conf
+            fi
+          else
+            if [ "$(cat /boot/loader/entries/$itm.conf | grep amd-ucode.img)" ]; then
+              echo "Remove amd-ucode from $itm"
+              sed -i "/amd-ucode.img/d" /boot/loader/entries/$itm.conf
+            fi
+          fi
+          if [ -f /boot/intel-ucode.img ]; then
+            if [ ! "$(cat /boot/loader/entries/$itm.conf | grep intel-ucode.img)" ]; then
+              echo "Add intel-ucode to $itm"
+              sed -i "/vmlinuz/a initrd  /intel-ucode.img" /boot/loader/entries/$itm.conf
+            fi
+          else
+            if [ "$(cat /boot/loader/entries/$itm.conf | grep intel-ucode.img)" ]; then
+              echo "Remove intel-ucode from $itm"
+              sed -i "/intel-ucode.img/d" /boot/loader/entries/$itm.conf
+            fi
+          fi
+        done
+        pressanykey
+      fi
+    ;;
+esac
+
+exit 0
