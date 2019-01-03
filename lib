@@ -12,7 +12,7 @@
 
 
 
-apptitle="Arch Linux Desktop Install (archdi) - Version: 2018.10.13.01.47.16 (GPLv3)"
+apptitle="Arch Linux Desktop Install (archdi) - Version: 2019.01.03.02.07.31 (GPLv3)"
 baseurl=https://raw.githubusercontent.com/MatMoul/archdi-pkg/master
 cachedir=~/.cache/archdi
 
