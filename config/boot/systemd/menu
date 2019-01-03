@@ -38,7 +38,6 @@ case $sel in
     pressanykey
   ;;
   'Create pacman hook')
-    defaultitem="Update"
     mkdir -p /etc/pacman.d/hooks
     cat <<EOF > /etc/pacman.d/hooks/systemd-boot.hook
 [Trigger]
@@ -53,7 +52,6 @@ Exec = /usr/bin/bootctl update
 EOF
   ;;
   'Delete pacman hook')
-    defaultitem="Update"
     rm /etc/pacman.d/hooks/systemd-boot.hook
   ;;
 esac
