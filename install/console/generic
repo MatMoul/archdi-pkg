@@ -14,6 +14,7 @@ options+=("vim" "Vi Improved" off)
 options+=("neofetch" "system information tool" off)
 options+=("powertop" "power mon and management" off)
 options+=("gpm" "Console mouse support" off)
+options+=("liveroot" "(AUR) root overlay fs" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Console Generic packages :" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
@@ -24,6 +25,7 @@ fi
 
 for itm in $sel; do
   case $itm in
+    '"liveroot"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
