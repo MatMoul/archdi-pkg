@@ -7,6 +7,7 @@ options+=("traceroute" "Trace network route" on)
 options+=("bind-tools" "DNS tools (nslookup)" on)
 options+=("dnsutils" "DNS tools (nslookup)" off)
 options+=("nmap" "Network scanner" off)
+options+=("netdiscover" "(AUR) Network scanner with MAC vendors" off)
 options+=("speedtest-cli" "SpeedTest" off)
 options+=("wavemon" "WIFI monitor" off)
 options+=("net-tools" "(deprecated) old ifconfig" off)
@@ -23,6 +24,9 @@ fi
 
 for itm in $sel; do
   case $itm in
+    '"netdiscover"')
+      aurpkg="$aurpkg $(echo $itm | sed 's/"//g')"
+    ;;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
