@@ -4,6 +4,7 @@
 options=()
 options+=("qalculate-gtk" "" off)
 options+=("calcoo" "(AUR)" off)
+options+=("x48" "(AUR)" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Office Tools applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
@@ -14,7 +15,8 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"calcoo"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    '"calcoo"' | \
+    '"x48"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
