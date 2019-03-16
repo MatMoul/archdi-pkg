@@ -54,7 +54,7 @@ if [ "$aurhelper" = "1" ]; then
     options+=("Install pkgstats" "")
   fi
   if [ ! -f /usr/bin/aurvote ]; then
-    options+=("Install aurvote" "")
+    options+=("Install aurvote" "(AUR)")
   fi
   if [ ! -f /usr/bin/trizen ]; then
     options+=("Install trizen" "")
@@ -219,7 +219,7 @@ case $sel in
     pacman -S --needed pkgstats
   ;;
   'Install aurvote')
-    pacman -S --needed aurvote
+    instpkg "" "aurvote"
   ;;
 esac
 
