@@ -19,7 +19,7 @@ options+=("smbclient" "SMB full client" off)
 options+=("nfs-utils" "" off)
 options+=("open-iscsi" "" off)
 options+=("glusterfs" "" off)
-options+=("hfsprogs" "" off)
+options+=("hfsprogs" "(AUR)" off)
 options+=("mtpfs" "" off)
 options+=("unionfs-fuse" "" off)
 options+=("nilfs-utils" "" off)
@@ -39,6 +39,9 @@ fi
 
 for itm in $sel; do
   case $itm in
+    '"hfsprogs"')
+      aurpkg="$aurpkg $(echo $itm | sed 's/"//g')"
+    ;;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
