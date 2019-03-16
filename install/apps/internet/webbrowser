@@ -2,8 +2,8 @@
 . ./lib
 
 options=()
-options+=("chromium" "(GTK" off)
-options+=("pepper-flash" "(AUR) Recommended" off)
+options+=("chromium" "(GTK)" off)
+options+=("pepper-flash" "Recommended" off)
 options+=("firefox" "(GTK)" off)
 options+=("firefox-i18n" "" off)
 options+=("flashplugin" "" off)
@@ -27,7 +27,6 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"pepper-flash"' | \
     '"freshplayerplugin-git"' | \
     '"freshplayerplugin"' | \
     '"vivaldi"' | \
