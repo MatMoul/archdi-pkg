@@ -56,7 +56,7 @@ for itm in $sel; do
     '"networkmanager"')
       systemctl disable dhcpcd
       if (svcenable NetworkManager) then
-        svcdisable dhcpd
+        svcdisable dhcpcd
       fi
     ;;
     '"openssh"')
