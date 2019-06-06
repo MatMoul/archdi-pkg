@@ -5,10 +5,10 @@ options=()
 options+=("virtualbox-guest-utils" "(For Virtualbox)" off)
 options+=("nvidia" "" off)
 options+=("nvidia-390xx" "" off)
-options+=("nvidia-340xx" "" off)
+#options+=("nvidia-340xx" "" off) #DEAD ?
 options+=("nvidia-dkms" "(For custom kernel)" off)
 options+=("nvidia-390xx-dkms" "(For custom kernel)" off)
-options+=("nvidia-340xx-dkms" "(For custom kernel)" off)
+#options+=("nvidia-340xx-dkms" "(For custom kernel)" off) #DEAD ?
 #options+=("catalyst" "(AUR)" off)
 #options+=("catalyst-total-hd234k" "(AUR)" off)
 
