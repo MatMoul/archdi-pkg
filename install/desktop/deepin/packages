@@ -24,7 +24,5 @@ done
 instpkg "$pkg" "$aurpkg"
 
 config_xinitrc "startdde"
-system_ctl enable lightdm
-sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-deepin-greeter/' /etc/lightdm/lightdm.conf
 
 exit 0
