@@ -1,0 +1,35 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("lightdm-gtk-greeter" "" on)
+options+=("gvfs" "" on)
+options+=("gvfs-afc" "" on)
+options+=("udisks2" "" on)
+options+=("network-manager-applet" "" on)
+options+=("nm-connection-editor" "" on)
+
+sel=$(whiptail --backtitle "$apptitle" --title "Deepin Complements :" --checklist "" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+
+for itm in $sel; do
+  case $itm in
+    *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
+  esac
+done
+
+instpkg "$pkg" "$aurpkg"
+
+for itm in $sel; do
+  case $itm in
+    '"lightdm-gtk-greeter"') svcenable lightdm
+    sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-deepin-greeter/' /etc/lightdm/lightdm.conf
+    ;;
+  esac
+done
+
+exit 0
