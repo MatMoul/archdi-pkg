@@ -3,7 +3,7 @@
 
 options=()
 
-package="deepin deepin-extra lightdm-gtk-greeter"
+package="deepin deepin-extra"
 items=$(pacman -Sqg $package)
 for item in $items; do
   options+=("$item" "" on)
@@ -22,6 +22,13 @@ for itm in $sel; do
 done
 
 instpkg "$pkg" "$aurpkg"
+
+config_xinitrc() { #{{{
+    #create a xinitrc file in home user directory
+    cp -fv /etc/X11/xinit/xinitrc /home/${username}/.xinitrc
+    echo -e "exec $1" >> /home/${username}/.xinitrc
+    chown -R ${username}:users /home/${username}/.xinitrc
+} #}}}
 
 config_xinitrc "startdde"
 
