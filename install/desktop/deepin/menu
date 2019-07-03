@@ -3,6 +3,7 @@
 
 options=()
 options+=("deepin" "")
+options+=("deepin-terminal" "")
 options+=("deepin-extra" "")
 
 defaultitem=""
@@ -16,6 +17,11 @@ sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
   'deepin')
+    require install/desktop/deepin/packages 755
+    sed -i "/^package=/c\package=\"$sel\"" install/desktop/deepin/packages
+    script install/desktop/deepin/packages
+  ;;
+  'deepin-terminal')
     require install/desktop/deepin/packages 755
     sed -i "/^package=/c\package=\"$sel\"" install/desktop/deepin/packages
     script install/desktop/deepin/packages
