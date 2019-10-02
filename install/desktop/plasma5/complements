@@ -6,6 +6,7 @@ options+=("kwallet-pam" "" on)
 options+=("partitionmanager" "" on)
 options+=("gnome-keyring" "" on)
 options+=("qt5-multimedia" "" on)
+options+=("ffmpegthumbs" "Add support to videos thumbnails" off)
 options+=("kdeconnect" "" off)
 options+=("sshfs" "(For kdeconnect)" off)
 
