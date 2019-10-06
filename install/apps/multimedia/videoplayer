@@ -6,7 +6,7 @@ options+=("vlc" "(QT) Video player" off)
 options+=("smplayer" "(QT) Video player" off)
 options+=("smtube" "(QT) Youtube Player" off)
 options+=("mpv" "(GTK) Recommended for smplayer" off)
-options+=("gnome-mpv" "(GTK) Video player" off)
+options+=("celluloid" "(GTK) Video player" off)
 #options+=("streamstudio-bin" "(AUR) Stream video Player" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Video Player applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
