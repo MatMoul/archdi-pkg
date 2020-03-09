@@ -6,6 +6,7 @@ options+=("zip" "ZIP files" on)
 options+=("unzip" "ZIP files" on)
 options+=("unrar" "RAR files" on)
 options+=("p7zip" "File Archiver" on)
+options+=("lzop" "LZO Compressor" on)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Console Compression Tools :" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
