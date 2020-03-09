@@ -9,44 +9,35 @@ for item in $items; do
   case $item in
     "dolphin" | \
     "kate" | \
-    "kdebase-kdepasswd" | \
-    "kdepasswd" | \
-    "kdebase-kdialog" | \
     "kdialog" | \
-    "kdebase-kfind" | \
     "kfind" | \
     "konsole" | \
     "kwrite" | \
     "kcron" | \
-    "kdeadmin-kuser" | \
-    "kuser" | \
     "ksystemlog" | \
     "ark" | \
     "kcalc" | \
     "kcharselect" | \
-    "kdeutils-kgpg" | \
     "kgpg" | \
     "kwalletmanager" | \
     "print-manager" | \
-    "kdegraphics-okular" | \
-    "okular" | \
     "gwenview" | \
+    "kcolorchooser" | \
+    "kdegraphics-mobipocket" | \
+    "kdegraphics-thumbnailers" | \
+    "kolourpaint" | \
+    "okular" | \
     "spectacle" | \
-    "kmix" | \
-    "kdemultimedia-audiocd-kio" | \
     "audiocd-kio" | \
-    "kdemultimedia-kmix" | \
+    "ffmpegthumbs" | \
     "kmix" | \
-    "kdemultimedia-mplayerthumbs" | \
-    "mplayerthumbs" | \
     "kdenetwork-filesharing" | \
     "filesharing" | \
-    "kdenetwork-zeroconf-ioslave" | \
-    "zeroconf-ioslave" | \
     "kio-extras" | \
     "signon-kwallet-extension" | \
-    "thumbnailers" | \
-    "kdesdk-thumbnailers") options+=("$item" "" on);;
+    "zeroconf-ioslave" | \
+    "kdesdk-thumbnailers" | \
+    "thumbnailers") options+=("$item" "" on);;
     *) options+=("$item" "" off);;
   esac
 done
