@@ -4,10 +4,10 @@
 options=()
 options+=("virtualbox-guest-utils" "(For Virtualbox)" off)
 options+=("nvidia" "" off)
-options+=("nvidia-390xx" "" off)
+options+=("nvidia-390xx" "(AUR)" off)
 #options+=("nvidia-340xx" "" off) #DEAD ?
 options+=("nvidia-dkms" "(For custom kernel)" off)
-options+=("nvidia-390xx-dkms" "(For custom kernel)" off)
+options+=("nvidia-390xx-dkms" "(AUR) (For custom kernel)" off)
 #options+=("nvidia-340xx-dkms" "(For custom kernel)" off) #DEAD ?
 #options+=("catalyst" "(AUR)" off)
 #options+=("catalyst-total-hd234k" "(AUR)" off)
@@ -21,8 +21,8 @@ fi
 
 for itm in $sel; do
   case $itm in
-    "catalyst" | \
-    "catalyst-total-hd234k") aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    "nvidia-390xx" | \
+    "nvidia-390xx-dkms") aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
