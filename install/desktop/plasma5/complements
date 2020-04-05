@@ -4,7 +4,6 @@
 options=()
 options+=("partitionmanager" "" on)
 options+=("gnome-keyring" "" on)
-options+=("qt5-multimedia" "" on)
 options+=("xsettingsd" "" on)
 options+=("kdeconnect" "" off)
 options+=("sshfs" "(For kdeconnect)" off)
