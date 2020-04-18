@@ -13,6 +13,7 @@ options+=("Mate" "(By FredBezies)")
 options+=("Enlightenment" "(Help Wanted)")
 options+=("Openbox" "(Help Wanted)")
 options+=("Deepin" "(Help Wanted)")
+options+=("DWM" "By cameron-justice")
 #options+=("GnuStep" "")
 #options+=("i3" "")
 
@@ -37,6 +38,7 @@ case $sel in
   'Enlightenment') script install/desktop/enlightenment/packages;;
   'Openbox') script install/desktop/openbox/packages;;
   'Deepin') menu install/desktop/deepin/menu;;
+  'DWM') menu install/desktop/deepin/menu;;
 esac
 
 exit 0
