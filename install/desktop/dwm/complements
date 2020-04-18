@@ -5,7 +5,7 @@ options=()
 options+=("dmenu" "" on)
 options+=("slstatus" "" on)
 
-sel=$(whiptail --backtitle "$apptitle" --title "Plasma Complements :" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(whiptail --backtitle "$apptitle" --title "DWM Complements :" --checklist "" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
