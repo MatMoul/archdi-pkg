@@ -38,7 +38,7 @@ case $sel in
   'Enlightenment') script install/desktop/enlightenment/packages;;
   'Openbox') script install/desktop/openbox/packages;;
   'Deepin') menu install/desktop/deepin/menu;;
-  'DWM') menu install/desktop/deepin/menu;;
+  'DWM') menu install/desktop/dwm/menu;;
 esac
 
 exit 0
