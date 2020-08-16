@@ -59,6 +59,7 @@ fi
 
 options=()
 options+=("ignore" "Default")
+options+=("terminate:ctrl_alt_bksp" "Default 2")
 items=$(localectl list-x11-keymap-options)
 for item in $items; do
   options+=("$item" "")
