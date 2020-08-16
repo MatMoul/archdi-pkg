@@ -3,25 +3,23 @@
 
 options=()
 
-options+=("kdebase" "")
-options+=("kdeadmin" "")
-options+=("kdeutils" "")
-options+=("kdegraphics" "")
-options+=("kdemultimedia" "")
-options+=("kdenetwork" "")
+options+=("kde-system" "")
+options+=("kde-utilities" "")
+options+=("kde-network" "")
+options+=("kde-graphics" "")
+options+=("kde-multimedia" "")
 options+=("kdesdk" "")
 options+=("kdepim" "")
 items=$(for i in $(pacman -Sqs meta | grep kde); do echo ${i} | sed 's/-meta//';done)
 for item in $items; do
   case $item in
-    "kdebase") ;;
-    "kdeadmin") ;;
-    "kdeutils") ;;
-    "kdegraphics") ;;
-    "kdemultimedia") ;;
-    "kdenetwork") ;;
-    "kdesdk") ;;
-    "kdepim") ;;
+    "kde-system") ;;
+    "kde-utilities") ;;
+    "kde-network") ;;
+    "kde-graphics") ;;
+    "kde-multimedia") ;;
+    "kde-sdk") ;;
+    "kde-pim") ;;
     "kde-applications");;
     "kde-development-environment");;
     *) options+=("$item" "");;
