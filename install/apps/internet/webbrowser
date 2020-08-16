@@ -3,11 +3,11 @@
 
 options=()
 options+=("chromium" "(GTK)" off)
-options+=("pepper-flash" "Recommended" off)
+options+=("pepper-flash" "" off)
 options+=("firefox" "(GTK)" off)
 options+=("firefox-i18n" "" off)
 options+=("flashplugin" "" off)
-options+=("freshplayerplugin" "(AUR) Recommended" off)
+options+=("freshplayerplugin" "(AUR)" off)
 options+=("freshplayerplugin-git" "(AUR)" off)
 options+=("opera" "(GTK)" off)
 options+=("opera-ffmpeg-codecs" "Non-free codecs" off)
