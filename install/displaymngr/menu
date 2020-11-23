@@ -7,7 +7,6 @@ options+=("sddm" "QT5 Login")
 options+=("lxdm" "LXDE Login")
 options+=("lightdm-gtk-greeter" "Other Login")
 #options+=("lightdm-kde-greeter" "Other Login")
-options+=("slim" "Other Login")
 
 defaultitem=""
 sel=$(whiptail --backtitle "$apptitle" --title "Install Display Manager Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
@@ -38,10 +37,6 @@ case $sel in
   "lightdm-kde-greeter")
     instpkg lightdm-kde-greeter
     svcenable lightdm
-  ;;
-  "slim")
-    instpkg slim
-    svcenable slim
   ;;
 esac
 
