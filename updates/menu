@@ -11,6 +11,10 @@ if [ -f /usr/bin/trizen ]; then
   options+=("Upgrade with trizen" "trizen -Syu")
   aurhelper=1
 fi
+if [ -f /usr/bin/paru ]; then
+  options+=("Upgrade with paru" "paru -Syu")
+  aurhelper=1
+fi
 if [ -f /usr/bin/yay ]; then
   options+=("Upgrade with yay" "yay -Syu")
   aurhelper=1
@@ -26,6 +30,7 @@ fi
 
 if [ ! "$aurhelper" = "1" ]; then
   options+=("Install trizen" "")
+  options+=("Install paru" "")
   options+=("Install yay" "")
   options+=("Install aurman" "")
   options+=("Install yaourt" "(End of life)")
@@ -58,6 +63,9 @@ if [ "$aurhelper" = "1" ]; then
   fi
   if [ ! -f /usr/bin/trizen ]; then
     options+=("Install trizen" "")
+  fi
+  if [ ! -f /usr/bin/paru ]; then
+    options+=("Install paru" "")
   fi
   if [ ! -f /usr/bin/yay ]; then
     options+=("Install yay" "")
@@ -121,6 +129,10 @@ case $sel in
     checkaurdependencies
     sudo -u aurbuilder aurman -Syu
   ;;
+  'Upgrade with paru')
+    checkaurdependencies
+    sudo -u aurbuilder paru -Syu
+  ;;
   'Upgrade with yay')
     checkaurdependencies
     sudo -u aurbuilder yay -Syu
@@ -173,7 +185,7 @@ case $sel in
     instpkg "" "downgrade"
   ;;
   'Install trizen')
-    if(confirm "Trizen allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall trizen ?") then
+    if(confirm "Trizen allows you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall trizen ?") then
       clear
       checkaurdependencies
       cd /tmp/aurbuilder
@@ -183,7 +195,7 @@ case $sel in
     fi
   ;;
   'Install aurman')
-    if(confirm "Aurman allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall aurman ?") then
+    if(confirm "Aurman allows you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall aurman ?") then
       clear
       checkaurdependencies
       cd /tmp/aurbuilder
@@ -194,8 +206,18 @@ case $sel in
       #sudo -u aurbuilder makepkg -si --skippgpcheck
     fi
   ;;
+  'Install paru')
+    if(confirm "Paru allows you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall paru ?") then
+      clear
+      checkaurdependencies
+      cd /tmp/aurbuilder
+      sudo -u aurbuilder git clone https://aur.archlinux.org/paru.git
+      cd paru
+      sudo -u aurbuilder makepkg -si
+    fi
+  ;;
   'Install yay')
-    if(confirm "Yay allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yay ?") then
+    if(confirm "Yay allows you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yay ?") then
       clear
       checkaurdependencies
       cd /tmp/aurbuilder
@@ -205,7 +227,7 @@ case $sel in
     fi
   ;;
   'Install yaourt')
-    if(confirm "Yaourt allow you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yaourt ?") then
+    if(confirm "Yaourt allows you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yaourt ?") then
       clear
       checkaurdependencies
       checkpackagequerydependencies
