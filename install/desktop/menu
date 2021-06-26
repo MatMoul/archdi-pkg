@@ -4,7 +4,7 @@
 options=()
 options+=("Plasma5" "By MatMoul")
 options+=("XFCE4" "(Help Wanted)")
-options+=("Gnome" "(Help Wanted)")
+options+=("Gnome" "By KuoHuanHuan")
 options+=("Cinnamon" "By FredBezies")
 options+=("LXDE" "(Help Wanted)")
 options+=("LXDE-GTK3" "(Help Wanted)")

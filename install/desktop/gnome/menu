@@ -2,8 +2,9 @@
 . ./lib
 
 options=()
-options+=("gnome" "")
-options+=("gnome-extra" "")
+options+=("Gnome Base" "")
+options+=("Gnome Extra" "")
+options+=("Gnome Tweaks" "")
 
 defaultitem=""
 sel=$(whiptail --backtitle "$apptitle" --title "Gnome Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
@@ -15,17 +16,34 @@ fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
-  'gnome')
-    require install/desktop/gnome/packages 755
-    sed -i "/^package=/c\package=\"$sel\"" install/desktop/gnome/packages
-    script install/desktop/gnome/packages
-    svcenable gdm
-  ;;
-  'gnome-extra')
-    require install/desktop/gnome/packages 755
-    sed -i "/^package=/c\package=\"$sel\"" install/desktop/gnome/packages
-    script install/desktop/gnome/packages
-  ;;
+  'Gnome Base') script install/desktop/gnome/base;;
+  'Gnome Extra') script install/desktop/gnome/ex;;
+  'Gnome Tweaks') script install/desktop/gnome/twk;;
+esac
+
+exit 0
+
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("Plasma Packages" "")
+options+=("KDE Applications" "")
+options+=("Complements" "")
+
+defaultitem=""
+sel=$(whiptail --backtitle "$apptitle" --title "Plasma5 Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
+
+case $sel in
+  'Plasma Packages') script install/desktop/plasma5/plasma-packages;;
+  'KDE Applications') menu install/desktop/plasma5/kdeapps/menu;;
+  'Complements') script install/desktop/plasma5/complements;;
 esac
 
 exit 0

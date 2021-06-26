@@ -1,0 +1,27 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("partitionmanager" "" on)
+options+=("gnome-keyring" "" on)
+options+=("xsettingsd" "" on)
+options+=("kdeconnect" "" off)
+options+=("sshfs" "(For kdeconnect)" off)
+options+=("systemdgenie" "" off)
+
+sel=$(whiptail --backtitle "$apptitle" --title "Plasma Complements :" --checklist "" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+
+for itm in $sel; do
+  case $itm in
+    *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
+  esac
+done
+
+instpkg "$pkg" "$aurpkg"
+
+exit 0
