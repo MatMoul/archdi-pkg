@@ -2,8 +2,7 @@
 . ./lib
 
 options=()
-options+=("gnome" "")
-options+=("gnome-extra" "")
+options+=("Gnome" "")
 
 defaultitem=""
 sel=$(whiptail --backtitle "$apptitle" --title "Gnome Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
@@ -15,17 +14,8 @@ fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
-  'gnome')
-    require install/desktop/gnome/packages 755
-    sed -i "/^package=/c\package=\"$sel\"" install/desktop/gnome/packages
-    script install/desktop/gnome/packages
-    svcenable gdm
-  ;;
-  'gnome-extra')
-    require install/desktop/gnome/packages 755
-    sed -i "/^package=/c\package=\"$sel\"" install/desktop/gnome/packages
-    script install/desktop/gnome/packages
-  ;;
+  'Gnome') script install/desktop/gnome/gnome;
+  'Gnome Extra') script install/desktop/gnome/extra;
 esac
 
 exit 0
