@@ -7,7 +7,7 @@ package="gnome-tweaks"
 items=$(pacman -Sqg $package)
 for item in $items; do
   case $item in
-    "gnome-shell-extensions")  options+=("$item" "" off);;
+    "gnome-shell")  options+=("$item" "" off);;
     *) options+=("$item" "" on);;
   esac
 done

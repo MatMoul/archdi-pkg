@@ -7,7 +7,7 @@ package="gnome"
 items=$(pacman -Sqg $package)
 for item in $items; do
   case $item in
-    "gnome-shell")  options+=("$item" "" on);;
+    "gdm")  options+=("$item" "" on);;
     *) options+=("$item" "" on);;
   esac
 done
