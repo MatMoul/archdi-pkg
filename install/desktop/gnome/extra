@@ -7,6 +7,7 @@ package="gnome-extra"
 items=$(pacman -Sqg $package)
 for item in $items; do
   case $item in
+    "gdm")  options+=("$item" "" on);;
     *) options+=("$item" "" on);;
   esac
 done
@@ -24,5 +25,6 @@ for itm in $sel; do
 done
 
 instpkg "$pkg" "$aurpkg"
+done
 
 exit 0

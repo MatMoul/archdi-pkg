@@ -2,9 +2,7 @@
 . ./lib
 
 options=()
-options+=("Gnome Base" "")
-options+=("Gnome Extra" "")
-options+=("Gnome Tweaks" "")
+options+=("Gnome" "")
 
 defaultitem=""
 sel=$(whiptail --backtitle "$apptitle" --title "Gnome Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
@@ -16,9 +14,8 @@ fi
 sed -i "/^defaultitem=/c\defaultitem=\"$sel\"" $0
 
 case $sel in
-  'Gnome Base') script install/desktop/gnome/base;;
-  'Gnome Extra') script install/desktop/gnome/ex;;
-  'Gnome Tweaks') script install/desktop/gnome/twk;;
+  'Gnome') script install/desktop/gnome/gnome;
+  'Gnome Extra') script install/desktop/gnome/extra;
 esac
 
 exit 0
