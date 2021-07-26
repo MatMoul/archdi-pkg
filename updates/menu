@@ -7,33 +7,23 @@ if [ ! -f /usr/bin/pacdiff ]; then
   options+=("" "")
 fi
 
-if [ -f /usr/bin/trizen ]; then
-  options+=("Upgrade with trizen" "trizen -Syu")
-  aurhelper=1
-fi
 if [ -f /usr/bin/paru ]; then
   options+=("Upgrade with paru" "paru -Syu")
+  aurhelper=1
+fi
+if [ -f /usr/bin/trizen ]; then
+  options+=("Upgrade with trizen" "trizen -Syu")
   aurhelper=1
 fi
 if [ -f /usr/bin/yay ]; then
   options+=("Upgrade with yay" "yay -Syu")
   aurhelper=1
 fi
-if [ -f /usr/bin/aurman ]; then
-  options+=("Upgrade with aurman" "aurman -Syu")
-  aurhelper=1
-fi
-if [ -f /usr/bin/yaourt ]; then
-  options+=("Upgrade with yaourt" "yaourt -Syua")
-  aurhelper=1
-fi
 
 if [ ! "$aurhelper" = "1" ]; then
+  options+=("Install paru" "(+2GB ram)")
   options+=("Install trizen" "")
-  options+=("Install paru" "")
   options+=("Install yay" "")
-  options+=("Install aurman" "")
-  options+=("Install yaourt" "(End of life)")
   options+=("" "")
 fi
 options+=("Upgrade" "pacman -Syu")
@@ -61,20 +51,14 @@ if [ "$aurhelper" = "1" ]; then
   if [ ! -f /usr/bin/aurvote ]; then
     options+=("Install aurvote" "(AUR)")
   fi
-  if [ ! -f /usr/bin/trizen ]; then
-    options+=("Install trizen" "")
-  fi
   if [ ! -f /usr/bin/paru ]; then
     options+=("Install paru" "")
   fi
+  if [ ! -f /usr/bin/trizen ]; then
+    options+=("Install trizen" "")
+  fi
   if [ ! -f /usr/bin/yay ]; then
     options+=("Install yay" "")
-  fi
-  if [ ! -f /usr/bin/aurman ]; then
-    options+=("Install aurman" "")
-  fi
-  if [ ! -f /usr/bin/yaourt ]; then
-    options+=("Install yaourt" "(End of life)")
   fi
 fi
 
@@ -121,25 +105,17 @@ checkpackagequerydependencies(){
 clear
 case $sel in
   'Upgrade') pacman -Syu;;
-  'Upgrade with trizen')
-    checkaurdependencies
-    sudo -u aurbuilder trizen -Syu
-  ;;
-  'Upgrade with aurman')
-    checkaurdependencies
-    sudo -u aurbuilder aurman -Syu
-  ;;
   'Upgrade with paru')
     checkaurdependencies
     sudo -u aurbuilder paru -Syu
   ;;
+  'Upgrade with trizen')
+    checkaurdependencies
+    sudo -u aurbuilder trizen -Syu
+  ;;
   'Upgrade with yay')
     checkaurdependencies
     sudo -u aurbuilder yay -Syu
-  ;;
-  'Upgrade with yaourt')
-    checkaurdependencies
-    sudo -u aurbuilder yaourt -Syua
   ;;
   'Clean orphan') pacman -Rns $(pacman -Qqtd);;
   'Clean cache') pacman -Sc;;
@@ -184,6 +160,21 @@ case $sel in
   'Install downgrade')
     instpkg "" "downgrade"
   ;;
+  'Install paru')
+    if(confirm "Paru allows you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall paru ?") then
+      clear
+      checkaurdependencies
+      if (( "$(cat /proc/meminfo | grep MemTotal | sed 's/[^0-9]*//g')" < 2024720 )); then
+	      echo "/tmp is way small!"
+        echo "You need more than 2GB ram to proceed."
+        exit 1
+      fi
+      cd /tmp/aurbuilder
+      sudo -u aurbuilder git clone https://aur.archlinux.org/paru.git
+      cd paru
+      sudo -u aurbuilder makepkg -si
+    fi
+  ;;
   'Install trizen')
     if(confirm "Trizen allows you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall trizen ?") then
       clear
@@ -194,28 +185,6 @@ case $sel in
       sudo -u aurbuilder makepkg -si
     fi
   ;;
-  'Install aurman')
-    if(confirm "Aurman allows you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall aurman ?") then
-      clear
-      checkaurdependencies
-      cd /tmp/aurbuilder
-      sudo -u aurbuilder git clone https://aur.archlinux.org/aurman.git
-      cd aurman
-      sudo -u aurbuilder gpg --recv-key 465022E743D71E39
-      sudo -u aurbuilder makepkg -si
-      #sudo -u aurbuilder makepkg -si --skippgpcheck
-    fi
-  ;;
-  'Install paru')
-    if(confirm "Paru allows you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall paru ?") then
-      clear
-      checkaurdependencies
-      cd /tmp/aurbuilder
-      sudo -u aurbuilder git clone https://aur.archlinux.org/paru.git
-      cd paru
-      sudo -u aurbuilder makepkg -si
-    fi
-  ;;
   'Install yay')
     if(confirm "Yay allows you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yay ?") then
       clear
@@ -223,17 +192,6 @@ case $sel in
       cd /tmp/aurbuilder
       sudo -u aurbuilder git clone https://aur.archlinux.org/yay.git
       cd yay
-      sudo -u aurbuilder makepkg -si
-    fi
-  ;;
-  'Install yaourt')
-    if(confirm "Yaourt allows you to access the AUR applications.\nBecause is not possible to compile applications as root,\nthis installer create an aurbuilder user.\n\nInstall yaourt ?") then
-      clear
-      checkaurdependencies
-      checkpackagequerydependencies
-      cd /tmp/aurbuilder
-      sudo -u aurbuilder git clone https://aur.archlinux.org/yaourt.git
-      cd yaourt
       sudo -u aurbuilder makepkg -si
     fi
   ;;
