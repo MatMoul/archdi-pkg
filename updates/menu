@@ -165,7 +165,7 @@ case $sel in
       clear
       checkaurdependencies
       if (( "$(cat /proc/meminfo | grep MemTotal | sed 's/[^0-9]*//g')" < 2024720 )); then
-	      echo "/tmp is way small!"
+	echo "/tmp is way small!"
         echo "You need more than 2GB ram to proceed."
         exit 1
       fi
