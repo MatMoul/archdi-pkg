@@ -26,19 +26,14 @@ options+=("vdir" "vdir --color=auto" on)
 options+=("watch" "watch --color" on)
 options+=("man" "color function" on)
 options+=("mkdir" "mkdir -pv" off)
+if [ -f /usr/bin/paru ]; then
+	options+=("paru-bin" "sudo -u aurbuilder paru" on)
+fi
 if [ -f /usr/bin/trizen ]; then
 	options+=("trizen" "sudo -u aurbuilder trizen" on)
 fi
 if [ -f /usr/bin/yay ]; then
 	options+=("yay" "sudo -u aurbuilder yay" on)
-fi
-if [ -f /usr/bin/aurman ]; then
-	options+=("aurman" "sudo -u aurbuilder aurman" on)
-fi
-if [ -f /usr/bin/yaourt ]; then
-	options+=("yaourt" "sudo -u aurbuilder yaourt --color" on)
-	options+=("yaourt(2)" "sudo -u aurbuilder yaourt" off)
-	options+=("yaourt(3)" "yaourt --color" off)
 fi
 
 sel=$(whiptail --backtitle "$apptitle" --title "Aliases in /etc/profile.d/alias.sh :" --checklist "" --cancel-button "Back" 0 0 0 \
@@ -89,12 +84,9 @@ for itm in $sel; do
 			echo '}' >> /etc/profile.d/alias.sh
 		;;
 		'"mkdir"') echo "alias mkdir='mkdir -pv'" >> /etc/profile.d/alias.sh;;
+		'"paru-bin"') echo "alias paru='sudo -u aurbuilder paru'" >> /etc/profile.d/alias.sh;;
 		'"trizen"') echo "alias trizen='sudo -u aurbuilder trizen'" >> /etc/profile.d/alias.sh;;
 		'"yay"') echo "alias yay='sudo -u aurbuilder yay'" >> /etc/profile.d/alias.sh;;
-		'"aurman"') echo "alias aurman='sudo -u aurbuilder aurman'" >> /etc/profile.d/alias.sh;;
-		'"yaourt"') echo "alias yaourt='sudo -u aurbuilder yaourt --color'" >> /etc/profile.d/alias.sh;;
-		'"yaourt(2)"') echo "alias yaourt='sudo -u aurbuilder yaourt'" >> /etc/profile.d/alias.sh;;
-		'"yaourt(3)"') echo "alias yaourt='yaourt --color'" >> /etc/profile.d/alias.sh;;
 	esac
 done
 
