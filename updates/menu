@@ -30,6 +30,19 @@ if [ -f /var/lib/pacman/db.lck ]; then
   options+=("Remove db.lck" "rm /var/lib/pacman/db.lck")
   options+=("" "")
 fi
+if [ "$aurhelper" = "1" ]; then
+  if [ ! -f /usr/bin/downgrade ]; then
+    options+=("Install downgrade" "")
+    options+=("" "")
+  fi
+  if [ ! -f /usr/bin/pkgstats ]; then
+    options+=("Install pkgstats" "")
+  fi
+  if [ ! -f /usr/bin/aurvote ]; then
+    options+=("Install aurvote" "(AUR)")
+  fi
+options+=("" "")
+fi
 if [ ! -f /usr/bin/trizen ]; then
   options+=("Install trizen" "")
 fi
@@ -39,22 +52,9 @@ fi
 if [ ! -f /usr/bin/aurman ]; then
   options+=("Install aurman" "")
 fi
-options+=("" "")
 if [ ! -f /usr/bin/pacdiff ]; then
-  options+=("Install pacman-contrib" "")
   options+=("" "")
-fi
-if [ "$aurhelper" = "1" ]; then
-  if [ ! -f /usr/bin/pkgstats ]; then
-    options+=("Install pkgstats" "")
-  fi
-  if [ ! -f /usr/bin/aurvote ]; then
-    options+=("Install aurvote" "(AUR)")
-  fi
-  if [ ! -f /usr/bin/downgrade ]; then
-    options+=("" "")
-    options+=("Install downgrade" "")
-  fi
+  options+=("Install pacman-contrib" "")
 fi
 
 sel=$(whiptail --backtitle "$apptitle" --title "Updates Menu :" --menu "" --cancel-button "Back" 0 0 0 \
