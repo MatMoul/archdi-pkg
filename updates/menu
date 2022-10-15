@@ -19,10 +19,6 @@ if [ -f /usr/bin/aurman ]; then
   options+=("Upgrade with aurman" "aurman -Syu")
   aurhelper=1
 fi
-if [ -f /usr/bin/yaourt ]; then
-  options+=("Upgrade with yaourt" "yaourt -Syua")
-  aurhelper=1
-fi
 
 if [ ! "$aurhelper" = "1" ]; then
   options+=("Install trizen" "")
@@ -64,9 +60,6 @@ if [ "$aurhelper" = "1" ]; then
   fi
   if [ ! -f /usr/bin/aurman ]; then
     options+=("Install aurman" "")
-  fi
-  if [ ! -f /usr/bin/yaourt ]; then
-    options+=("Install yaourt" "(End of life)")
   fi
 fi
 
