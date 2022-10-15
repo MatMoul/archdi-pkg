@@ -32,11 +32,11 @@ if [ -f /var/lib/pacman/db.lck ]; then
 fi
 if [ "$aurhelper" = "1" ]; then
   if [ ! -f /usr/bin/downgrade ]; then
-    options+=("Install downgrade" "")
+    options+=("Install downgrade" "(AUR)")
     options+=("" "")
   fi
   if [ ! -f /usr/bin/pkgstats ]; then
-    options+=("Install pkgstats" "")
+    options+=("Install pkgstats" "(AUR)")
   fi
   if [ ! -f /usr/bin/aurvote ]; then
     options+=("Install aurvote" "(AUR)")
