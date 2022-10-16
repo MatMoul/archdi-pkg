@@ -13,6 +13,7 @@ for item in $items; do
     "kde-utilities") options+=("$item" "" on);;
     "kde-applications") ;;
     "kde-development-environment") ;;
+    "kde-sdk") ;;
     *) options+=("$item" "" off);;
   esac
 done
