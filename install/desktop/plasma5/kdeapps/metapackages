@@ -13,8 +13,6 @@ for item in $items; do
     "kdeutils") options+=("$item" "" on);;
     "kde-pim") options+=("$item" "" on);;
     "kdeartwork") options+=("$item" "" on);;
-    "kde-applications");;
-    "kde-development-environment");;
     *) options+=("$item" "" off);;
   esac
 done
