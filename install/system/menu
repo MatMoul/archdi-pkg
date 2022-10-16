@@ -21,7 +21,7 @@ case $sel in
   'Kernel') menu install/system/kernel/menu;;
   'Services') script install/system/services/menu;;
   'File System') script install/system/filesystem;;
-  'Sound') script install/system/sound/sound;;
+  'Sound') menu install/system/sound/menu;;
   'Print') script install/system/print;;
 esac
 
