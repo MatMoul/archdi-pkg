@@ -19,7 +19,7 @@ for item in $items; do
     "kde-graphics") ;;
     "kde-multimedia") ;;
     "kde-sdk") ;;
-    "kde-pim");;
+    "kde-pim") ;;
     *) options+=("$item" "");;
   esac
 done

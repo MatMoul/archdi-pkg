@@ -11,6 +11,8 @@ for item in $items; do
     "kde-network") options+=("$item" "" on);;
     "kde-system") options+=("$item" "" on);;
     "kde-utilities") options+=("$item" "" on);;
+    "kde-applications") ;;
+    "kde-development-environment") ;;
     *) options+=("$item" "" off);;
   esac
 done
