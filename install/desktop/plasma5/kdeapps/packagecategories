@@ -18,8 +18,10 @@ for item in $items; do
     "kde-network") ;;
     "kde-graphics") ;;
     "kde-multimedia") ;;
-    "kde-sdk") ;;
+    "kdesdk") ;;
     "kde-pim") ;;
+    "kde-applications") ;;
+    "kde-development-environment") ;;
     *) options+=("$item" "");;
   esac
 done
