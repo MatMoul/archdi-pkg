@@ -12,8 +12,8 @@ options+=("seamonkey" "(GTK)" off)
 options+=("seamonkey-i18n" "(AUR)" off)
 options+=("midori" "(GTK)" off)
 options+=("falkon" "(QT)" off)
-options+=("vivaldi" "(AUR) (GTK)" off)
-options+=("vivaldi-ffmpeg-codecs" "(AUR) Non-free codecs" off)
+options+=("vivaldi" "(GTK)" off)
+options+=("vivaldi-ffmpeg-codecs" "Non-free codecs" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Web Browser applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
@@ -24,8 +24,6 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"vivaldi"' | \
-    '"vivaldi-ffmpeg-codecs"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     '"firefox-i18n"' | \
     '"seamonkey-i18n"') pkg="$pkg";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
