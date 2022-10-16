@@ -1,0 +1,30 @@
+#!/bin/bash
+. ./lib
+
+options=()
+options+=("wireplumber" "" on)
+options+=("pipewire-alsa" "" on)
+options+=("pipewire-pulse" "" on)
+options+=("pipewire-v4l2" "" on)
+options+=("pipewire-zeroconf" "" on)
+options+=("gst-plugin-pipewire" "" on)
+options+=("easyeffects" "" off)
+options+=("pipewire-jack" "" off)
+options+=("pipewire-x11-bell" "" off)
+
+sel=$(whiptail --backtitle "$apptitle" --title "System Wireplumper Install" --checklist "" --cancel-button "Back" 0 0 0 \
+  "${options[@]}" \
+  3>&1 1>&2 2>&3)
+if [ ! "$?" = "0" ]; then
+  exit 1
+fi
+
+for itm in $sel; do
+  case $itm in
+    *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
+  esac
+done
+
+instpkg "$pkg" "$aurpkg"
+
+exit 0
