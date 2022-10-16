@@ -85,7 +85,7 @@ find . ! -name 'pkg.tar' -exec rm -rf "$1" {} \;
 cd ../..
 
 echo "Publish release..."
-scp -r $targetpath matmoul@web.sourceforge.net:/home/frs/project/$prjname/release/pkg/
+rsync -r $targetpath matmoul@web.sourceforge.net:/home/frs/project/$prjname/release/pkg/
 
 echo "Update pkg redirect page..."
 pubfile=.build/index.php
