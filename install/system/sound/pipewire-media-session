@@ -4,12 +4,12 @@
 options=()
 options+=("pipewire-media-session" "" on)
 options+=("pipewire-alsa" "" on)
+options+=("pipewire-jack" "" on)
 options+=("pipewire-pulse" "" on)
 options+=("pipewire-v4l2" "" on)
 options+=("pipewire-zeroconf" "" on)
 options+=("gst-plugin-pipewire" "" on)
 options+=("easyeffects" "" off)
-options+=("pipewire-jack" "" off)
 options+=("pipewire-x11-bell" "" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "System PPMediaSession Install" --checklist "" --cancel-button "Back" 0 0 0 \
