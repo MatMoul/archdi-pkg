@@ -9,7 +9,7 @@ options+=("kde-network" "")
 options+=("kde-graphics" "")
 options+=("kde-multimedia" "")
 options+=("kdesdk" "")
-options+=("kdepim" "")
+options+=("kde-pim" "")
 items=$(for i in $(pacman -Sqs meta | grep kde); do echo ${i} | sed 's/-meta//';done)
 for item in $items; do
   case $item in
@@ -19,9 +19,7 @@ for item in $items; do
     "kde-graphics") ;;
     "kde-multimedia") ;;
     "kde-sdk") ;;
-    "kde-pim") ;;
-    "kde-applications");;
-    "kde-development-environment");;
+    "kde-pim");;
     *) options+=("$item" "");;
   esac
 done

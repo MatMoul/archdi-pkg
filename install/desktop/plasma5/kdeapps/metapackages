@@ -11,7 +11,7 @@ for item in $items; do
     "kdegraphics") options+=("$item" "" on);;
     "kdemultimedia") options+=("$item" "" on);;
     "kdeutils") options+=("$item" "" on);;
-    "kdepim") options+=("$item" "" on);;
+    "kde-pim") options+=("$item" "" on);;
     "kdeartwork") options+=("$item" "" on);;
     "kde-applications");;
     "kde-development-environment");;

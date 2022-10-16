@@ -7,37 +7,41 @@ package=""
 items=$(pacman -Sqg $package)
 for item in $items; do
   case $item in
-    "dolphin" | \
-    "kate" | \
-    "kdialog" | \
-    "kfind" | \
-    "konsole" | \
-    "kwrite" | \
-    "kcron" | \
-    "ksystemlog" | \
     "ark" | \
+    "audiocd-kio" | \
+    "dolphin" | \
+    "elisa" | \
+    "ffmpegthumbs" | \
+    "filesharing" | \
+    "gwenview" | \
+    "kate" | \
     "kcalc" | \
     "kcharselect" | \
-    "kgpg" | \
-    "kwalletmanager" | \
-    "print-manager" | \
-    "gwenview" | \
     "kcolorchooser" | \
+    "kcron" | \
     "kdegraphics-mobipocket" | \
     "kdegraphics-thumbnailers" | \
-    "kolourpaint" | \
-    "okular" | \
-    "spectacle" | \
-    "audiocd-kio" | \
-    "ffmpegthumbs" | \
-    "kmix" | \
     "kdenetwork-filesharing" | \
-    "filesharing" | \
-    "kio-extras" | \
-    "signon-kwallet-extension" | \
-    "zeroconf-ioslave" | \
     "kdesdk-thumbnailers" | \
-    "thumbnailers") options+=("$item" "" on);;
+    "kdialog" | \
+    "kfind" | \
+    "kgpg" | \
+    "kio-extras" | \
+    "kio-zeroconf" | \
+    "kolourpaint" | \
+    "konsole" | \
+    "ksystemlog" | \
+    "kwalletmanager" | \
+    "kwrite" | \
+    "markdownpart" | \
+    "okular" | \
+    "partitionmanager" | \
+    "print-manager" | \
+    "signon-kwallet-extension" | \
+    "spectacle" | \
+    "svgpart" | \
+    "thumbnailers" | \
+    "zeroconf-ioslave") options+=("$item" "" on);;
     *) options+=("$item" "" off);;
   esac
 done

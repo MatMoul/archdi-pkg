@@ -6,45 +6,41 @@ options=()
 items=$(pacman -Sqg kde-applications)
 for item in $items; do
   case $item in
-    "dolphin" | \
-    "kate" | \
-    "kdebase-kdepasswd" | \
-    "kdepasswd" | \
-    "kdebase-kdialog" | \
-    "kdialog" | \
-    "kdebase-kfind" | \
-    "kfind" | \
-    "konsole" | \
-    "kwrite" | \
-    "kcron" | \
-    "kdeadmin-kuser" | \
-    "kuser" | \
-    "ksystemlog" | \
     "ark" | \
+    "audiocd-kio" | \
+    "dolphin" | \
+    "elisa" | \
+    "ffmpegthumbs" | \
+    "filesharing" | \
+    "gwenview" | \
+    "kate" | \
     "kcalc" | \
     "kcharselect" | \
-    "kdeutils-kgpg" | \
-    "kgpg" | \
-    "kwalletmanager" | \
-    "print-manager" | \
-    "kdegraphics-okular" | \
-    "okular" | \
-    "spectacle" | \
-    "kmix" | \
-    "kdemultimedia-audiocd-kio" | \
-    "audiocd-kio" | \
-    "kdemultimedia-kmix" | \
-    "kmix" | \
-    "kdemultimedia-mplayerthumbs" | \
-    "mplayerthumbs" | \
+    "kcolorchooser" | \
+    "kcron" | \
+    "kdegraphics-mobipocket" | \
+    "kdegraphics-thumbnailers" | \
     "kdenetwork-filesharing" | \
-    "filesharing" | \
-    "kdenetwork-zeroconf-ioslave" | \
-    "zeroconf-ioslave" | \
+    "kdesdk-thumbnailers" | \
+    "kdialog" | \
+    "kfind" | \
+    "kgpg" | \
     "kio-extras" | \
+    "kio-zeroconf" | \
+    "kolourpaint" | \
+    "konsole" | \
+    "ksystemlog" | \
+    "kwalletmanager" | \
+    "kwrite" | \
+    "markdownpart" | \
+    "okular" | \
+    "partitionmanager" | \
+    "print-manager" | \
     "signon-kwallet-extension" | \
+    "spectacle" | \
+    "svgpart" | \
     "thumbnailers" | \
-    "kdesdk-thumbnailers") options+=("$item" "" on);;
+    "zeroconf-ioslave") options+=("$item" "" on);;
     *) options+=("$item" "" off);;
   esac
 done
