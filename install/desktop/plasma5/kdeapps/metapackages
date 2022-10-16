@@ -6,13 +6,11 @@ options=()
 items=$(for i in $(pacman -Sqs meta | grep kde); do echo ${i} | sed 's/-meta//';done)
 for item in $items; do
   case $item in
-    "kdebase") options+=("$item" "" on);;
-    "kdeadmin") options+=("$item" "" on);;
-    "kdegraphics") options+=("$item" "" on);;
-    "kdemultimedia") options+=("$item" "" on);;
-    "kdeutils") options+=("$item" "" on);;
-    "kde-pim") options+=("$item" "" on);;
-    "kdeartwork") options+=("$item" "" on);;
+    "kde-graphics") options+=("$item" "" on);;
+    "kde-multimedia") options+=("$item" "" on);;
+    "kde-network") options+=("$item" "" on);;
+    "kde-system") options+=("$item" "" on);;
+    "kde-utilities") options+=("$item" "" on);;
     *) options+=("$item" "" off);;
   esac
 done
