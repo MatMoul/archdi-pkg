@@ -28,7 +28,7 @@ options+=("s3fs-fuse" "" off)
 #options+=("f2fs-tools" "" off) # Normally installed by dependencies
 #options+=("favfs2" "" off) # Normally installed by dependencies
 
-sel=$(whiptail --backtitle "$apptitle" --title "File System Install" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "File System Install" --cancel-button "Back" --checklist "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 
@@ -38,7 +38,7 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"hfsprogs"')
+    "hfsprogs")
       aurpkg="$aurpkg $(echo $itm | sed 's/"//g')"
     ;;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;

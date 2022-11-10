@@ -93,7 +93,7 @@ choosepkg(){
   for item in $items; do
     options+=("$item" "" off)
   done
-  sel=$(whiptail --backtitle "$apptitle" --title "$title" --checklist "" --cancel-button "Back" 0 0 0 \
+  sel=$(dialog --backtitle "$apptitle" --title "$title" --cancel-button "Back" --checklist "" 0 0 0 \
     "${options[@]}" \
     3>&1 1>&2 2>&3)
   if [ ! "$?" = "0" ]; then
@@ -134,7 +134,7 @@ chooseaurpkg(){
   for item in $items; do
     options+=("$item" "" off)
   done
-  sel=$(whiptail --backtitle "$apptitle" --title "$title" --checklist "" --cancel-button "Back" 0 0 0 \
+  sel=$(dialog --backtitle "$apptitle" --title "$title" --cancel-button "Back" --checklist "" 0 0 0 \
     "${options[@]}" \
     3>&1 1>&2 2>&3)
   if [ ! "$?" = "0" ]; then
@@ -165,7 +165,7 @@ require(){
 # $1 : message
 # $2 : args
 confirm(){
-  whiptail --backtitle "$apptitle" --yesno "$1" $2 0 0
+  dialog --backtitle "$apptitle" $2 --yesno "$1" 0 0
 }
 
 

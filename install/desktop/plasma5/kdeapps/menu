@@ -9,7 +9,7 @@ options+=("Categories Meta" "kde-meta-")
 options+=("Categories" "My favorite")
 
 defaultitem=""
-sel=$(whiptail --backtitle "$apptitle" --title "KDE Apps Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "KDE Apps Install Menu :" --default-item "$defaultitem" --cancel-button "Back" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

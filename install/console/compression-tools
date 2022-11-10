@@ -8,7 +8,7 @@ options+=("unrar" "RAR files" on)
 options+=("p7zip" "File Archiver" on)
 options+=("lzop" "LZO Compressor" on)
 
-sel=$(whiptail --backtitle "$apptitle" --title "Console Compression Tools :" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Console Compression Tools :" --cancel-button "Back" --checklist "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

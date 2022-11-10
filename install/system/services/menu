@@ -33,7 +33,7 @@ options+=("ntp" "" off)
 #options+=("rsyslog" "" off)
 #options+=("systemd-readahead" "(AUR) boot improvement" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "Services Install" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Services Install" --cancel-button "Back" --checklist "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -42,8 +42,8 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"numlockon"') ;;
-    '"systemd-readahead"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    "numlockon") ;;
+    "systemd-readahead") aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
@@ -53,36 +53,36 @@ instpkg "$pkg" "$aurpkg"
 
 for itm in $sel; do
   case $itm in
-    '"networkmanager"')
+    "networkmanager")
       systemctl disable dhcpcd
       if (svcenable NetworkManager) then
         svcdisable dhcpcd
       fi
     ;;
-    '"openssh"')
+    "openssh")
       svcenable sshd "SSH Server"
     ;;
-    '"cronie"')
+    "cronie")
       svcenable cronie
     ;;
-    '"bluez"')
+    "bluez")
       svcenable bluetooth "Bluetooth Service"
     ;;
-    '"ntp"')
+    "ntp")
       svcenable ntpd "NTP Server"
     ;;
-    '"numlockon"') script install/system/services/numlockon;;
-    '"haveged"')
+    "numlockon") script install/system/services/numlockon;;
+    "haveged")
 			svcenable haveged "Haveged"
     ;;
-    '"syslog-ng"')
+    "syslog-ng")
       #echo "ForwardToSyslog=yes" >> /etc/systemd/journald.conf
       systemctl enable syslog-ng@default
     ;;
-    '"rsyslog"')
+    "rsyslog")
       systemctl enable rsyslog
     ;;
-    '"net-snmp"')
+    "net-snmp")
       if (confirm "Create and edit /etc/snmp/snmpd.conf ?") then
         mkdir /etc/snmp > /dev/null
         echo "# SNMP Server Config" > /etc/snmp/snmpd.conf
@@ -105,7 +105,7 @@ for itm in $sel; do
       fi
       svcenable snmpd "SNMP Server"
     ;;
-    '"systemd-readahead"')
+    "systemd-readahead")
       svcenable systemd-readahead
     ;;
   esac

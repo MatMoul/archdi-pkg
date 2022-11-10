@@ -17,7 +17,7 @@ options+=("Deepin" "(Help Wanted)")
 #options+=("i3" "")
 
 defaultitem=""
-sel=$(whiptail --backtitle "$apptitle" --title "Install Desktop Menu :" --menu "First item is most maintained" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Install Desktop Menu :" --default-item "$defaultitem" --cancel-button "Back" --menu "First item is most maintained" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

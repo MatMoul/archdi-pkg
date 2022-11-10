@@ -9,7 +9,7 @@ options+=("ttf-dejavu" "" on)
 options+=("ttf-liberation" "" on)
 options+=("xorg-fonts-type1" "" on)
 
-sel=$(whiptail --backtitle "$apptitle" --title "XOrg Default Fonts :" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "XOrg Default Fonts :" --cancel-button "Back" --checklist "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 

@@ -12,7 +12,7 @@ for item in $items; do
   esac
 done
 
-sel=$(whiptail --backtitle "$apptitle" --title "KDE Plasma :" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "KDE Plasma :" --cancel-button "Back" --checklist "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 

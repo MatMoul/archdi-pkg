@@ -28,7 +28,7 @@ for item in $items; do
 done
 
 defaultitem=""
-sel=$(whiptail --backtitle "$apptitle" --title "KDE Apps Categories :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "KDE Apps Categories :" --default-item "$defaultitem" --cancel-button "Back" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

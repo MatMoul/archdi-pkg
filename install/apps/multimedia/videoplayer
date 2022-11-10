@@ -9,7 +9,7 @@ options+=("mpv" "(GTK) Recommended for smplayer" off)
 options+=("celluloid" "(GTK) Video player" off)
 #options+=("streamstudio-bin" "(AUR) Stream video Player" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "Video Player applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Video Player applications :" --cancel-button "Back" --checklist "Choose what you want" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -18,7 +18,7 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"streamstudio-bin"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    "streamstudio-bin") aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done

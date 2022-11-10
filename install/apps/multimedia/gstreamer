@@ -11,7 +11,7 @@ options+=("gst-libav" "" on)
 #options+=("gst-plugin-libde265" "(AUR)" off)
 #options+=("libde265" "(AUR)" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "GStreamer :" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "GStreamer :" --cancel-button "Back" --checklist "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

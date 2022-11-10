@@ -7,7 +7,7 @@ options+=("List Users" "")
 options+=("Delete User" "")
 
 defaultitem=""
-sel=$(whiptail --backtitle "$apptitle" --title "Users Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Users Menu :" --default-item "$defaultitem" --cancel-button "Back" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -22,7 +22,7 @@ case $sel in
 		  read -n1 -p "press a key to continue"
 		;;
 		'Add User')
-		  username=$(whiptail --backtitle "$apptitle" --title "Add User" --inputbox "Enter the new user name :" 0 0 3>&1 1>&2 2>&3)
+		  username=$(dialog --backtitle "$apptitle" --title "Add User" --inputbox "Enter the new user name :" 0 0 3>&1 1>&2 2>&3)
 		  if [ "$?" = "0" ]; then
 		    useradd -d /home/$username -s /bin/bash -m -N $username
 		    clear
@@ -36,7 +36,7 @@ case $sel in
 		  fi
 		;;
 		'Delete User')
-		  username=$(whiptail --backtitle "$apptitle" --title "Delete User" --inputbox "Enter the user name to delete :" 0 0 3>&1 1>&2 2>&3)
+		  username=$(dialog --backtitle "$apptitle" --title "Delete User" --inputbox "Enter the user name to delete :" 0 0 3>&1 1>&2 2>&3)
 		  if [ "$?" = "0" ]; then
 		    userdel -r -f $username
 		    grpck

@@ -6,7 +6,7 @@ options+=("ddrescue" "HD recovery tool" off)
 options+=("dd_rescue" "HD recovery tool" off)
 options+=("partclone" "Copy used block on partition" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "Console Recovery Tools :" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Console Recovery Tools :" --cancel-button "Back" --checklist "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

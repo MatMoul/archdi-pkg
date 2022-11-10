@@ -20,7 +20,7 @@ options+=("powertop" "power mon and management" off)
 options+=("gpm" "Console mouse support" off)
 options+=("liveroot" "(AUR) root overlay fs" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "Console Generic packages :" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Console Generic packages :" --cancel-button "Back" --checklist "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -29,7 +29,7 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"liveroot"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    "liveroot") aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
@@ -38,7 +38,7 @@ instpkg "$pkg" "$aurpkg"
 
 for itm in $sel; do
   case $itm in
-    '"gpm"')
+    "gpm")
       svcstart gpm
       svcenable gpm
     ;;

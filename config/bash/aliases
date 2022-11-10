@@ -41,7 +41,7 @@ if [ -f /usr/bin/yaourt ]; then
 	options+=("yaourt(3)" "yaourt --color" off)
 fi
 
-sel=$(whiptail --backtitle "$apptitle" --title "Aliases in /etc/profile.d/alias.sh :" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Aliases in /etc/profile.d/alias.sh :" --cancel-button "Back" --checklist "" 0 0 0 \
 	"${options[@]}" \
 	3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

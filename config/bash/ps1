@@ -6,7 +6,7 @@ options+=("Minimal" "/home #")
 options+=("User" "user:/home #")
 options+=("User and Hostname" "user@hostname:/home #")
 
-sel=$(whiptail --backtitle "$apptitle" --title "Bash PS Configuration :" --menu "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Bash PS Configuration :" --cancel-button "Back" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

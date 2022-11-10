@@ -14,7 +14,7 @@ else
 fi
 options+=("pulseaudio-equalizer" "Equalizer for PulseAudio" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "System Sound Install" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "System Sound Install" --cancel-button "Back" --checklist "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

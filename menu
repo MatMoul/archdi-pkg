@@ -8,7 +8,7 @@ options+=("Config" "")
 options+=("Shutdown" "")
 
 defaultitem=""
-sel=$(whiptail --backtitle "$apptitle" --title "Main Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Exit" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Main Menu :" --default-item "$defaultitem" --cancel-button "Exit" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

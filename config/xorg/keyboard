@@ -16,7 +16,7 @@ items=$(localectl list-x11-keymap-layouts)
 for item in $items; do
   options+=("$item" "")
 done
-layout=$(whiptail --backtitle "$apptitle" --title "Select keyboard layout :" --menu "" --cancel-button "Cancel" 0 0 0 \
+layout=$(dialog --backtitle "$apptitle" --title "Select keyboard layout :" --cancel-button "Cancel" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -31,7 +31,7 @@ items=$(localectl list-x11-keymap-models)
 for item in $items; do
   options+=("$item" "")
 done
-model=$(whiptail --backtitle "$apptitle" --title "Select keyboard model :" --menu "" --cancel-button "Cancel" 0 0 0 \
+model=$(dialog --backtitle "$apptitle" --title "Select keyboard model :" --cancel-button "Cancel" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -47,7 +47,7 @@ items=$(localectl list-x11-keymap-variants $layout)
 for item in $items; do
   options+=("$item" "")
 done
-variant=$(whiptail --backtitle "$apptitle" --title "Select keyboard variant :" --menu "" --cancel-button "Cancel" 0 0 0 \
+variant=$(dialog --backtitle "$apptitle" --title "Select keyboard variant :" --cancel-button "Cancel" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -64,7 +64,7 @@ items=$(localectl list-x11-keymap-options)
 for item in $items; do
   options+=("$item" "")
 done
-option=$(whiptail --backtitle "$apptitle" --title "Select keyboard option :" --menu "" --cancel-button "Cancel" 0 0 0 \
+option=$(dialog --backtitle "$apptitle" --title "Select keyboard option :" --cancel-button "Cancel" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

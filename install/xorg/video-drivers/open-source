@@ -7,7 +7,7 @@ for item in $items; do
   options+=("$item" "" off)
 done
 
-sel=$(whiptail --backtitle "$apptitle" --title "XOrg video drivers :" --checklist "Choose video drivers for your system :" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "XOrg video drivers :" --cancel-button "Back" --checklist "Choose video drivers for your system :" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

@@ -6,7 +6,7 @@ options+=("mate" "")
 options+=("mate-extra" "")
 
 defaultitem=""
-sel=$(whiptail --backtitle "$apptitle" --title "Mate Install Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Mate Install Menu :" --default-item "$defaultitem" --cancel-button "Back" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

@@ -9,7 +9,7 @@ options+=("" "")
 options+=("Edit /etc/sudoers" "")
 
 defaultitem="Add sudoer"
-sel=$(whiptail --backtitle "$apptitle" --title "Sudoers Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Sudoers Menu :" --default-item "$defaultitem" --cancel-button "Back" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -24,7 +24,7 @@ case $sel in
 		  for itm in $users; do
 		    userlist+=("$itm" "")
 		  done
-		  sel=$(whiptail --backtitle "$apptitle" --title "Add sudoer :" --menu "" --cancel-button "Cancel" 0 0 0 \
+		  sel=$(dialog --backtitle "$apptitle" --title "Add sudoer :" --cancel-button "Cancel" --menu "" 0 0 0 \
       "${userlist[@]}" \
       3>&1 1>&2 2>&3)
       if [ "$?" = "0" ]; then
@@ -39,7 +39,7 @@ case $sel in
           sudoerlist+=("$itm" "")
         fi
 		  done
-		  sel=$(whiptail --backtitle "$apptitle" --title "Edit sudoer :" --menu "" --cancel-button "Cancel" 0 0 0 \
+		  sel=$(dialog --backtitle "$apptitle" --title "Edit sudoer :" --cancel-button "Cancel" --menu "" 0 0 0 \
       "${sudoerlist[@]}" \
       3>&1 1>&2 2>&3)
       if [ "$?" = "0" ]; then
@@ -54,7 +54,7 @@ case $sel in
           sudoerlist+=("$itm" "")
 		    fi
 		  done
-		  sel=$(whiptail --backtitle "$apptitle" --title "Delete sudoer :" --menu "" --cancel-button "Cancel" 0 0 0 \
+		  sel=$(dialog --backtitle "$apptitle" --title "Delete sudoer :" --cancel-button "Cancel" --menu "" 0 0 0 \
       "${sudoerlist[@]}" \
       3>&1 1>&2 2>&3)
       if [ "$?" = "0" ]; then

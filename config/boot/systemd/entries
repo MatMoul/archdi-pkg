@@ -10,7 +10,7 @@ options+=("Create entry" "")
 options+=("Delete entry" "")
 
 defaultitem="Edit entry"
-sel=$(whiptail --backtitle "$apptitle" --title "Systemd Entries Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Systemd Entries Menu :" --default-item "$defaultitem" --cancel-button "Back" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -25,7 +25,7 @@ case $sel in
       for itm in $entries; do
         entrylist+=("${itm::-5}" "")
       done
-      sel=$(whiptail --backtitle "$apptitle" --title "Edit entry :" --menu "" --cancel-button "Cancel" 0 0 0 \
+      sel=$(dialog --backtitle "$apptitle" --title "Edit entry :" --cancel-button "Cancel" --menu "" 0 0 0 \
       "${entrylist[@]}" \
       3>&1 1>&2 2>&3)
       if [ "$?" = "0" ]; then
@@ -33,7 +33,7 @@ case $sel in
       fi
     ;;
     'Create entry')
-      entry=$(whiptail --backtitle "$apptitle" --title "Create entry" --inputbox "Enter the new entry name :" 0 0 3>&1 1>&2 2>&3)
+      entry=$(dialog --backtitle "$apptitle" --title "Create entry" --inputbox "Enter the new entry name :" 0 0 3>&1 1>&2 2>&3)
       if [ "$?" = "0" ]; then
         cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/$entry.conf
         sed -i "s/Arch Linux/$entry/" /boot/loader/entries/$entry.conf
@@ -46,7 +46,7 @@ case $sel in
       for itm in $entries; do
         entrylist+=("${itm::-5}" "")
       done
-      sel=$(whiptail --backtitle "$apptitle" --title "Delete entry :" --menu "" --cancel-button "Cancel" 0 0 0 \
+      sel=$(dialog --backtitle "$apptitle" --title "Delete entry :" --cancel-button "Cancel" --menu "" 0 0 0 \
       "${entrylist[@]}" \
       3>&1 1>&2 2>&3)
       if [ "$?" = "0" ]; then
@@ -61,7 +61,7 @@ case $sel in
       for itm in $entries; do
         entrylist+=("${itm::-5}" "" on)
       done
-      sel=$(whiptail --backtitle "$apptitle" --title "Update ucode of :" --checklist "" --cancel-button "Cancel" 0 0 0 \
+      sel=$(dialog --backtitle "$apptitle" --title "Update ucode of :" --cancel-button "Cancel" --checklist "" 0 0 0 \
       "${entrylist[@]}" \
       3>&1 1>&2 2>&3)
       if [ "$?" = "0" ]; then

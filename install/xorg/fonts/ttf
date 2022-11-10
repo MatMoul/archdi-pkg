@@ -9,7 +9,7 @@ for item in $items; do
   options+=("$item" "" off)
 done
 
-sel=$(whiptail --backtitle "$apptitle" --title "XOrg TTF :" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "XOrg TTF :" --cancel-button "Back" --checklist "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 
@@ -19,7 +19,7 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"ttf-ms-fonts"') aurpkg="$aurpkg ttf-ms-fonts";;
+    "ttf-ms-fonts") aurpkg="$aurpkg ttf-ms-fonts";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done

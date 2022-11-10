@@ -10,7 +10,7 @@ options+=("Disable" "systemctl disable")
 #options+=("Stop" "(Experimental)")
 
 defaultitem="Enable"
-sel=$(whiptail --backtitle "$apptitle" --title "Systemd services Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Systemd services Menu :" --default-item "$defaultitem" --cancel-button "Back" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -27,7 +27,7 @@ case $sel in
         svclist+=("$itm" "" off)
       fi
     done
-    sel=$(whiptail --backtitle "$apptitle" --title "Enable services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
+    sel=$(dialog --backtitle "$apptitle" --title "Enable services :" --cancel-button "Cancel" --checklist "" 0 0 0 \
       "${svclist[@]}" \
       3>&1 1>&2 2>&3)
     if [ "$?" = "0" ]; then
@@ -44,7 +44,7 @@ case $sel in
         svclist+=("$itm" "" off)
       fi
     done
-    sel=$(whiptail --backtitle "$apptitle" --title "Disable services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
+    sel=$(dialog --backtitle "$apptitle" --title "Disable services :" --cancel-button "Cancel" --checklist "" 0 0 0 \
       "${svclist[@]}" \
       3>&1 1>&2 2>&3)
     if [ "$?" = "0" ]; then
@@ -61,7 +61,7 @@ case $sel in
         svclist+=("$itm" "" off)
       fi
     done
-    sel=$(whiptail --backtitle "$apptitle" --title "Restart services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
+    sel=$(dialog --backtitle "$apptitle" --title "Restart services :" --cancel-button "Cancel" --checklist "" 0 0 0 \
       "${svclist[@]}" \
       3>&1 1>&2 2>&3)
     if [ "$?" = "0" ]; then
@@ -78,7 +78,7 @@ case $sel in
         svclist+=("$itm" "" off)
       fi
     done
-    sel=$(whiptail --backtitle "$apptitle" --title "Start services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
+    sel=$(dialog --backtitle "$apptitle" --title "Start services :" --cancel-button "Cancel" --checklist "" 0 0 0 \
       "${svclist[@]}" \
       3>&1 1>&2 2>&3)
     if [ "$?" = "0" ]; then
@@ -95,7 +95,7 @@ case $sel in
         svclist+=("$itm" "" off)
       fi
     done
-    sel=$(whiptail --backtitle "$apptitle" --title "Stop services :" --checklist "" --cancel-button "Cancel" 0 0 0 \
+    sel=$(dialog --backtitle "$apptitle" --title "Stop services :" --cancel-button "Cancel" --checklist "" 0 0 0 \
       "${svclist[@]}" \
       3>&1 1>&2 2>&3)
     if [ "$?" = "0" ]; then

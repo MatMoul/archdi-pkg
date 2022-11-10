@@ -10,7 +10,7 @@ options+=("amarok" "(AUR) (QT) Audio Player" off)
 options+=("guayadeque" "(AUR) (GTK) Audio Player" off)
 options+=("gmusicbrowser" "(AUR) (GTK) Audio Player" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "Audio Player applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Audio Player applications :" --cancel-button "Back" --checklist "Choose what you want" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -19,9 +19,9 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"amarok"' | \
-    '"guayadeque"' | \
-    '"gmusicbrowser"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    "amarok" | \
+    "guayadeque" | \
+    "gmusicbrowser") aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done

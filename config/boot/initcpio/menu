@@ -6,7 +6,7 @@ options+=("Config" "/etc/mkinitcpio.conf")
 options+=("mkinicpio" "")
 
 defaultitem="Config"
-sel=$(whiptail --backtitle "$apptitle" --title "Initcpio Config Menu :" --menu "" --default-item "$defaultitem" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Initcpio Config Menu :" --default-item "$defaultitem" --cancel-button "Back" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -22,7 +22,7 @@ case $sel in
     for itm in $configs; do
       options+=("${itm::-7}" "" on)
     done
-    sel=$(whiptail --backtitle "$apptitle" --title "Choose configs :" --checklist "" --cancel-button "Back" 0 0 0 \
+    sel=$(dialog --backtitle "$apptitle" --title "Choose configs :" --cancel-button "Back" --checklist "" 0 0 0 \
       "${options[@]}" \
       3>&1 1>&2 2>&3)
     if [ ! "$?" = "0" ]; then

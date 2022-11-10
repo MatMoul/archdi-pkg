@@ -16,7 +16,7 @@ options+=("dsniff" "tools for network auditing and penetration" off)
 options+=("mitmproxy" "SSL-capable MITM HTTP proxy" off)
 options+=("sslstrip" "tool to hijack HTTPS in MITM attack" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "Console Network Tools :" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Console Network Tools :" --cancel-button "Back" --checklist "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -25,7 +25,7 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"netdiscover"')
+    "netdiscover")
       aurpkg="$aurpkg $(echo $itm | sed 's/"//g')"
     ;;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;

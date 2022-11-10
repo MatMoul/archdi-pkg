@@ -8,7 +8,7 @@ options+=("evolution-bogofilter" "" off)
 options+=("evolution-spamassassin" "" off)
 options+=("evolution-ews" "" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "E-Mails applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "E-Mails applications :" --cancel-button "Back" --checklist "Choose what you want" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -25,7 +25,7 @@ instpkg "$pkg" "$aurpkg"
 
 for itm in $sel; do
   case $itm in
-    '"thunderbird"') choosepkg "thunderbird-i18n-";;
+    "thunderbird") choosepkg "thunderbird-i18n-";;
   esac
 done
 

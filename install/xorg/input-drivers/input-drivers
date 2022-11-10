@@ -21,7 +21,7 @@ options+=("Madcatz-R.A.T.9" "(Not tested)" off)
 options+=("Madcatz-R.A.T.TE" "(Not tested)" off)
 
 
-sel=$(whiptail --backtitle "$apptitle" --title "XOrg input drivers :" --checklist "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "XOrg input drivers :" --cancel-button "Back" --checklist "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 
@@ -31,12 +31,12 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"Saitek-R.A.T.3"') script install/xorg/input-drivers/saitekrat3;;
-    '"Madcatz-R.A.T.3"') script install/xorg/input-drivers/madcatzrat3;;
-    '"Madcatz-R.A.T.5"') script install/xorg/input-drivers/madcatzrat5;;
-    '"Madcatz-R.A.T.7"') script install/xorg/input-drivers/madcatzrat7;;
-    '"Madcatz-R.A.T.9"') script install/xorg/input-drivers/madcatzrat9;;
-    '"Madcatz-R.A.T.TE"') script install/xorg/input-drivers/madcatzratte;;
+    "Saitek-R.A.T.3") script install/xorg/input-drivers/saitekrat3;;
+    "Madcatz-R.A.T.3") script install/xorg/input-drivers/madcatzrat3;;
+    "Madcatz-R.A.T.5") script install/xorg/input-drivers/madcatzrat5;;
+    "Madcatz-R.A.T.7") script install/xorg/input-drivers/madcatzrat7;;
+    "Madcatz-R.A.T.9") script install/xorg/input-drivers/madcatzrat9;;
+    "Madcatz-R.A.T.TE") script install/xorg/input-drivers/madcatzratte;;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done

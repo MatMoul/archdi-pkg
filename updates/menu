@@ -57,7 +57,7 @@ if [ ! -f /usr/bin/pacdiff ]; then
   options+=("Install pacman-contrib" "")
 fi
 
-sel=$(whiptail --backtitle "$apptitle" --title "Updates Menu :" --menu "" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Updates Menu :" --cancel-button "Back" --menu "" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -126,13 +126,13 @@ case $sel in
     gpgservers=()
     gpgservers+=("pool.sks-keyservers.net" "")
     gpgservers+=("Other" "")
-    sel=$(whiptail --backtitle "$apptitle" --title "Add GPG key" --menu "GPG key server" 0 0 0 "${gpgservers[@]}" 3>&1 1>&2 2>&3)
+    sel=$(dialog --backtitle "$apptitle" --title "Add GPG key" --menu "GPG key server" 0 0 0 "${gpgservers[@]}" 3>&1 1>&2 2>&3)
     if [ "$?" = "0" ]; then
       case $sel in
         "Other")
-          gpgserver=$(whiptail --backtitle "$apptitle" --title "Add GPG key" --inputbox "Enter the GPG key server :" 0 0 "" 3>&1 1>&2 2>&3)
+          gpgserver=$(dialog --backtitle "$apptitle" --title "Add GPG key" --inputbox "Enter the GPG key server :" 0 0 "" 3>&1 1>&2 2>&3)
           if [ "$?" = "0" ]; then
-            gpgkey=$(whiptail --backtitle "$apptitle" --title "Add GPG key" --inputbox "Enter the GPG key :" 0 0 3>&1 1>&2 2>&3)
+            gpgkey=$(dialog --backtitle "$apptitle" --title "Add GPG key" --inputbox "Enter the GPG key :" 0 0 3>&1 1>&2 2>&3)
             if [ "$?" = "0" ]; then
               echo "sudo -u aurbuilder gpg --keyserver "$gpgserver" --recv-keys "$gpgkey
               sudo -u aurbuilder gpg --keyserver $gpgserver --recv-keys $gpgkey
@@ -142,7 +142,7 @@ case $sel in
         ;;
         *)
           gpgserver=$sel
-          gpgkey=$(whiptail --backtitle "$apptitle" --title "Add GPG key" --inputbox "Enter the GPG key :" 0 0 3>&1 1>&2 2>&3)
+          gpgkey=$(dialog --backtitle "$apptitle" --title "Add GPG key" --inputbox "Enter the GPG key :" 0 0 3>&1 1>&2 2>&3)
           if [ "$?" = "0" ]; then
             echo "sudo -u aurbuilder gpg --keyserver "$gpgserver" --recv-keys "$gpgkey
             sudo -u aurbuilder gpg --keyserver $gpgserver --recv-keys $gpgkey

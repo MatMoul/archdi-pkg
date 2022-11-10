@@ -19,7 +19,7 @@ options+=("gdmap" "" off)
 options+=("k4dirstat" "(AUR)" off)
 options+=("conky" "" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "System applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "System applications :" --cancel-button "Back" --checklist "Choose what you want" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then

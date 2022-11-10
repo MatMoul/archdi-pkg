@@ -8,7 +8,7 @@ options+=("xfburn" "(GTK)" off)
 options+=("brasero" "(GTK)" off)
 options+=("gnomebaker" "(AUR)" off)
 
-sel=$(whiptail --backtitle "$apptitle" --title "Burner applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
+sel=$(dialog --backtitle "$apptitle" --title "Burner applications :" --cancel-button "Back" --checklist "Choose what you want" 0 0 0 \
   "${options[@]}" \
   3>&1 1>&2 2>&3)
 if [ ! "$?" = "0" ]; then
@@ -17,8 +17,8 @@ fi
 
 for itm in $sel; do
   case $itm in
-    '"gnomebaker"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
-    '"xorriso-tcltk"') pkg="$pkg libisoburn tk kjobwidgets";;
+    "gnomebaker") aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
+    "xorriso-tcltk") pkg="$pkg libisoburn tk kjobwidgets";;
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
