@@ -19,7 +19,7 @@ cachedir=~/.cache/archdi
 
 cat << EOF > dialog.archfi
 use_shadow = OFF
-title_color = (BLACK,WHITE,ON)
+title_color = (BLACK,WHITE,OFF)
 button_label_active_color = (WHITE,BLUE,ON)
 button_label_inactive_color = (BLACK,WHITE,OFF)
 tag_color = (BLACK,WHITE,OFF)
