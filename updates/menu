@@ -15,6 +15,11 @@ if [ -f /usr/bin/aurman ]; then
   aurhelper=1
 fi
 
+if [ -f /usr/bin/lynx ] || [ -f /usr/bin/elinks ] || [ -f /usr/bin/links ]; then
+  options+=("Latestt News" "")
+  options+=("" "")
+fi
+
 options+=("Upgrade" "pacman -Syu")
 options+=("Clean orphan" "pacman -Rns \$(pacman -Qqtd)")
 options+=("Clean cache" "pacman -Sc")
@@ -99,6 +104,20 @@ checkpackagequerydependencies(){
 
 clear
 case $sel in
+  'Latestt News')
+    newsurl=''
+    if [ -f /usr/bin/lynx ]; then
+      /usr/bin/lynx ${newurl}
+    else
+      if [ -f /usr/bin/elinks ]; then
+        /usr/bin/elinks ${newurl}
+      else
+        if [ -f /usr/bin/links ]; then
+          /usr/bin/links ${newurl}
+        fi
+      fi
+    fi
+  ;;
   'Upgrade') pacman -Syu;;
   'Upgrade with trizen')
     checkaurdependencies
