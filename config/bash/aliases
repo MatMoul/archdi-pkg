@@ -53,29 +53,29 @@ echo "#!/bin/bash" > /etc/profile.d/alias.sh
 chmod 755 /etc/profile.d/alias.sh
 for itm in $sel; do
 	case $itm in
-		'"ls"') echo "alias ls='ls --color=auto -l --time-style long-iso'" >> /etc/profile.d/alias.sh;;
-		'"ls(2)"') echo "alias ls='ls --color=auto -l'" >> /etc/profile.d/alias.sh;;
-		'"ls(3)"') echo "alias ls='ls --color=auto'" >> /etc/profile.d/alias.sh;;
-		'"l"') echo "alias l='ls --color=auto -lA --time-style long-iso'" >> /etc/profile.d/alias.sh;;
-		'"l(2)"') echo "alias l='ls --color=auto -lA'" >> /etc/profile.d/alias.sh;;
-		'"ll"') echo "alias ll='ls --color=auto -la --time-style long-iso'" >> /etc/profile.d/alias.sh;;
-		'"ll(2)"') echo "alias ll='ls --color=auto -la'" >> /etc/profile.d/alias.sh;;
-		'"cd.."') echo "alias cd..='cd ..'" >> /etc/profile.d/alias.sh;;
-		'".."') echo "alias ..='cd ..'" >> /etc/profile.d/alias.sh;;
-		'"..."') echo "alias ...='cd ../../'" >> /etc/profile.d/alias.sh;;
-		'"...."') echo "alias ....='cd ../../../'" >> /etc/profile.d/alias.sh;;
-		'"....."') echo "alias .....='cd ../../../../'" >> /etc/profile.d/alias.sh;;
-		'"ff"') echo "alias ff='find / -name'" >> /etc/profile.d/alias.sh;;
-		'"f"') echo "alias f='find . -name'" >> /etc/profile.d/alias.sh;;
-		'"grep"') echo "alias grep='grep --color=auto'" >> /etc/profile.d/alias.sh;;
-		'"egrep"') echo "alias egrep='egrep --color=auto'" >> /etc/profile.d/alias.sh;;
-		'"fgrep"') echo "alias fgrep='fgrep --color=auto'" >> /etc/profile.d/alias.sh;;
-		'"ip"') echo "alias ip='ip -c'" >> /etc/profile.d/alias.sh;;
-		'"pacman"') echo "alias pacman='pacman --color auto'" >> /etc/profile.d/alias.sh;;
-		'"pactree"') echo "alias pactree='pactree --color'" >> /etc/profile.d/alias.sh;;
-		'"vdir"') echo "alias vdir='vdir --color=auto'" >> /etc/profile.d/alias.sh;;
-		'"watch"') echo "alias watch='watch --color'" >> /etc/profile.d/alias.sh;;
-		'"man"')
+		"ls") echo "alias ls='ls --color=auto -l --time-style long-iso'" >> /etc/profile.d/alias.sh;;
+		"ls(2)") echo "alias ls='ls --color=auto -l'" >> /etc/profile.d/alias.sh;;
+		"ls(3)") echo "alias ls='ls --color=auto'" >> /etc/profile.d/alias.sh;;
+		"l") echo "alias l='ls --color=auto -lA --time-style long-iso'" >> /etc/profile.d/alias.sh;;
+		"l(2)") echo "alias l='ls --color=auto -lA'" >> /etc/profile.d/alias.sh;;
+		"ll") echo "alias ll='ls --color=auto -la --time-style long-iso'" >> /etc/profile.d/alias.sh;;
+		"ll(2)") echo "alias ll='ls --color=auto -la'" >> /etc/profile.d/alias.sh;;
+		"cd..") echo "alias cd..='cd ..'" >> /etc/profile.d/alias.sh;;
+		"..") echo "alias ..='cd ..'" >> /etc/profile.d/alias.sh;;
+		"...") echo "alias ...='cd ../../'" >> /etc/profile.d/alias.sh;;
+		"....") echo "alias ....='cd ../../../'" >> /etc/profile.d/alias.sh;;
+		".....") echo "alias .....='cd ../../../../'" >> /etc/profile.d/alias.sh;;
+		"ff") echo "alias ff='find / -name'" >> /etc/profile.d/alias.sh;;
+		"f") echo "alias f='find . -name'" >> /etc/profile.d/alias.sh;;
+		"grep") echo "alias grep='grep --color=auto'" >> /etc/profile.d/alias.sh;;
+		"egrep") echo "alias egrep='egrep --color=auto'" >> /etc/profile.d/alias.sh;;
+		"fgrep") echo "alias fgrep='fgrep --color=auto'" >> /etc/profile.d/alias.sh;;
+		"ip") echo "alias ip='ip -c'" >> /etc/profile.d/alias.sh;;
+		"pacman") echo "alias pacman='pacman --color auto'" >> /etc/profile.d/alias.sh;;
+		"pactree") echo "alias pactree='pactree --color'" >> /etc/profile.d/alias.sh;;
+		"vdir") echo "alias vdir='vdir --color=auto'" >> /etc/profile.d/alias.sh;;
+		"watch") echo "alias watch='watch --color'" >> /etc/profile.d/alias.sh;;
+		"man")
 			echo 'man() {' >> /etc/profile.d/alias.sh
 			echo '	env \' >> /etc/profile.d/alias.sh
 			echo '		LESS_TERMCAP_mb=$(printf "\e[1;31m") \' >> /etc/profile.d/alias.sh
@@ -88,13 +88,13 @@ for itm in $sel; do
 			echo '			man "$@"' >> /etc/profile.d/alias.sh
 			echo '}' >> /etc/profile.d/alias.sh
 		;;
-		'"mkdir"') echo "alias mkdir='mkdir -pv'" >> /etc/profile.d/alias.sh;;
-		'"trizen"') echo "alias trizen='sudo -u aurbuilder trizen'" >> /etc/profile.d/alias.sh;;
-		'"yay"') echo "alias yay='sudo -u aurbuilder yay'" >> /etc/profile.d/alias.sh;;
-		'"aurman"') echo "alias aurman='sudo -u aurbuilder aurman'" >> /etc/profile.d/alias.sh;;
-		'"yaourt"') echo "alias yaourt='sudo -u aurbuilder yaourt --color'" >> /etc/profile.d/alias.sh;;
-		'"yaourt(2)"') echo "alias yaourt='sudo -u aurbuilder yaourt'" >> /etc/profile.d/alias.sh;;
-		'"yaourt(3)"') echo "alias yaourt='yaourt --color'" >> /etc/profile.d/alias.sh;;
+		"mkdir") echo "alias mkdir='mkdir -pv'" >> /etc/profile.d/alias.sh;;
+		"trizen") echo "alias trizen='sudo -u aurbuilder trizen'" >> /etc/profile.d/alias.sh;;
+		"yay") echo "alias yay='sudo -u aurbuilder yay'" >> /etc/profile.d/alias.sh;;
+		"aurman") echo "alias aurman='sudo -u aurbuilder aurman'" >> /etc/profile.d/alias.sh;;
+		"yaourt") echo "alias yaourt='sudo -u aurbuilder yaourt --color'" >> /etc/profile.d/alias.sh;;
+		"yaourt(2)") echo "alias yaourt='sudo -u aurbuilder yaourt'" >> /etc/profile.d/alias.sh;;
+		"yaourt(3)") echo "alias yaourt='yaourt --color'" >> /etc/profile.d/alias.sh;;
 	esac
 done
 
