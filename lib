@@ -167,7 +167,7 @@ require(){
     path=$(dirname $1)
     mkdir -p $cachedir/$path 2> /dev/null
     cd $cachedir/$path
-    wget $baseurl/$1 2> /dev/null
+    curl -LO $baseurl/$1 2> /dev/null
   fi
   chmod $2 $cachedir/$1
   cd $cachedir
