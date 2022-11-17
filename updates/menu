@@ -105,15 +105,15 @@ checkpackagequerydependencies(){
 clear
 case $sel in
   'Latestt News')
-    newsurl=''
+    newsurl='https://archlinux.org/news/'
     if [ -f /usr/bin/lynx ]; then
-      /usr/bin/lynx ${newurl}
+      /usr/bin/lynx ${newsurl}
     else
       if [ -f /usr/bin/elinks ]; then
-        /usr/bin/elinks ${newurl}
+        /usr/bin/elinks ${newsurl}
       else
         if [ -f /usr/bin/links ]; then
-          /usr/bin/links ${newurl}
+          /usr/bin/links ${newsurl}
         fi
       fi
     fi
