@@ -2,6 +2,7 @@
 . ./lib
 
 options=()
+options+=("sudo" "Superuser do" on)
 options+=("nano" "Editor" on)
 options+=("vim" "Editor" on)
 options+=("vi" "Editor" off)
